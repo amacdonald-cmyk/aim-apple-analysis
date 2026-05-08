@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { background: #fff; margin: 0; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: #111; }
+  h2 { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+  p.sub { font-size: 12px; color: #888; margin: 0 0 20px; }
+  .stats { font-size: 12px; color: #444; margin-top: 14px; padding-top: 12px; border-top: 1px solid #f0f0f0; }
+  canvas { max-height: 340px; }
+  .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #999; margin: 28px 0 12px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px; }
+  th { background: #f5f5f7; text-align: left; padding: 8px 10px; font-weight: 600; color: #555; border-bottom: 2px solid #e0e0e0; }
+  td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; }
+  tr.current td { background: #fffbf0; }
+  tr.weekly td { color: #aaa; font-style: italic; }
+  tr.total-row td { font-weight: 700; background: #f5f5f7; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
+  .tag-coded { background: #e8f5e9; color: #2e7d32; }
+  .tag-new { background: #e3f2fd; color: #1565c0; }
+  .tag-weekly { background: #fff3e0; color: #e65100; }
+  .context-box { background: #f5f5f7; border-radius: 8px; padding: 16px 18px; margin-top: 20px; font-size: 12px; line-height: 1.7; color: #444; }
+  .context-box strong { color: #111; }
+</style>
+</head>
+<body>
+
+<h2>eMags Coding Cost Scenarios — Adding Titles to Apple News+</h2>
+<p class="sub">At $350/issue &nbsp;·&nbsp; Excludes weekly publications (need separate pricing)</p>
+
+<canvas id="chart"></canvas>
+<p class="stats" id="stats"></p>
+
+<div class="section-label">Cost by Title (Annual, Standard Publications)</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Status</th>
+      <th>6 Issues/yr</th>
+      <th>7 Issues/yr</th>
+      <th>8 Issues/yr</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="current"><td>Popular Woodworking</td><td><span class="tag tag-coded">Currently coded</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr class="current"><td>Cuisine at Home</td><td><span class="tag tag-coded">Currently coded</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr><td>Writer's Digest</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr><td>Woodsmith</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr><td>Garden Gate</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr><td>Old House Journal</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr><td>Log &amp; Timber Home</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr><td>Horticulture</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr><td>ShopNotes</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr><td>Military Trader</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr class="weekly"><td>Sports Collectors Digest</td><td><span class="tag tag-weekly">Weekly — TBD</span></td><td colspan="3">~$9,100/yr at current rate — needs separate pricing</td></tr>
+    <tr class="weekly"><td>Numismatic News</td><td><span class="tag tag-weekly">Weekly — TBD</span></td><td colspan="3">~$9,100/yr at current rate — needs separate pricing</td></tr>
+    <tr class="weekly"><td>Old Cars Weekly</td><td><span class="tag tag-weekly">Weekly — TBD</span></td><td colspan="3">~$9,100/yr at current rate — needs separate pricing</td></tr>
+    <tr class="total-row"><td>Total (10 standard titles)</td><td></td><td>$21,000/yr<br><span style="font-weight:400;color:#888;">$1,750/mo</span></td><td>$24,500/yr<br><span style="font-weight:400;color:#888;">$2,042/mo</span></td><td>$28,000/yr<br><span style="font-weight:400;color:#888;">$2,333/mo</span></td></tr>
+  </tbody>
+</table>
+
+<div class="context-box">
+  <strong>vs. current Zinio spend:</strong> $91,482/yr (Apr 2025–Mar 2026) &nbsp;·&nbsp;
+  eMags at full 10-title rollout ($21k–$28k/yr) is <strong>70–77% less than Zinio</strong> &nbsp;·&nbsp;
+  Current News+ revenue (7 titles, 13mo): $17,074 — still below eMags cost at full rollout, but adding titles to News+ should grow the pool &nbsp;·&nbsp;
+  <strong>Weekly titles need a separate rate conversation</strong> — at $350/issue they'd cost $9,100/yr each, making them unlikely candidates.
+</div>
+
+<script>
+const labels = ['2 titles\n(current)', '10 titles\n(+8 standard)', '13 titles\n(+weeklies est.)'];
+const data6 = [4200,  21000, 48300];
+const data7 = [4900,  24500, 51800];
+const data8 = [5600,  28000, 55300];
+const zinioCost = 91482;
+
+new Chart(document.getElementById('chart'), {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: '6 issues/yr',
+        data: data6,
+        backgroundColor: 'rgba(0,122,255,0.65)',
+        borderColor: '#007aff',
+        borderWidth: 1.5,
+        borderRadius: 4,
+      },
+      {
+        label: '7 issues/yr',
+        data: data7,
+        backgroundColor: 'rgba(0,122,255,0.82)',
+        borderColor: '#007aff',
+        borderWidth: 1.5,
+        borderRadius: 4,
+      },
+      {
+        label: '8 issues/yr',
+        data: data8,
+        backgroundColor: 'rgba(0,122,255,1)',
+        borderColor: '#0051c3',
+        borderWidth: 1.5,
+        borderRadius: 4,
+      },
+      {
+        type: 'line',
+        label: 'Current Zinio annual cost',
+        data: [zinioCost, zinioCost, zinioCost],
+        borderColor: '#dc3545',
+        borderDash: [6,4],
+        borderWidth: 2,
+        pointRadius: 0,
+        fill: false,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index' },
+    plugins: {
+      legend: { display: true, position: 'bottom', labels: { boxWidth: 12, font: { size: 11 }, padding: 12 } },
+      tooltip: {
+        callbacks: {
+          label: c => {
+            if (c.dataset.type === 'line') return 'Zinio: $'+zinioCost.toLocaleString();
+            return c.dataset.label + ': $' + c.parsed.y.toLocaleString('en-US',{minimumFractionDigits:0});
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 11 } } },
+      y: {
+        beginAtZero: true,
+        max: 100000,
+        ticks: { callback: v => '$'+v.toLocaleString(), font: { size: 11 } },
+        grid: { color: 'rgba(0,0,0,0.05)' }
+      }
+    }
+  }
+});
+
+document.getElementById('stats').textContent =
+  'Current eMags: $4,200–$5,600/yr (2 titles)  |  Full 10-title rollout: $21,000–$28,000/yr  |  Zinio (red line): $91,482/yr  |  Savings vs. Zinio: $63k–$70k/yr';
+</script>
+</body>
+</html>
