@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)file:///Users/amacdonald/Downloads/newsplus_vs_zinio_scenario_2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<script src="./newsplus_vs_zinio_scenario_2_files/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { background: #fff; margin: 0; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: #111; }
+  h2 { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
+  p.sub { font-size: 12px; color: #888; margin: 0 0 20px; }
+  .stats { font-size: 12px; color: #444; margin-top: 14px; padding-top: 12px; border-top: 1px solid #f0f0f0; }
+  canvas { max-height: 360px; }
+  .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #999; margin: 32px 0 14px; }
+  .scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 4px; }
+  .scenario-box { border-radius: 10px; padding: 18px 20px; }
+  .scenario-box.current { background: #f5f5f7; }
+  .scenario-box.newsplus { background: #f0f8ff; border: 1px solid #cce0ff; }
+  .scenario-box h3 { font-size: 13px; font-weight: 700; margin: 0 0 12px; }
+  .scenario-box .row { display: flex; justify-content: space-between; font-size: 12px; padding: 5px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .scenario-box .row:last-child { border-bottom: none; }
+  .scenario-box .row span { color: #666; }
+  .scenario-box .row strong { color: #111; }
+  .scenario-box .net { display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-top: 10px; padding-top: 10px; border-top: 2px solid rgba(0,0,0,0.1); }
+  .red { color: #dc3545; }
+  .green { color: #28a745; }
+  .note { font-size: 11px; color: #aaa; margin-top: 16px; line-height: 1.6; }
+  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px; }
+  th { background: #f5f5f7; text-align: left; padding: 8px 10px; font-weight: 600; color: #555; border-bottom: 2px solid #e0e0e0; }
+  td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; }
+  td.pos { color: #28a745; font-weight: 600; }
+  td.neg { color: #dc3545; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<h2>Zinio Cost vs. Apple Revenue — Can News+ Replace the Standalone App?</h2>
+<p class="sub">Mar 2025 – Mar 2026 &nbsp;|&nbsp; Apple channel only &nbsp;·&nbsp; All titles</p>
+
+<canvas id="chart" width="2694" height="720" style="display: block; box-sizing: border-box; height: 360px; width: 1347px;"></canvas>
+<p class="stats" id="stats">Zinio cost (13mo): <strong>$107,060.12</strong> &nbsp;|&nbsp; News+ revenue: <strong>$17,058.72</strong> &nbsp;|&nbsp; App Store revenue: <strong>$25,155.58</strong> &nbsp;|&nbsp; Zinio covers <strong>254%</strong> more than all Apple revenue combined</p>
+
+<div class="section-label">Current State (13-Month Period)</div>
+<div class="scenario-box current" style="max-width:420px;">
+  <h3>Current State</h3>
+  <div class="row"><span>App Store revenue</span><strong>$25,125</strong></div>
+  <div class="row"><span>Apple News+ revenue</span><strong>$17,074</strong></div>
+  <div class="row"><span>Zinio cost</span><strong class="red">-$107,060</strong></div>
+  <div class="row"><span>eMags coding cost</span><strong class="red">-$2,950</strong></div>
+  <div class="net"><span>Net</span><span class="red">-$67,811</span></div>
+</div>
+
+<p class="note">
+  ⚠️ Key caveats: (1) News+ revenue is for 7 titles currently on the platform — 6 titles (Writer's Digest, ShopNotes, Sports Collectors, Numismatic News, Old Cars Weekly, Military Trader) are App Store only and would lose $7,136 in revenue if dropped without a News+ equivalent. (2) Zinio also serves Zinio.com subscribers directly — that revenue is not reflected here. (3) News+ pooled revenue could shift if you add more titles. (4) Mar 2025 Zinio invoice ($15,578) is an outlier — likely includes one-time or catch-up charges.
+</p>
+
+<div class="section-label">Title-by-Title: News+ vs. App Store Revenue</div>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>App Store (13mo)</th>
+      <th>News+ (13mo)</th>
+      <th>Difference</th>
+      <th>On News+?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Popular Woodworking</td><td>$6,183.57</td><td>$5,909.78</td><td class="neg">-$273.79 (-4.4%)</td><td>✅</td></tr>
+    <tr><td>Writer's Digest</td><td>$4,624.60</td><td>—</td><td class="neg">-$4,624.60</td><td>❌</td></tr>
+    <tr><td>Woodsmith</td><td>$4,397.32</td><td>$3,340.83</td><td class="neg">-$1,056.49 (-24%)</td><td>✅</td></tr>
+    <tr><td>Garden Gate</td><td>$2,250.07</td><td>$1,563.18</td><td class="neg">-$686.89 (-31%)</td><td>✅</td></tr>
+    <tr><td>Cuisine at Home</td><td>$2,052.76</td><td>$1,856.85</td><td class="neg">-$195.91 (-10%)</td><td>✅</td></tr>
+    <tr><td>ShopNotes</td><td>$1,719.03</td><td>—</td><td class="neg">-$1,719.03</td><td>❌</td></tr>
+    <tr><td>Log &amp; Timber Home</td><td>$1,128.55</td><td>$1,239.48</td><td class="pos">+$110.93 (+10%)</td><td>✅</td></tr>
+    <tr><td>Horticulture</td><td>$1,029.34</td><td>$843.04</td><td class="neg">-$186.30 (-18%)</td><td>✅</td></tr>
+    <tr><td>Old House Journal</td><td>$947.34</td><td>$2,321.08</td><td class="pos">+$1,373.74 (+145%)</td><td>✅</td></tr>
+    <tr><td>Sports Collectors</td><td>$380.05</td><td>—</td><td class="neg">-$380.05</td><td>❌</td></tr>
+    <tr><td>Numismatic News</td><td>$296.12</td><td>—</td><td class="neg">-$296.12</td><td>❌</td></tr>
+    <tr><td>Old Cars Weekly</td><td>$80.38</td><td>—</td><td class="neg">-$80.38</td><td>❌</td></tr>
+    <tr><td>Military Trader</td><td>$35.98</td><td>—</td><td class="neg">-$35.98</td><td>❌</td></tr>
+  </tbody>
+  <tfoot>
+    <tr style="font-weight:700;background:#f5f5f7;">
+      <td>Total</td><td>$25,125.11</td><td>$17,074.24</td><td class="neg">-$8,050.87</td><td></td>
+    </tr>
+  </tfoot>
+</table>
+
+<script>
+const LABELS = ['Mar 25','Apr 25','May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26'];
+const zinioData   = [15578.19,8859.70,8229.46,7573.19,7245.81,7680.54,7971.08,7421.54,7644.19,7872.88,6515.81,7546.03,6921.70];
+const newsPlusData = [1640.11,946.53,1699.40,1329.71,1424.30,1407.87,1135.44,1056.45,1256.61,1277.13,1386.00,1266.09,1233.08];
+const appStoreData = [2185.67,2497.45,1749.87,1671.70,1785.87,1673.80,1435.38,1943.03,1605.80,1722.11,3025.87,2128.86,1730.17];
+
+const zinioTotal    = zinioData.reduce((a,b)=>a+b,0);
+const newsTotal     = newsPlusData.reduce((a,b)=>a+b,0);
+const appTotal      = appStoreData.reduce((a,b)=>a+b,0);
+const combinedRev   = newsTotal + appTotal;
+
+document.getElementById('stats').innerHTML =
+  'Zinio cost (13mo): <strong>$'+zinioTotal.toLocaleString('en-US',{minimumFractionDigits:2})+'</strong>' +
+  ' &nbsp;|&nbsp; News+ revenue: <strong>$'+newsTotal.toLocaleString('en-US',{minimumFractionDigits:2})+'</strong>' +
+  ' &nbsp;|&nbsp; App Store revenue: <strong>$'+appTotal.toLocaleString('en-US',{minimumFractionDigits:2})+'</strong>' +
+  ' &nbsp;|&nbsp; Zinio covers <strong>'+(zinioTotal/combinedRev*100).toFixed(0)+'%</strong> more than all Apple revenue combined';
+
+new Chart(document.getElementById('chart'), {
+  type: 'bar',
+  data: {
+    labels: LABELS,
+    datasets: [
+      {
+        label: 'Zinio cost',
+        data: zinioData,
+        backgroundColor: 'rgba(220,53,69,0.75)',
+        borderColor: '#dc3545',
+        borderWidth: 1.5,
+        borderRadius: 4,
+      },
+      {
+        label: 'App Store revenue',
+        data: appStoreData,
+        backgroundColor: 'rgba(0,122,255,0.75)',
+        borderColor: '#007aff',
+        borderWidth: 1.5,
+        borderRadius: 4,
+      },
+      {
+        label: 'Apple News+ revenue',
+        data: newsPlusData,
+        backgroundColor: 'rgba(52,199,89,0.75)',
+        borderColor: '#34c759',
+        borderWidth: 1.5,
+        borderRadius: 4,
+      }
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index' },
+    plugins: {
+      legend: { display: true, position: 'bottom', labels: { boxWidth: 12, font: { size: 11 }, padding: 12 } },
+      tooltip: {
+        callbacks: {
+          label: c => c.dataset.label + ': $' + c.parsed.y.toLocaleString('en-US',{minimumFractionDigits:2}),
+          footer: items => {
+            const cost = items.find(i=>i.dataset.label==='Zinio cost')?.parsed.y||0;
+            const rev = items.filter(i=>i.dataset.label!=='Zinio cost').reduce((s,i)=>s+i.parsed.y,0);
+            return 'Revenue vs. cost gap: -$'+(cost-rev).toLocaleString('en-US',{minimumFractionDigits:2});
+          }
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+      y: { beginAtZero: true, ticks: { callback: v => '$'+v.toLocaleString(), font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } }
+    }
+  }
+});
+</script>
+
+
+</body></html>
