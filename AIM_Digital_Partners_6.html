@@ -10,17 +10,7 @@
 :root {
   --text: #111; --text-2: #555; --text-3: #999;
   --border: #e0e0e0; --bg: #fff; --bg-subtle: #fafafa;
-  --tag-bg: #f2f2f2;
-  --v-home-bg: #fff8e6; --v-home-c: #7a5200; --v-home-text: #7a5200;
-  --v-equine-bg: #f0ffe8; --v-equine-c: #2d6e1a; --v-equine-text: #2d6e1a;
-  --v-health-bg: #f5e8ff; --v-health-c: #6b1a8a; --v-health-text: #6b1a8a;
-  --v-collector-bg: #ffe8e8; --v-collector-c: #8a1a1a; --v-collector-text: #8a1a1a;
-  --tag-consumer: #ddf0e8; --tag-consumer-c: #0f5c30;
-  --tag-inst: #e8eeff; --tag-inst-c: #1a3a8a;
-  --tag-pool: #fff3dd; --tag-pool-c: #7a4400;
-  --tag-trans: #fdeef0; --tag-trans-c: #8a1a2a;
-  --tag-intl: #f2e8ff; --tag-intl-c: #4a0a7a;
-}
+  --tag-bg: #f2f2f2;}
 body { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: var(--text); background: var(--bg); padding-bottom: 80px; }
 
 .top-bar { border-bottom: 2px solid var(--text); padding: 18px 48px; display: flex; justify-content: space-between; align-items: baseline; }
@@ -39,12 +29,6 @@ body { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; colo
 .stat-num { font-size: 28px; font-weight: 600; letter-spacing: -0.03em; }
 .stat-lbl { font-size: 11px; color: var(--text-3); margin-top: 2px; }
 
-.filter-section { padding: 16px 48px; border-bottom: 1px solid var(--border); background: var(--bg-subtle); display: flex; flex-direction: column; gap: 8px; }
-.filter-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
-.filter-group-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); width: 64px; flex-shrink: 0; }
-.filter-btn { padding: 4px 10px; border: 1px solid var(--border); background: var(--bg); border-radius: 3px; font-size: 11px; cursor: pointer; color: var(--text-2); transition: all 0.1s; font-family: inherit; }
-.filter-btn:hover { border-color: var(--text-3); color: var(--text); }
-.filter-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
 
 .table-wrap { overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
@@ -52,9 +36,7 @@ thead tr { border-bottom: 2px solid var(--text); }
 th { padding: 10px 14px 10px 48px; text-align: left; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); white-space: nowrap; }
 th:first-child { padding-left: 48px; }
 tbody tr { border-bottom: 1px solid var(--border); transition: background 0.08s; }
-tbody tr:hover { background: var(--bg-subtle); }
-tbody tr.hidden { display: none; }
-td { padding: 14px 14px 14px 48px; vertical-align: top; }
+tbody tr:hover { background: var(--bg-subtle); }td { padding: 14px 14px 14px 48px; vertical-align: top; }
 td:first-child { padding-left: 48px; }
 
 .partner-name { font-weight: 600; font-size: 13px; }
@@ -105,36 +87,6 @@ td:first-child { padding-left: 48px; }
   <div class="stat-cell"><div class="stat-num">$39.2K</div><div class="stat-lbl">Total net revenue Jan–Apr</div></div>
 </div>
 
-<div class="filter-section">
-  <div class="filter-row">
-    <span class="filter-group-label">Model</span>
-    <button class="filter-btn active" data-axis="model" data-val="all">All</button>
-    <button class="filter-btn" data-axis="model" data-val="consumer">Consumer</button>
-    <button class="filter-btn" data-axis="model" data-val="institutional">Institutional</button>
-    <button class="filter-btn" data-axis="model" data-val="pool">Pool-based</button>
-    <button class="filter-btn" data-axis="model" data-val="transactional">Transactional</button>
-  </div>
-  <div class="filter-row">
-    <span class="filter-group-label">Vertical</span>
-    <button class="filter-btn active" data-axis="vertical" data-val="all">All</button>
-    <button class="filter-btn" data-axis="vertical" data-val="home">Home &amp; Craft</button>
-    <button class="filter-btn" data-axis="vertical" data-val="equine">Equine</button>
-    <button class="filter-btn" data-axis="vertical" data-val="health">Health / Outdoor</button>
-    <button class="filter-btn" data-axis="vertical" data-val="collector">Collector</button>
-  </div>
-  <div class="filter-row">
-    <span class="filter-group-label">Brand</span>
-    <button class="filter-btn active" data-axis="brand" data-val="all">All brands</button>
-    <button class="filter-btn" data-axis="brand" data-val="Fine Woodworking">Fine Woodworking</button>
-    <button class="filter-btn" data-axis="brand" data-val="Fine Homebuilding">Fine Homebuilding</button>
-    <button class="filter-btn" data-axis="brand" data-val="Fine Gardening">Fine Gardening</button>
-    <button class="filter-btn" data-axis="brand" data-val="Threads">Threads</button>
-    <button class="filter-btn" data-axis="brand" data-val="Popular Woodworking">Popular Woodworking</button>
-    <button class="filter-btn" data-axis="brand" data-val="Writers Digest">Writers Digest</button>
-    <button class="filter-btn" data-axis="brand" data-val="Woodsmith">Woodsmith</button>
-  </div>
-</div>
-
 <div class="table-wrap">
 <table>
   <thead>
@@ -145,9 +97,9 @@ td:first-child { padding-left: 48px; }
       <th>How AIM gets paid</th>
     </tr>
   </thead>
-  <tbody id="table-body">
+  <tbody>
 
-    <tr data-model="consumer transactional" data-vertical="home collector" data-brands="Fine Woodworking|Fine Homebuilding|Fine Gardening|Threads|Popular Woodworking|Writers Digest|Woodsmith|Garden Gate|ShopNotes|Cuisine at Home|Old House Journal|Horticulture|Numismatic News|Log & Timber Home Living|Antique Trader|Bank Note Reporter|Sports Collectors Digest|Old Cars Weekly">
+    <tr>
       <td><div class="partner-name">Apple (App Store)</div><div class="partner-type">Direct newsstand · iOS</div></td>
       <td><div class="tags"><span class="tag tag-consumer">Consumer</span><span class="tag tag-trans">Transactional</span></div></td>
       <td><div class="brands-cell">
@@ -173,7 +125,7 @@ td:first-child { padding-left: 48px; }
       <td><span class="payment-text">Per-transaction — net proceeds after ~30% platform fee (15% after year one of a subscription). Revenue split via Zinio Pro for branded apps; direct for Taunton titles. Paid monthly with ~60-day lag.</span></td>
     </tr>
 
-    <tr data-model="institutional" data-vertical="home health equine" data-brands="American Cowboy|Backpacker|Better Nutrition|Black Belt|Discover Horses|Dressage Today|Horse Journal|Spin To Win Rodeo|The Trail Rider|Vegetarian Times">
+    <tr>
       <td><div class="partner-name">Cengage</div><div class="partner-type">Academic / library · B2B</div></td>
       <td><div class="tags"><span class="tag tag-inst">Institutional</span></div></td>
       <td><div class="brands-cell">
@@ -191,7 +143,7 @@ td:first-child { padding-left: 48px; }
       <td><span class="payment-text">Fixed licensing fee — AIM receives a set annual/quarterly fee regardless of access volume. Revenue is predictable but not tied to usage. Quarterly payments.</span></td>
     </tr>
 
-    <tr data-model="pool" data-vertical="home collector" data-brands="Fine Woodworking|Fine Homebuilding|Fine Gardening|Threads|Popular Woodworking|Writers Digest|Woodsmith|Military Trader|World Coin News">
+    <tr>
       <td><div class="partner-name">PressReader</div><div class="partner-type">Global newsstand · B2C + B2B</div></td>
       <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-intl">International</span></div></td>
       <td><div class="brands-cell">
@@ -205,7 +157,7 @@ td:first-child { padding-left: 48px; }
       <td><span class="payment-text">Pool-based — AIM's share of platform revenue is calculated by AIM's relative read volume vs. total catalog. Revenue volatile; pays monthly. Low overall yield relative to title count.</span></td>
     </tr>
 
-    <tr data-model="institutional" data-vertical="home collector" data-brands="Old House Journal SIP|Woodshop News">
+    <tr>
       <td><div class="partner-name">EBSCO</div><div class="partner-type">Library aggregator · Academic</div></td>
       <td><div class="tags"><span class="tag tag-inst">Institutional</span></div></td>
       <td><div class="brands-cell">
@@ -215,7 +167,7 @@ td:first-child { padding-left: 48px; }
       <td><span class="payment-text">Per-issue upload fee to Textalk CDP + revenue share from EBSCO library access. Upload costs ($100/title/mo) often exceed revenue. Quarterly reporting.</span></td>
     </tr>
 
-    <tr data-model="transactional" data-vertical="home" data-brands="Old Cars Reports Price Guide">
+    <tr>
       <td><div class="partner-name">Zinio</div><div class="partner-type">Digital newsstand + app platform</div></td>
       <td><div class="tags"><span class="tag tag-trans">Transactional</span><span class="tag tag-consumer">Consumer</span></div></td>
       <td><div class="brands-cell">
@@ -225,7 +177,7 @@ td:first-child { padding-left: 48px; }
       <td><span class="payment-text">Revenue share on Zinio Store + Library sales (net of conversion, delivery, and credit card fees). Also the distribution platform for Zinio Pro branded apps — monthly license fees apply per-title on Pro. Net remit typically 50–60% of gross.</span></td>
     </tr>
 
-    <tr data-model="pool" data-vertical="home collector" data-brands="Coins|Military Vehicles">
+    <tr>
       <td><div class="partner-name">Readly</div><div class="partner-type">Subscription bundle · Consumer</div></td>
       <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-intl">International</span></div></td>
       <td><div class="brands-cell">
@@ -235,7 +187,7 @@ td:first-child { padding-left: 48px; }
       <td><span class="payment-text">Pool-based — AIM share based on relative read time vs. platform total. European-skewed reader base. Very low yield Jan–Apr 2026 ($9 total). Monthly reporting.</span></td>
     </tr>
 
-    <tr data-model="pool consumer" data-vertical="home" data-brands="Arts & Craft Homes - SIP|Log & Timber Home Living-SIP">
+    <tr>
       <td><div class="partner-name">Magzter / Magzter Gold</div><div class="partner-type">Global digital newsstand</div></td>
       <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-trans">Transactional</span></div></td>
       <td><div class="brands-cell">
@@ -245,7 +197,7 @@ td:first-child { padding-left: 48px; }
       <td><span class="payment-text">50% net revenue share (per contract). Direct sales via Magzter store + pool share from Magzter Gold subscription. Combined Jan–Apr revenue: $2.79.</span></td>
     </tr>
 
-    <tr data-model="consumer transactional" data-vertical="equine" data-brands="Horse & Rider">
+    <tr>
       <td><div class="partner-name">Apple News+</div><div class="partner-type">Apple News bundle · iOS/macOS</div></td>
       <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-consumer">Consumer</span></div></td>
       <td><div class="brands-cell">
@@ -254,7 +206,7 @@ td:first-child { padding-left: 48px; }
       <td><span class="payment-text">Pool-based revenue share from Apple News+ subscription bundle. Single title. $29 Jan–Apr 2026.</span></td>
     </tr>
 
-    <tr data-model="transactional consumer" data-vertical="home" data-brands="Fine Cooking|Yoga Journal">
+    <tr>
       <td><div class="partner-name">Barnes &amp; Noble</div><div class="partner-type">eBook / digital newsstand</div></td>
       <td><div class="tags"><span class="tag tag-trans">Transactional</span><span class="tag tag-consumer">Consumer</span></div></td>
       <td><div class="brands-cell">
@@ -280,33 +232,7 @@ td:first-child { padding-left: 48px; }
   <span>Jan – Apr 2026</span>
 </div>
 
-<script>
-const state = { model: 'all', brand: 'all', vertical: 'all' };
 
-function applyFilters() {
-  document.querySelectorAll('#table-body tr').forEach(row => {
-    const models    = (row.dataset.model    || '').split(' ');
-    const brands    = (row.dataset.brands   || '').split('|').map(s => s.trim());
-    const verticals = (row.dataset.vertical || '').split(' ');
-    const ok =
-      (state.model    === 'all' || models.some(m => m === state.model)) &&
-      (state.brand    === 'all' || brands.includes(state.brand)) &&
-      (state.vertical === 'all' || verticals.some(v => v === state.vertical));
-    row.classList.toggle('hidden', !ok);
-  });
-}
-
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const axis = btn.dataset.axis;
-    const val  = btn.dataset.val;
-    document.querySelectorAll(`.filter-btn[data-axis="${axis}"]`).forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    state[axis] = val;
-    applyFilters();
-  });
-});
-</script>
 
 </body>
 </html>
