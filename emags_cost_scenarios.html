@@ -1,45 +1,447 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIM — eMags Cost Scenarios</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; }
-  body { background: #fff; margin: 0; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; color: #111; }
-  h2 { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
-  p.sub { font-size: 12px; color: #888; margin: 0 0 20px; }
-  .stats { font-size: 12px; color: #444; margin-top: 14px; padding-top: 12px; border-top: 1px solid #f0f0f0; }
-  canvas { max-height: 360px; }
-  .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #999; margin: 28px 0 12px; }
-  .section-label span { font-weight: 400; text-transform: none; letter-spacing: 0; color: #bbb; margin-left: 8px; }
-  table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px; }
-  th { background: #f5f5f7; text-align: left; padding: 8px 10px; font-weight: 600; color: #555; border-bottom: 2px solid #e0e0e0; }
-  td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; }
-  tr.current td { background: #fffbf0; }
-  
-  tr.weekly td { color: #aaa; font-style: italic; }
-  tr.total-row td { font-weight: 700; background: #f5f5f7; }
-  tr.subtotal-row td { font-weight: 600; background: #fafafa; color: #555; font-size: 11px; }
-  .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
-  .tag-coded    { background: #e8f5e9; color: #2e7d32; }
-  .tag-new      { background: #e3f2fd; color: #1565c0; }
-  
-  .tag-weekly   { background: #fff3e0; color: #e65100; }
-  .context-box { background: #f5f5f7; border-radius: 8px; padding: 16px 18px; margin-top: 20px; font-size: 12px; line-height: 1.7; color: #444; }
-  .context-box strong { color: #111; }
-  .context-box .row { margin-bottom: 6px; }
-  .context-box .row:last-child { margin-bottom: 0; }
+/* ═══════════════════════════════════════════════════════
+   AIM Digital Distribution — Shared Stylesheet
+   Base: Zinio Pro Analysis design system
+═══════════════════════════════════════════════════════ */
+:root {
+  --navy:      #1F3864;
+  --navy-mid:  #2F5496;
+  --ink:       #1a1a2e;
+  --slate:     #4a5568;
+  --rule:      #cbd5e0;
+  --rule-lt:   #e8ecf2;
+  --bg:        #f7f8fc;
+  --white:     #ffffff;
+  --green:     #276749;
+  --green-bg:  #e6f4ee;
+  --red:       #c53030;
+  --red-bg:    #fff0f0;
+  --amber:     #7a4500;
+  --amber-bg:  #fff3e0;
+  --yellow-bg: #fffbeb;
+  --blue-bg:   #edf2fb;
+  --purple:    #5a1a8a;
+  --purple-bg: #f3eafd;
+  --mono:      'DM Mono', monospace;
+  --serif:     'Instrument Serif', serif;
+  --sans:      'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── PAGE HEADER (navy) ── */
+.page-header {
+  background: var(--navy);
+  color: white;
+  padding: 48px 64px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::after {
+  content: '';
+  position: absolute;
+  right: -60px; top: -60px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.page-header::before {
+  content: '';
+  position: absolute;
+  right: 80px; bottom: -80px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+.header-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.header-eyebrow a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  transition: color 0.1s;
+}
+.header-eyebrow a:hover { color: rgba(255,255,255,0.8); }
+.header-title {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.header-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  font-weight: 300;
+}
+.header-meta {
+  margin-top: 32px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.meta-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 4px;
+}
+.meta-value {
+  font-family: var(--mono);
+  font-size: 22px;
+  font-weight: 500;
+  color: white;
+}
+.meta-value.positive { color: #68d391; }
+.meta-value.negative { color: #fc8181; }
+.meta-value.warning  { color: #fbd38d; }
+
+/* ── BODY CONTAINER ── */
+.body { max-width: 1100px; margin: 0 auto; padding: 48px 48px 80px; }
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 52px; }
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--navy);
+}
+.section-number {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--navy-mid);
+  letter-spacing: 0.08em;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--navy);
+}
+.section-note {
+  font-size: 11px;
+  color: var(--slate);
+  font-family: var(--sans);
+  font-style: normal;
+  margin-left: auto;
+}
+.section-intro {
+  font-size: 12.5px;
+  color: var(--slate);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+/* ── TABLES ── */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead tr { background: var(--navy); color: white; }
+thead th {
+  padding: 10px 14px;
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+thead th:first-child { text-align: left; }
+tbody tr { border-bottom: 1px solid var(--rule-lt); }
+tbody tr:nth-child(even) { background: #f9fafc; }
+tbody tr:hover { background: var(--blue-bg); }
+tbody td {
+  padding: 9px 14px;
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 12px;
+}
+tbody td:first-child {
+  text-align: left;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+}
+tbody td:first-child .sub {
+  font-weight: 400;
+  color: var(--slate);
+  font-size: 11px;
+  display: block;
+}
+tfoot tr { background: var(--navy); }
+tfoot td {
+  padding: 10px 14px;
+  text-align: right;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+}
+tfoot td:first-child { text-align: left; font-family: var(--sans); }
+tbody tr.group-head td {
+  background: var(--blue-bg);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy-mid);
+  font-weight: 500;
+  border-top: 2px solid var(--navy-mid);
+  padding: 6px 14px;
+}
+tbody tr.subtotal-row td {
+  background: #f9fafc;
+  font-style: italic;
+  color: var(--slate);
+  font-size: 11px;
+}
+tbody tr.totals-row { border-top: 2px solid var(--navy); }
+tbody tr.totals-row td {
+  background: #f9fafc;
+  font-weight: 600;
+}
+tbody tr.group-keep { border-left: 3px solid var(--green); }
+tbody tr.group-exit { border-left: 3px solid var(--amber); }
+tbody tr.highlight  { border-left: 3px solid var(--green); }
+
+/* ── VALUE COLORS ── */
+.positive { color: var(--green); }
+.negative { color: var(--red); font-weight: 600; }
+.muted    { color: #9aa3b0; }
+.num-pos  { color: var(--green); }
+.num-neg  { color: var(--red); font-weight: 600; }
+.num-zero { color: #9aa3b0; }
+
+/* ── CHIPS / BADGES ── */
+.chip, .badge {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.chip.red,   .badge-exit   { background: var(--red-bg);    color: var(--red);      }
+.chip.green, .badge-keep   { background: var(--green-bg);  color: var(--green);    }
+.chip.blue,  .badge-flip   { background: var(--blue-bg);   color: var(--navy-mid); }
+.chip.amber                { background: var(--amber-bg);  color: var(--amber);    }
+.tag-coded   { background: var(--green-bg);  color: var(--green);    }
+.tag-new     { background: var(--blue-bg);   color: var(--navy-mid); }
+.tag-weekly  { background: var(--amber-bg);  color: var(--amber);    }
+
+/* ── CALLOUT BOXES ── */
+.callout-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 32px; }
+.callout {
+  background: white;
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--navy);
+  padding: 20px 24px;
+}
+.callout.green { border-top-color: var(--green); }
+.callout.red   { border-top-color: var(--red); }
+.callout-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate); margin-bottom: 8px; }
+.callout-value { font-family: var(--mono); font-size: 28px; font-weight: 500; color: var(--navy); }
+.callout-value.green { color: var(--green); }
+.callout-value.red   { color: var(--red); }
+.callout-note  { font-size: 11px; color: var(--slate); margin-top: 6px; }
+
+/* ── SCENARIO BOX ── */
+.scenario {
+  background: var(--yellow-bg);
+  border: 1px solid #f6e05e;
+  border-left: 4px solid #d69e2e;
+  padding: 24px 28px;
+  margin-top: 24px;
+}
+.scenario-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #744210;
+  margin-bottom: 12px;
+}
+.scenario-body { font-size: 12.5px; color: #92400e; line-height: 1.6; }
+.scenario-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 16px; }
+.s-label { font-family: var(--mono); font-size: 10px; color: #92400e; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
+.s-val   { font-family: var(--mono); font-size: 20px; font-weight: 500; color: #744210; }
+.s-delta { font-size: 11px; color: #92400e; margin-top: 2px; }
+
+/* ── INSIGHT / CALLOUT STRIP ── */
+.insight-strip { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--rule); }
+.insight { padding: 20px 0; border-right: 1px solid var(--rule); display: flex; gap: 14px; align-items: flex-start; }
+.insight:last-child { border-right: none; padding-left: 32px; }
+.insight:first-child { padding-right: 32px; }
+.insight-icon {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+.insight-icon.warn { background: var(--red-bg);   color: var(--red);   }
+.insight-icon.good { background: var(--green-bg); color: var(--green); }
+.insight-icon.info { background: var(--blue-bg);  color: var(--navy-mid); }
+.insight-head { font-size: 12px; font-weight: 600; margin-bottom: 3px; color: var(--ink); }
+.insight-body { font-size: 11.5px; color: var(--slate); line-height: 1.55; }
+
+/* ── FINDINGS GRID ── */
+.findings-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+.finding {
+  background: white;
+  border: 1px solid var(--rule);
+  padding: 20px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.finding-icon { font-family: var(--mono); font-size: 18px; color: var(--navy-mid); flex-shrink: 0; margin-top: 2px; width: 28px; }
+.finding-title { font-weight: 600; font-size: 13px; margin-bottom: 6px; color: var(--navy); }
+.finding-body  { font-size: 12.5px; color: var(--slate); line-height: 1.55; }
+.finding.flag    { border-left: 3px solid var(--red); }
+.finding.good    { border-left: 3px solid var(--green); }
+.finding.neutral { border-left: 3px solid var(--navy-mid); }
+
+/* ── INLINE INFO BOX ── */
+.info-box {
+  padding: 12px 16px;
+  background: var(--blue-bg);
+  border-left: 3px solid var(--navy-mid);
+  font-size: 12px;
+  color: var(--slate);
+  margin-top: 14px;
+}
+.info-box strong { color: var(--navy); }
+
+/* ── CONTEXT BOX (emags style) ── */
+.context-box {
+  background: white;
+  border: 1px solid var(--rule);
+  padding: 20px 24px;
+  margin-top: 20px;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: var(--slate);
+}
+.context-box strong { color: var(--ink); }
+.context-box .row { margin-bottom: 8px; }
+.context-box .row:last-child { margin-bottom: 0; }
+
+/* ── STATS STRIP (index / inner pages) ── */
+.stats-strip {
+  display: grid;
+  border-bottom: 1px solid var(--rule);
+}
+.stat-cell {
+  padding: 20px 24px;
+  border-right: 1px solid var(--rule);
+}
+.stat-cell:last-child { border-right: none; }
+.stat-num { font-family: var(--mono); font-size: 26px; font-weight: 500; color: var(--navy); }
+.stat-num.pos { color: var(--green); }
+.stat-num.neg { color: var(--red); }
+.stat-lbl { font-size: 11px; color: var(--slate); margin-top: 4px; }
+
+/* ── NOTES ── */
+.notes {
+  background: white;
+  border: 1px solid var(--rule);
+  padding: 20px 24px;
+  margin-top: 32px;
+}
+.notes-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 12px;
+}
+.notes ol { padding-left: 18px; }
+.notes li { font-size: 12px; color: var(--slate); margin-bottom: 6px; line-height: 1.5; }
+
+/* ── FOOTER ── */
+.page-footer {
+  border-top: 1px solid var(--rule);
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--slate);
+  margin-top: 48px;
+}
+
+/* ── FILTER CONTROLS (Partners page) ── */
+.filter-section { padding: 16px 0; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column; gap: 8px; background: white; margin-bottom: 0; }
+.filter-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.filter-group-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--slate); width: 64px; flex-shrink: 0; }
+.filter-btn { padding: 4px 10px; border: 1px solid var(--rule); background: white; border-radius: 2px; font-size: 11px; cursor: pointer; color: var(--slate); transition: all 0.1s; font-family: var(--sans); }
+.filter-btn:hover { border-color: var(--navy-mid); color: var(--navy); }
+.filter-btn.active { background: var(--navy); color: white; border-color: var(--navy); }
+
+/* ── BRAND PILLS ── */
+.brands-cell { display: flex; flex-wrap: wrap; gap: 4px; max-width: 340px; }
+.brand-pill { display: inline-block; padding: 2px 7px; border-radius: 2px; font-size: 10px; font-family: var(--mono); }
+.brand-pill.home      { background: #fff8e6; color: #7a5200; }
+.brand-pill.marine    { background: #e8f4ff; color: #0a4d8c; }
+.brand-pill.equine    { background: #f0ffe8; color: #2d6e1a; }
+.brand-pill.health    { background: #f5e8ff; color: #6b1a8a; }
+.brand-pill.collector { background: #ffe8e8; color: #8a1a1a; }
+
+/* ── SPACER ── */
+.spacer { height: 32px; }
+
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 </head>
 <body>
-
-<h2>eMags Coding Cost Scenarios — Adding Titles to Apple News+</h2>
-<p class="sub">At $350/issue &nbsp;·&nbsp; All 14 standard AIM titles &nbsp;·&nbsp; Weeklies need separate pricing</p>
+<div class="page-header">
+  <div class="header-eyebrow">Active Interest Media — Digital Distribution  <a href="index.html">← Index</a></div>
+  <div class="header-title">eMags Coding Cost Scenarios</div>
+  <div class="header-sub">Adding AIM titles to Apple News+ · At $350/issue · All 14 standard titles</div>
+  
+</div>
+<div class="body">
+<div class="section-header" style="margin-bottom:8px"><div class="section-title">eMags Coding Cost Scenarios — Adding Titles to Apple News+</div></div>
+<p style="font-size:12.5px;color:var(--slate);margin-bottom:24px;">At $350/issue &nbsp;·&nbsp; All 14 standard AIM titles &nbsp;·&nbsp; Weeklies need separate pricing</p>
 
 <canvas id="chart"></canvas>
-<p class="stats" id="stats"></p>
+<p id="stats" style="font-size:11px;color:var(--slate);margin-top:12px;padding-top:10px;border-top:1px solid var(--rule-lt);font-family:var(--mono);letter-spacing:0.04em;"></p>
 
-<div class="section-label">Cost by Title — Standard Publications (non-weekly)<span>Yellow = currently coded on Apple News+</span></div>
+<div class="section-header" style="margin-top:32px;margin-bottom:12px"><div class="section-title" style="font-size:16px">Cost by Title — Standard Publications (non-weekly)<span>Yellow = currently coded on Apple News+</span></div></div>
 <table>
   <thead>
     <tr>
@@ -56,8 +458,8 @@
     <tr><td>Fine Gardening</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
     <tr><td>Threads Magazine</td><td><span class="tag tag-new">New</span></td><td>4 iss · $1,400</td><td>5 iss · $1,750</td><td>6 iss · $2,100</td></tr>
     <tr class="subtotal-row"><td>Fine titles subtotal (4 titles)</td><td></td><td>$7,700/yr · $642/mo</td><td>$9,100/yr · $758/mo</td><td>$10,500/yr · $875/mo</td></tr>
-    <tr class="current"><td>Popular Woodworking</td><td><span class="tag tag-coded">Currently coded</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
-    <tr class="current"><td>Cuisine at Home</td><td><span class="tag tag-coded">Currently coded</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr class="group-keep"><td>Popular Woodworking</td><td><span class="tag tag-coded">Currently coded</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr class="group-keep"><td>Cuisine at Home</td><td><span class="tag tag-coded">Currently coded</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
     <tr><td>Writer's Digest</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
     <tr><td>Woodsmith</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
     <tr><td>Garden Gate</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
@@ -70,7 +472,7 @@
     <tr class="weekly"><td>Sports Collectors Digest</td><td><span class="tag tag-weekly">Weekly — TBD</span></td><td colspan="3">~$9,100/yr at current rate — needs separate pricing</td></tr>
     <tr class="weekly"><td>Numismatic News</td><td><span class="tag tag-weekly">Weekly — TBD</span></td><td colspan="3">~$9,100/yr at current rate — needs separate pricing</td></tr>
     <tr class="weekly"><td>Old Cars Weekly</td><td><span class="tag tag-weekly">Weekly — TBD</span></td><td colspan="3">~$9,100/yr at current rate — needs separate pricing</td></tr>
-    <tr class="total-row">
+    <tr class="totals-row">
       <td>Total — 14 standard titles</td>
       <td></td>
       <td>$28,700/yr<br><span style="font-weight:400;color:#888;">$2,392/mo</span></td>
@@ -171,5 +573,6 @@ new Chart(document.getElementById('chart'), {
 document.getElementById('stats').textContent =
   'Current eMags: $4,200–$5,600/yr (2 titles)  |  Full 14-title rollout: $28,700–$38,500/yr  |  Zinio (red line): $91,482/yr  |  Savings vs. Zinio: $53k–$63k/yr';
 </script>
+</div>
 </body>
 </html>
