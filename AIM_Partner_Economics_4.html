@@ -37,7 +37,7 @@ body { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; colo
 
 .section-head { padding: 20px 48px 12px; font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); border-bottom: 1px solid var(--border); background: var(--bg-subtle); }
 
-.table-wrap { overflow-x: auto; }
+.table-wrap { overflow-x: auto; border-bottom: 1px solid var(--border); }
 table { width: 100%; border-collapse: collapse; }
 thead tr { border-bottom: 2px solid var(--text); }
 th { padding: 10px 16px; text-align: right; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); white-space: nowrap; }
@@ -84,15 +84,15 @@ td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
 </div>
 
 <div class="hero">
-  <h1>Partner Economics: Zinio</h1>
-  <div class="hero-sub">Title-by-title P&L · Zinio distribution + Apple iTunes · Monthly average Jan–Apr 2026</div>
+  <h1>Partner Economics: Zinio Pro</h1>
+  <div class="hero-sub">Title-by-title P&L · Zinio Store/Library + Apple iTunes · Monthly average Jan–Apr 2026 · Confirmed Pro fee schedule</div>
 </div>
 
 <div class="stats-strip">
-  <div class="stat-cell"><div class="stat-num">19</div><div class="stat-lbl">Titles on Zinio</div></div>
-  <div class="stat-cell"><div class="stat-num pos">+$4,479</div><div class="stat-lbl">Current combined net/mo</div></div>
-  <div class="stat-cell"><div class="stat-num neg">9</div><div class="stat-lbl">Net-negative titles</div></div>
-  <div class="stat-cell"><div class="stat-num pos">+$6,429</div><div class="stat-lbl">Pro exit scenario net/mo</div></div>
+  <div class="stat-cell"><div class="stat-num">12</div><div class="stat-lbl">Titles on Pro (confirmed)</div></div>
+  <div class="stat-cell"><div class="stat-num neg">–$880</div><div class="stat-lbl">Current portfolio net/mo</div></div>
+  <div class="stat-cell"><div class="stat-num neg">8</div><div class="stat-lbl">Net-negative titles</div></div>
+  <div class="stat-cell"><div class="stat-num pos">+$1,820</div><div class="stat-lbl">Pro exit scenario net/mo</div></div>
 </div>
 
 <div class="spacer"></div>
@@ -100,98 +100,130 @@ td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
 <div class="scenario-callout">
   <div class="scenario-callout-icon">→</div>
   <div>
-    <div class="scenario-callout-title">Saved Scenario: Targeted Zinio Pro Exit</div>
-    <div class="scenario-callout-body">Exit Zinio Pro on 9 underwater titles (removing monthly license fees of $200–250/title). Keep Pro for 8 profitable/iTunes-generating titles. All 9 exited titles retain Zinio Store + Library distribution. Net improvement: <strong>+$1,950/mo</strong>. 4 titles flip profitable after exit. Excludes eMags migration option (pricing TBD).</div>
+    <div class="scenario-callout-title">Scenario: Exit Zinio Pro on 9 underwater titles</div>
+    <div class="scenario-callout-body">Keep Pro for 3 titles where Apple revenue exceeds the Pro fee (Popular Woodworking, Writer's Digest, Garden Gate). Exit Pro on the remaining 9 — all retain Zinio Store + Library distribution. Pro fees eliminated: <strong>$1,950/mo</strong>. Portfolio swings from –$880 to <strong>+$1,820/mo</strong>, a +$2,700/mo improvement. 5 titles flip profitable post-exit.</div>
   </div>
 </div>
 
 <div class="spacer"></div>
 
-<div class="section-head">Keep on Zinio Pro — Profitable / iTunes-generating</div>
+<div class="section-head">Current State — All 12 Pro Titles</div>
 
 <div class="table-wrap">
 <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Zinio net/mo</th>
-      <th>AIM Apple/mo</th>
+      <th>Pro fee/mo</th>
+      <th>Apple rev/mo</th>
+      <th>Zinio Store+Lib/mo</th>
       <th>Combined net/mo</th>
-      <th>Pro license/mo</th>
       <th class="left">Status</th>
     </tr>
   </thead>
   <tbody>
     <tr class="group-keep">
-      <td>Fine Woodworking</td>
-      <td class="num-pos">+$257</td>
-      <td class="num-pos">+$2,202</td>
-      <td class="num-pos">+$2,459</td>
-      <td class="num-zero">—</td>
-      <td><span class="badge badge-keep">Keep</span></td>
-    </tr>
-    <tr class="group-keep">
-      <td>Fine Homebuilding</td>
-      <td class="num-pos">+$51</td>
-      <td class="num-pos">+$1,274</td>
-      <td class="num-pos">+$1,325</td>
-      <td class="num-zero">—</td>
-      <td><span class="badge badge-keep">Keep</span></td>
-    </tr>
-    <tr class="group-keep">
-      <td>Fine Gardening</td>
-      <td class="num-pos">+$273</td>
-      <td class="num-pos">+$813</td>
-      <td class="num-pos">+$1,086</td>
-      <td class="num-zero">—</td>
-      <td><span class="badge badge-keep">Keep</span></td>
-    </tr>
-    <tr class="group-keep">
-      <td>Threads</td>
-      <td class="num-pos">+$258</td>
-      <td class="num-pos">+$607</td>
-      <td class="num-pos">+$865</td>
-      <td class="num-zero">—</td>
-      <td><span class="badge badge-keep">Keep</span></td>
-    </tr>
-    <tr class="group-keep">
       <td>Popular Woodworking</td>
-      <td class="num-pos">+$129</td>
-      <td class="num-pos">+$341</td>
-      <td class="num-pos">+$470</td>
       <td>$300</td>
+      <td class="num-pos">+$555</td>
+      <td class="num-neg">–$171</td>
+      <td class="num-pos">+$384</td>
       <td><span class="badge badge-keep">Keep</span></td>
     </tr>
     <tr class="group-keep">
-      <td>Writers Digest</td>
-      <td class="num-pos">+$73</td>
-      <td class="num-pos">+$250</td>
-      <td class="num-pos">+$323</td>
+      <td>Writer's Digest</td>
       <td>$250</td>
-      <td><span class="badge badge-keep">Keep</span></td>
-    </tr>
-    <tr class="group-keep">
-      <td>ShopNotes</td>
-      <td class="num-pos">+$122</td>
-      <td class="num-pos">+$100</td>
-      <td class="num-pos">+$222</td>
-      <td class="num-zero">—</td>
+      <td class="num-pos">+$419</td>
+      <td class="num-neg">–$177</td>
+      <td class="num-pos">+$242</td>
       <td><span class="badge badge-keep">Keep</span></td>
     </tr>
     <tr class="group-keep">
       <td>Garden Gate</td>
-      <td class="num-pos">+$75</td>
-      <td class="num-pos">+$120</td>
-      <td class="num-pos">+$195</td>
       <td>$200</td>
+      <td class="num-pos">+$191</td>
+      <td class="num-neg">–$125</td>
+      <td class="num-pos">+$66</td>
       <td><span class="badge badge-keep">Keep</span></td>
     </tr>
+    <tr class="group-exit">
+      <td>Woodsmith</td>
+      <td>$250</td>
+      <td class="num-pos">+$400</td>
+      <td class="num-neg">–$252</td>
+      <td class="num-pos">+$148</td>
+      <td><span class="badge badge-exit">Exit Pro</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>Cuisine at Home</td>
+      <td>$200</td>
+      <td class="num-pos">+$163</td>
+      <td class="num-neg">–$213</td>
+      <td class="num-neg">–$50</td>
+      <td><span class="badge badge-exit">Exit Pro</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>Old House Journal</td>
+      <td>$200</td>
+      <td class="num-pos">+$110</td>
+      <td class="num-neg">–$134</td>
+      <td class="num-neg">–$24</td>
+      <td><span class="badge badge-exit">Exit Pro</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>Horticulture</td>
+      <td>$250</td>
+      <td class="num-pos">+$97</td>
+      <td class="num-neg">–$284</td>
+      <td class="num-neg">–$187</td>
+      <td><span class="badge badge-exit">Exit Pro</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>Log &amp; Timber Home Living</td>
+      <td>$250</td>
+      <td class="num-pos">+$95</td>
+      <td class="num-neg">–$234</td>
+      <td class="num-neg">–$139</td>
+      <td><span class="badge badge-exit">Exit Pro</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>Numismatic News</td>
+      <td>$200</td>
+      <td class="num-pos">+$24</td>
+      <td class="num-neg">–$304</td>
+      <td class="num-neg">–$280</td>
+      <td><span class="badge badge-exit">Exit Pro</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>Kovels Antique Trader</td>
+      <td>$200</td>
+      <td class="num-zero">—</td>
+      <td class="num-neg">–$251</td>
+      <td class="num-neg">–$251</td>
+      <td><span class="badge badge-exit">Exit Pro</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>World Coin News</td>
+      <td>$200</td>
+      <td class="num-zero">—</td>
+      <td class="num-neg">–$342</td>
+      <td class="num-neg">–$342</td>
+      <td><span class="badge badge-exit">Exit Pro</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>Banknote Reporter</td>
+      <td>$200</td>
+      <td class="num-pos">+$5</td>
+      <td class="num-neg">–$452</td>
+      <td class="num-neg">–$447</td>
+      <td><span class="badge badge-exit">Exit Pro</span></td>
+    </tr>
     <tr class="totals-row">
-      <td>Keep subtotal</td>
-      <td class="num-pos">+$1,238</td>
-      <td class="num-pos">+$5,707</td>
-      <td class="num-pos">+$6,945</td>
-      <td>$750</td>
+      <td>All 12 titles</td>
+      <td>$2,700</td>
+      <td class="num-pos">+$2,059</td>
+      <td class="num-neg">–$2,939</td>
+      <td class="num-neg">–$880</td>
       <td></td>
     </tr>
   </tbody>
@@ -200,7 +232,7 @@ td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
 
 <div class="spacer"></div>
 
-<div class="section-head">Exit Zinio Pro — Net-negative under current structure</div>
+<div class="section-head">Exit Scenario — Remove Pro Fee, Retain Store + Library</div>
 
 <div class="table-wrap">
 <table>
@@ -208,7 +240,7 @@ td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
     <tr>
       <th>Title</th>
       <th>Current net/mo</th>
-      <th>Pro license saved</th>
+      <th>Pro fee saved</th>
       <th>Scenario net/mo</th>
       <th>Δ swing</th>
       <th class="left">After exit</th>
@@ -216,36 +248,44 @@ td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
   </thead>
   <tbody>
     <tr class="group-exit">
-      <td>Old House Journal</td>
-      <td class="num-neg">–$134</td>
-      <td class="num-pos">+$200</td>
-      <td class="num-pos">+$66</td>
-      <td class="num-pos">+$200</td>
-      <td><span class="badge badge-flip">Flips positive</span></td>
-    </tr>
-    <tr class="group-exit">
-      <td>Log &amp; Timber</td>
-      <td class="num-neg">–$234</td>
+      <td>Woodsmith</td>
+      <td class="num-pos">+$148</td>
       <td class="num-pos">+$250</td>
-      <td class="num-pos">+$16</td>
+      <td class="num-pos">+$398</td>
       <td class="num-pos">+$250</td>
-      <td><span class="badge badge-flip">Flips positive</span></td>
+      <td><span class="badge badge-flip">Improves further</span></td>
     </tr>
     <tr class="group-exit">
       <td>Cuisine at Home</td>
-      <td class="num-neg">–$213</td>
+      <td class="num-neg">–$50</td>
       <td class="num-pos">+$200</td>
-      <td class="num-neg">–$13</td>
+      <td class="num-pos">+$150</td>
       <td class="num-pos">+$200</td>
-      <td><span class="badge badge-exit">Reduced loss</span></td>
+      <td><span class="badge badge-flip">Flips positive</span></td>
     </tr>
     <tr class="group-exit">
-      <td>Woodsmith</td>
-      <td class="num-neg">–$252</td>
+      <td>Old House Journal</td>
+      <td class="num-neg">–$24</td>
+      <td class="num-pos">+$200</td>
+      <td class="num-pos">+$176</td>
+      <td class="num-pos">+$200</td>
+      <td><span class="badge badge-flip">Flips positive</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>Horticulture</td>
+      <td class="num-neg">–$187</td>
       <td class="num-pos">+$250</td>
-      <td class="num-neg">–$2</td>
+      <td class="num-pos">+$63</td>
       <td class="num-pos">+$250</td>
-      <td><span class="badge badge-exit">Near breakeven</span></td>
+      <td><span class="badge badge-flip">Flips positive</span></td>
+    </tr>
+    <tr class="group-exit">
+      <td>Log &amp; Timber Home Living</td>
+      <td class="num-neg">–$139</td>
+      <td class="num-pos">+$250</td>
+      <td class="num-pos">+$111</td>
+      <td class="num-pos">+$250</td>
+      <td><span class="badge badge-flip">Flips positive</span></td>
     </tr>
     <tr class="group-exit">
       <td>Kovels Antique Trader</td>
@@ -256,18 +296,10 @@ td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
       <td><span class="badge badge-exit">Reduced loss</span></td>
     </tr>
     <tr class="group-exit">
-      <td>Horticulture</td>
-      <td class="num-neg">–$284</td>
-      <td class="num-pos">+$250</td>
-      <td class="num-neg">–$34</td>
-      <td class="num-pos">+$250</td>
-      <td><span class="badge badge-exit">Reduced loss</span></td>
-    </tr>
-    <tr class="group-exit">
       <td>Numismatic News</td>
-      <td class="num-neg">–$304</td>
+      <td class="num-neg">–$280</td>
       <td class="num-pos">+$200</td>
-      <td class="num-neg">–$104</td>
+      <td class="num-neg">–$80</td>
       <td class="num-pos">+$200</td>
       <td><span class="badge badge-exit">Reduced loss</span></td>
     </tr>
@@ -281,17 +313,17 @@ td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
     </tr>
     <tr class="group-exit">
       <td>Banknote Reporter</td>
-      <td class="num-neg">–$452</td>
+      <td class="num-neg">–$447</td>
       <td class="num-pos">+$200</td>
-      <td class="num-neg">–$252</td>
+      <td class="num-neg">–$247</td>
       <td class="num-pos">+$200</td>
       <td><span class="badge badge-exit">Reduced loss</span></td>
     </tr>
     <tr class="totals-row">
-      <td>Exit subtotal</td>
-      <td class="num-neg">–$2,466</td>
+      <td>Exit subtotal (9 titles)</td>
+      <td class="num-neg">–$1,572</td>
       <td class="num-pos">+$1,950</td>
-      <td class="num-neg">–$516</td>
+      <td class="num-pos">+$378</td>
       <td class="num-pos">+$1,950</td>
       <td></td>
     </tr>
@@ -314,12 +346,11 @@ td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
   </thead>
   <tbody>
     <tr class="totals-row">
-      <td>All 17 titles combined</td>
-      <td class="num-pos">+$4,479</td>
-      <td></td>
-      <td></td>
-      <td class="num-pos">+$6,429</td>
-      <td class="num-pos">+$1,950/mo</td>
+      <td>All 12 Pro titles combined</td>
+      <td class="num-neg">–$880</td>
+      <td></td><td></td>
+      <td class="num-pos">+$1,820</td>
+      <td class="num-pos">+$2,700/mo</td>
     </tr>
   </tbody>
 </table>
@@ -327,16 +358,16 @@ td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
 
 <div class="notes">
   <div class="notes-title">Methodology Notes</div>
-  <div class="note-item"><span class="note-bullet">1.</span><span>Zinio net = gross Zinio revenue minus conversion fees, delivery fees, credit card fees, and license fees. Monthly average based on Jan–Apr 2026 invoice data.</span></div>
-  <div class="note-item"><span class="note-bullet">2.</span><span>AIM Apple = net Apple iTunes revenue for AIM-operated apps (via Zinio Pro platform). Excludes Taunton-entity apps (Fine Woodworking, Fine Homebuilding, Fine Gardening, Threads) — those are billed separately and not included in AIM's Zinio invoice.</span></div>
-  <div class="note-item"><span class="note-bullet">3.</span><span>Pro exit scenario assumes: license fee eliminated, Pro delivery fees eliminated, AIM Apple revenue retained for Keep titles only. Exited titles remain on Zinio Store + Library distribution.</span></div>
-  <div class="note-item"><span class="note-bullet">4.</span><span>Residual losses post-exit (Banknote Reporter, World Coin News, Numismatic News) are driven by content conversion fees against thin distribution revenue. Separate discussion needed on whether those titles remain on Zinio at all.</span></div>
-  <div class="note-item"><span class="note-bullet">5.</span><span>eMags migration scenario not modeled here — pricing proposal pending. That scenario would affect the Store + Library cost structure for exited titles.</span></div>
+  <div class="note-item"><span class="note-bullet">1.</span><span>Pro fee schedule sourced directly from confirmed billing data. 12 titles on Pro: Kovels Antique Trader, Cuisine at Home, Popular Woodworking, Writer's Digest, Garden Gate, Numismatic News, Old House Journal, World Coin News, Banknote Reporter, Woodsmith, Horticulture, Log &amp; Timber Home Living. ShopNotes is not on the Pro schedule and is excluded.</span></div>
+  <div class="note-item"><span class="note-bullet">2.</span><span>Apple revenue = AIM entity net receipts from Jan–Apr 2026 digital revenue report, divided by 4 for monthly average. Excludes Taunton titles (Fine Woodworking, Fine Homebuilding, Fine Gardening, Threads) which are billed under Cruz Bay Publishing and covered separately in the Zinio Pro Analysis document.</span></div>
+  <div class="note-item"><span class="note-bullet">3.</span><span>Zinio Store + Library net/mo = estimated monthly net from Zinio distribution channels after conversion fees, delivery fees, and credit card fees. This figure includes the Pro fee drag in the current state column; removing the Pro fee is the only change in the scenario column.</span></div>
+  <div class="note-item"><span class="note-bullet">4.</span><span>Residual losses post-exit (Kovels, Numismatic News, World Coin News, Banknote Reporter) are conversion-fee-driven — not Pro-fee-driven. Those titles require a separate conversation about whether Zinio distribution is viable at all.</span></div>
+  <div class="note-item"><span class="note-bullet">5.</span><span>eMags migration scenario not modeled — pricing proposal pending. Would affect the Store + Library cost structure for all titles.</span></div>
 </div>
 
 <div class="footer">
   <span>Active Interest Media — Digital Revenue Operations</span>
-  <span>Jan – Apr 2026</span>
+  <span>Jan–Apr 2026 · Confirmed Pro fee schedule</span>
 </div>
 
 </body>
