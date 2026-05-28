@@ -9,71 +9,96 @@
   h2 { font-size: 16px; font-weight: 600; margin: 0 0 4px; }
   p.sub { font-size: 12px; color: #888; margin: 0 0 20px; }
   .stats { font-size: 12px; color: #444; margin-top: 14px; padding-top: 12px; border-top: 1px solid #f0f0f0; }
-  canvas { max-height: 340px; }
+  canvas { max-height: 360px; }
   .section-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #999; margin: 28px 0 12px; }
+  .section-label span { font-weight: 400; text-transform: none; letter-spacing: 0; color: #bbb; margin-left: 8px; }
   table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px; }
   th { background: #f5f5f7; text-align: left; padding: 8px 10px; font-weight: 600; color: #555; border-bottom: 2px solid #e0e0e0; }
   td { padding: 7px 10px; border-bottom: 1px solid #f0f0f0; }
   tr.current td { background: #fffbf0; }
+  tr.taunton td { background: #f5f0fd; }
   tr.weekly td { color: #aaa; font-style: italic; }
   tr.total-row td { font-weight: 700; background: #f5f5f7; }
+  tr.subtotal-row td { font-weight: 600; background: #fafafa; color: #555; font-size: 11px; }
   .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }
-  .tag-coded { background: #e8f5e9; color: #2e7d32; }
-  .tag-new { background: #e3f2fd; color: #1565c0; }
-  .tag-weekly { background: #fff3e0; color: #e65100; }
+  .tag-coded    { background: #e8f5e9; color: #2e7d32; }
+  .tag-new      { background: #e3f2fd; color: #1565c0; }
+  .tag-taunton  { background: #ede7f6; color: #4527a0; }
+  .tag-weekly   { background: #fff3e0; color: #e65100; }
   .context-box { background: #f5f5f7; border-radius: 8px; padding: 16px 18px; margin-top: 20px; font-size: 12px; line-height: 1.7; color: #444; }
   .context-box strong { color: #111; }
+  .context-box .row { margin-bottom: 6px; }
+  .context-box .row:last-child { margin-bottom: 0; }
 </style>
 </head>
 <body>
 
 <h2>eMags Coding Cost Scenarios — Adding Titles to Apple News+</h2>
-<p class="sub">At $350/issue &nbsp;·&nbsp; Excludes weekly publications (need separate pricing)</p>
+<p class="sub">At $350/issue &nbsp;·&nbsp; Includes Taunton titles (Apr 2024 amendment) &nbsp;·&nbsp; Weeklies need separate pricing</p>
 
 <canvas id="chart"></canvas>
 <p class="stats" id="stats"></p>
 
-<div class="section-label">Cost by Title (Annual, Standard Publications)</div>
+<div class="section-label">Cost by Title — Standard Publications (non-weekly)<span>Purple = Taunton titles added by Apr 2024 amendment · Yellow = currently coded</span></div>
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Status</th>
-      <th>6 Issues/yr</th>
-      <th>7 Issues/yr</th>
-      <th>8 Issues/yr</th>
+      <th>Low end</th>
+      <th>Mid</th>
+      <th>High end</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="current"><td>Popular Woodworking</td><td><span class="tag tag-coded">Currently coded</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
-    <tr class="current"><td>Cuisine at Home</td><td><span class="tag tag-coded">Currently coded</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
-    <tr><td>Writer's Digest</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
-    <tr><td>Woodsmith</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
-    <tr><td>Garden Gate</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
-    <tr><td>Old House Journal</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
-    <tr><td>Log &amp; Timber Home</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
-    <tr><td>Horticulture</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
-    <tr><td>ShopNotes</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
-    <tr><td>Military Trader</td><td><span class="tag tag-new">New</span></td><td>$2,100</td><td>$2,450</td><td>$2,800</td></tr>
+    <tr class="taunton"><td>Fine Woodworking</td><td><span class="tag tag-taunton">Taunton · amendment</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr class="taunton"><td>Fine Homebuilding</td><td><span class="tag tag-taunton">Taunton · amendment</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr class="taunton"><td>Fine Gardening</td><td><span class="tag tag-taunton">Taunton · amendment</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr class="taunton"><td>Threads Magazine</td><td><span class="tag tag-taunton">Taunton · amendment</span></td><td>4 iss · $1,400</td><td>5 iss · $1,750</td><td>6 iss · $2,100</td></tr>
+    <tr class="subtotal-row"><td>Taunton subtotal (4 titles)</td><td></td><td>$7,700/yr · $642/mo</td><td>$9,100/yr · $758/mo</td><td>$10,500/yr · $875/mo</td></tr>
+    <tr class="current"><td>Popular Woodworking</td><td><span class="tag tag-coded">Currently coded</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr class="current"><td>Cuisine at Home</td><td><span class="tag tag-coded">Currently coded</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr><td>Writer's Digest</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr><td>Woodsmith</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr><td>Garden Gate</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr><td>Old House Journal</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr><td>Log &amp; Timber Home</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr><td>Horticulture</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr><td>ShopNotes</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr><td>Military Trader</td><td><span class="tag tag-new">New</span></td><td>6 iss · $2,100</td><td>7 iss · $2,450</td><td>8 iss · $2,800</td></tr>
+    <tr class="subtotal-row"><td>Original 10 titles subtotal</td><td></td><td>$21,000/yr · $1,750/mo</td><td>$24,500/yr · $2,042/mo</td><td>$28,000/yr · $2,333/mo</td></tr>
     <tr class="weekly"><td>Sports Collectors Digest</td><td><span class="tag tag-weekly">Weekly — TBD</span></td><td colspan="3">~$9,100/yr at current rate — needs separate pricing</td></tr>
     <tr class="weekly"><td>Numismatic News</td><td><span class="tag tag-weekly">Weekly — TBD</span></td><td colspan="3">~$9,100/yr at current rate — needs separate pricing</td></tr>
     <tr class="weekly"><td>Old Cars Weekly</td><td><span class="tag tag-weekly">Weekly — TBD</span></td><td colspan="3">~$9,100/yr at current rate — needs separate pricing</td></tr>
-    <tr class="total-row"><td>Total (10 standard titles)</td><td></td><td>$21,000/yr<br><span style="font-weight:400;color:#888;">$1,750/mo</span></td><td>$24,500/yr<br><span style="font-weight:400;color:#888;">$2,042/mo</span></td><td>$28,000/yr<br><span style="font-weight:400;color:#888;">$2,333/mo</span></td></tr>
+    <tr class="total-row">
+      <td>Total — 14 standard titles</td>
+      <td></td>
+      <td>$28,700/yr<br><span style="font-weight:400;color:#888;">$2,392/mo</span></td>
+      <td>$33,600/yr<br><span style="font-weight:400;color:#888;">$2,800/mo</span></td>
+      <td>$38,500/yr<br><span style="font-weight:400;color:#888;">$3,208/mo</span></td>
+    </tr>
   </tbody>
 </table>
 
 <div class="context-box">
-  <strong>vs. current Zinio spend:</strong> $91,482/yr (Apr 2025–Mar 2026) &nbsp;·&nbsp;
-  eMags at full 10-title rollout ($21k–$28k/yr) is <strong>70–77% less than Zinio</strong> &nbsp;·&nbsp;
-  Current News+ revenue (7 titles, 13mo): $17,074 — still below eMags cost at full rollout, but adding titles to News+ should grow the pool &nbsp;·&nbsp;
-  <strong>Weekly titles need a separate rate conversation</strong> — at $350/issue they'd cost $9,100/yr each, making them unlikely candidates.
+  <div class="row"><strong>vs. current Zinio spend:</strong> $91,482/yr (Apr 2025–Mar 2026)</div>
+  <div class="row"><strong>eMags at full 14-title rollout ($28.7k–$38.5k/yr) is 58–69% less than Zinio</strong> — even with the four Taunton titles added.</div>
+  <div class="row"><strong>Taunton titles add $7,700–$10,500/yr</strong> in eMags coding cost, but they generate ~$81,500/yr in Apple iTunes revenue — roughly 8× their coding cost at the midpoint estimate.</div>
+  <div class="row"><strong>Revenue context:</strong> Taunton Apple iTunes Jan–Apr 2026 = $27,163 (~$81,500 annualized). Original 10-title Apple revenue = $8,236 Jan–Apr (~$24,700 annualized). Combined annualized Apple revenue ≈ $106,200 vs. $33,600/yr eMags coding cost at mid — a 3.2× return on coding spend.</div>
+  <div class="row"><strong>Weekly titles need a separate rate conversation</strong> — at $350/issue they'd cost ~$9,100/yr each, making them marginal candidates without a volume discount.</div>
 </div>
 
 <script>
-const labels = ['2 titles\n(current)', '10 titles\n(+8 standard)', '13 titles\n(+weeklies est.)'];
-const data6 = [4200,  21000, 48300];
-const data7 = [4900,  24500, 51800];
-const data8 = [5600,  28000, 55300];
+const labels = [
+  '2 titles\n(current)',
+  '10 titles\n(original)',
+  '14 titles\n(+Taunton)',
+  '17 titles\n(+weeklies est.)'
+];
+
+const dataLo  = [4200,  21000, 28700, 56000];
+const dataMid = [4900,  24500, 33600, 61000];
+const dataHi  = [5600,  28000, 38500, 66500];
 const zinioCost = 91482;
 
 new Chart(document.getElementById('chart'), {
@@ -82,24 +107,24 @@ new Chart(document.getElementById('chart'), {
     labels,
     datasets: [
       {
-        label: '6 issues/yr',
-        data: data6,
-        backgroundColor: 'rgba(0,122,255,0.65)',
+        label: 'Low (fewer issues)',
+        data: dataLo,
+        backgroundColor: 'rgba(0,122,255,0.55)',
         borderColor: '#007aff',
         borderWidth: 1.5,
         borderRadius: 4,
       },
       {
-        label: '7 issues/yr',
-        data: data7,
-        backgroundColor: 'rgba(0,122,255,0.82)',
+        label: 'Mid',
+        data: dataMid,
+        backgroundColor: 'rgba(0,122,255,0.78)',
         borderColor: '#007aff',
         borderWidth: 1.5,
         borderRadius: 4,
       },
       {
-        label: '8 issues/yr',
-        data: data8,
+        label: 'High (more issues)',
+        data: dataHi,
         backgroundColor: 'rgba(0,122,255,1)',
         borderColor: '#0051c3',
         borderWidth: 1.5,
@@ -108,7 +133,7 @@ new Chart(document.getElementById('chart'), {
       {
         type: 'line',
         label: 'Current Zinio annual cost',
-        data: [zinioCost, zinioCost, zinioCost],
+        data: [zinioCost, zinioCost, zinioCost, zinioCost],
         borderColor: '#dc3545',
         borderDash: [6,4],
         borderWidth: 2,
@@ -125,8 +150,8 @@ new Chart(document.getElementById('chart'), {
       tooltip: {
         callbacks: {
           label: c => {
-            if (c.dataset.type === 'line') return 'Zinio: $'+zinioCost.toLocaleString();
-            return c.dataset.label + ': $' + c.parsed.y.toLocaleString('en-US',{minimumFractionDigits:0});
+            if (c.dataset.type === 'line') return 'Zinio: $' + zinioCost.toLocaleString();
+            return c.dataset.label + ': $' + c.parsed.y.toLocaleString('en-US', { minimumFractionDigits: 0 });
           }
         }
       }
@@ -136,7 +161,7 @@ new Chart(document.getElementById('chart'), {
       y: {
         beginAtZero: true,
         max: 100000,
-        ticks: { callback: v => '$'+v.toLocaleString(), font: { size: 11 } },
+        ticks: { callback: v => '$' + v.toLocaleString(), font: { size: 11 } },
         grid: { color: 'rgba(0,0,0,0.05)' }
       }
     }
@@ -144,7 +169,7 @@ new Chart(document.getElementById('chart'), {
 });
 
 document.getElementById('stats').textContent =
-  'Current eMags: $4,200–$5,600/yr (2 titles)  |  Full 10-title rollout: $21,000–$28,000/yr  |  Zinio (red line): $91,482/yr  |  Savings vs. Zinio: $63k–$70k/yr';
+  'Current eMags: $4,200–$5,600/yr (2 titles)  |  14-title rollout (incl. Taunton): $28,700–$38,500/yr  |  Zinio (red line): $91,482/yr  |  Savings vs. Zinio: $53k–$63k/yr';
 </script>
 </body>
 </html>
