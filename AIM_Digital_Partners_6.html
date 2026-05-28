@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIM — Digital Distribution Partners</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --text: #111; --text-2: #555; --text-3: #999;
+  --border: #e0e0e0; --bg: #fff; --bg-subtle: #fafafa;
+  --tag-bg: #f2f2f2;
+  --v-home-bg: #fff8e6; --v-home-c: #7a5200; --v-home-text: #7a5200;
+  --v-marine-bg: #e8f4ff; --v-marine-c: #0a4d8c; --v-marine-text: #0a4d8c;
+  --v-equine-bg: #f0ffe8; --v-equine-c: #2d6e1a; --v-equine-text: #2d6e1a;
+  --v-health-bg: #f5e8ff; --v-health-c: #6b1a8a; --v-health-text: #6b1a8a;
+  --v-collector-bg: #ffe8e8; --v-collector-c: #8a1a1a; --v-collector-text: #8a1a1a;
+  --tag-consumer: #ddf0e8; --tag-consumer-c: #0f5c30;
+  --tag-inst: #e8eeff; --tag-inst-c: #1a3a8a;
+  --tag-pool: #fff3dd; --tag-pool-c: #7a4400;
+  --tag-trans: #fdeef0; --tag-trans-c: #8a1a2a;
+  --tag-intl: #f2e8ff; --tag-intl-c: #4a0a7a;
+}
+body { font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; color: var(--text); background: var(--bg); padding-bottom: 80px; }
+
+.top-bar { border-bottom: 2px solid var(--text); padding: 18px 48px; display: flex; justify-content: space-between; align-items: baseline; }
+.site-title { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+.site-meta { font-size: 11px; color: var(--text-3); }
+.back-link { font-size: 11px; color: var(--text-3); text-decoration: none; letter-spacing: 0.04em; }
+.back-link:hover { color: var(--text); }
+
+.hero { padding: 44px 48px 32px; border-bottom: 1px solid var(--border); }
+.hero h1 { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 4px; }
+.hero-sub { font-size: 12px; color: var(--text-3); }
+
+.stats-strip { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); }
+.stat-cell { padding: 18px 48px; border-right: 1px solid var(--border); }
+.stat-cell:last-child { border-right: none; }
+.stat-num { font-size: 28px; font-weight: 600; letter-spacing: -0.03em; }
+.stat-lbl { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+
+.filter-section { padding: 16px 48px; border-bottom: 1px solid var(--border); background: var(--bg-subtle); display: flex; flex-direction: column; gap: 8px; }
+.filter-row { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.filter-group-label { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); width: 64px; flex-shrink: 0; }
+.filter-btn { padding: 4px 10px; border: 1px solid var(--border); background: var(--bg); border-radius: 3px; font-size: 11px; cursor: pointer; color: var(--text-2); transition: all 0.1s; font-family: inherit; }
+.filter-btn:hover { border-color: var(--text-3); color: var(--text); }
+.filter-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+thead tr { border-bottom: 2px solid var(--text); }
+th { padding: 10px 14px 10px 48px; text-align: left; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); white-space: nowrap; }
+th:first-child { padding-left: 48px; }
+tbody tr { border-bottom: 1px solid var(--border); transition: background 0.08s; }
+tbody tr:hover { background: var(--bg-subtle); }
+tbody tr.hidden { display: none; }
+td { padding: 14px 14px 14px 48px; vertical-align: top; }
+td:first-child { padding-left: 48px; }
+
+.partner-name { font-weight: 600; font-size: 13px; }
+.partner-type { font-size: 11px; color: var(--text-3); margin-top: 2px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 10px; font-weight: 500; }
+.tag-consumer  { background: var(--tag-consumer);  color: var(--tag-consumer-c); }
+.tag-inst      { background: var(--tag-inst);      color: var(--tag-inst-c); }
+.tag-pool      { background: var(--tag-pool);      color: var(--tag-pool-c); }
+.tag-trans     { background: var(--tag-trans);     color: var(--tag-trans-c); }
+.tag-intl      { background: var(--tag-intl);      color: var(--tag-intl-c); }
+
+.brands-cell { display: flex; flex-wrap: wrap; gap: 4px; max-width: 340px; }
+.brand-pill { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 10px; }
+.brand-pill.home      { background: var(--v-home-bg);      color: var(--v-home-c); }
+.brand-pill.marine    { background: var(--v-marine-bg);    color: var(--v-marine-c); }
+.brand-pill.equine    { background: var(--v-equine-bg);    color: var(--v-equine-c); }
+.brand-pill.health    { background: var(--v-health-bg);    color: var(--v-health-c); }
+.brand-pill.collector { background: var(--v-collector-bg); color: var(--v-collector-c); }
+
+.payment-text { font-size: 12px; color: var(--text-2); line-height: 1.55; max-width: 320px; }
+
+.notes { padding: 32px 48px; border-top: 1px solid var(--border); background: var(--bg-subtle); }
+.notes-title { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
+.note-item { display: flex; gap: 10px; margin-bottom: 8px; font-size: 12px; color: var(--text-2); line-height: 1.6; }
+.note-bullet { color: var(--text-3); flex-shrink: 0; }
+
+.footer { padding: 20px 48px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-size: 11px; color: var(--text-3); }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <span class="site-title">Active Interest Media</span>
+  <a class="back-link" href="index.html">← Back to Index</a>
+  <span class="site-meta">Internal use only</span>
+</div>
+
+<div class="hero">
+  <h1>Digital Distribution Partners</h1>
+  <div class="hero-sub">Platform overview · Jan – Apr 2026 · All active digital channels</div>
+</div>
+
+<div class="stats-strip">
+  <div class="stat-cell"><div class="stat-num">10</div><div class="stat-lbl">Active partners</div></div>
+  <div class="stat-cell"><div class="stat-num">3</div><div class="stat-lbl">Pool-based models</div></div>
+  <div class="stat-cell"><div class="stat-num">2</div><div class="stat-lbl">Institutional / B2B</div></div>
+  <div class="stat-cell"><div class="stat-num">$39.2K</div><div class="stat-lbl">Total net revenue Jan–Apr</div></div>
+</div>
+
+<div class="filter-section">
+  <div class="filter-row">
+    <span class="filter-group-label">Model</span>
+    <button class="filter-btn active" data-axis="model" data-val="all">All</button>
+    <button class="filter-btn" data-axis="model" data-val="consumer">Consumer</button>
+    <button class="filter-btn" data-axis="model" data-val="institutional">Institutional</button>
+    <button class="filter-btn" data-axis="model" data-val="pool">Pool-based</button>
+    <button class="filter-btn" data-axis="model" data-val="transactional">Transactional</button>
+  </div>
+  <div class="filter-row">
+    <span class="filter-group-label">Vertical</span>
+    <button class="filter-btn active" data-axis="vertical" data-val="all">All</button>
+    <button class="filter-btn" data-axis="vertical" data-val="home">Home &amp; Craft</button>
+    <button class="filter-btn" data-axis="vertical" data-val="marine">Marine</button>
+    <button class="filter-btn" data-axis="vertical" data-val="equine">Equine</button>
+    <button class="filter-btn" data-axis="vertical" data-val="health">Health / Outdoor</button>
+    <button class="filter-btn" data-axis="vertical" data-val="collector">Collector</button>
+  </div>
+  <div class="filter-row">
+    <span class="filter-group-label">Brand</span>
+    <button class="filter-btn active" data-axis="brand" data-val="all">All brands</button>
+    <button class="filter-btn" data-axis="brand" data-val="Fine Woodworking">Fine Woodworking</button>
+    <button class="filter-btn" data-axis="brand" data-val="Fine Homebuilding">Fine Homebuilding</button>
+    <button class="filter-btn" data-axis="brand" data-val="Fine Gardening">Fine Gardening</button>
+    <button class="filter-btn" data-axis="brand" data-val="Threads">Threads</button>
+    <button class="filter-btn" data-axis="brand" data-val="Popular Woodworking">Popular Woodworking</button>
+    <button class="filter-btn" data-axis="brand" data-val="Writers Digest">Writers Digest</button>
+    <button class="filter-btn" data-axis="brand" data-val="Woodsmith">Woodsmith</button>
+    <button class="filter-btn" data-axis="brand" data-val="Sail">Sail</button>
+  </div>
+</div>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th style="width:200px">Partner</th>
+      <th style="width:160px">Model</th>
+      <th style="width:360px">Brands on platform</th>
+      <th>How AIM gets paid</th>
+    </tr>
+  </thead>
+  <tbody id="table-body">
+
+    <tr data-model="consumer transactional" data-vertical="home marine collector" data-brands="Fine Woodworking|Fine Homebuilding|Fine Gardening|Threads|Popular Woodworking|Writers Digest|Woodsmith|Sail|Garden Gate|ShopNotes|Cuisine at Home|Old House Journal|Horticulture|Numismatic News|Log & Timber Home Living|Passagemaker|Soundings|Antique Trader|Bank Note Reporter|Sports Collectors Digest|Old Cars Weekly|Yachts International">
+      <td><div class="partner-name">Apple (App Store)</div><div class="partner-type">Direct newsstand · iOS</div></td>
+      <td><div class="tags"><span class="tag tag-consumer">Consumer</span><span class="tag tag-trans">Transactional</span></div></td>
+      <td><div class="brands-cell">
+        <span class="brand-pill home">Fine Woodworking</span>
+        <span class="brand-pill home">Fine Homebuilding</span>
+        <span class="brand-pill home">Fine Gardening</span>
+        <span class="brand-pill home">Threads</span>
+        <span class="brand-pill home">Popular Woodworking</span>
+        <span class="brand-pill home">Writers Digest</span>
+        <span class="brand-pill home">Woodsmith</span>
+        <span class="brand-pill home">Garden Gate</span>
+        <span class="brand-pill home">ShopNotes</span>
+        <span class="brand-pill home">Cuisine at Home</span>
+        <span class="brand-pill home">Old House Journal</span>
+        <span class="brand-pill home">Horticulture</span>
+        <span class="brand-pill home">Log &amp; Timber</span>
+        <span class="brand-pill marine">Sail</span>
+        <span class="brand-pill marine">Passagemaker</span>
+        <span class="brand-pill marine">Soundings</span>
+        <span class="brand-pill marine">Yachts International</span>
+        <span class="brand-pill collector">Numismatic News</span>
+        <span class="brand-pill collector">Antique Trader</span>
+        <span class="brand-pill collector">Sports Collectors Digest</span>
+        <span class="brand-pill collector">Old Cars Weekly</span>
+        <span class="brand-pill collector">Bank Note Reporter</span>
+      </div></td>
+      <td><span class="payment-text">Per-transaction — net proceeds after ~30% platform fee (15% after year one of a subscription). Revenue split via Zinio Pro for branded apps; direct for Taunton titles. Paid monthly with ~60-day lag.</span></td>
+    </tr>
+
+    <tr data-model="institutional" data-vertical="home health equine" data-brands="American Cowboy|Backpacker|Better Nutrition|Black Belt|Discover Horses|Dressage Today|Horse Journal|Spin To Win Rodeo|The Trail Rider|Vegetarian Times">
+      <td><div class="partner-name">Cengage</div><div class="partner-type">Academic / library · B2B</div></td>
+      <td><div class="tags"><span class="tag tag-inst">Institutional</span></div></td>
+      <td><div class="brands-cell">
+        <span class="brand-pill health">Backpacker</span>
+        <span class="brand-pill health">Better Nutrition</span>
+        <span class="brand-pill health">Black Belt</span>
+        <span class="brand-pill health">Vegetarian Times</span>
+        <span class="brand-pill equine">American Cowboy</span>
+        <span class="brand-pill equine">Discover Horses</span>
+        <span class="brand-pill equine">Dressage Today</span>
+        <span class="brand-pill equine">Horse Journal</span>
+        <span class="brand-pill equine">Spin To Win Rodeo</span>
+        <span class="brand-pill equine">The Trail Rider</span>
+      </div></td>
+      <td><span class="payment-text">Fixed licensing fee — AIM receives a set annual/quarterly fee regardless of access volume. Revenue is predictable but not tied to usage. Quarterly payments.</span></td>
+    </tr>
+
+    <tr data-model="pool" data-vertical="home marine collector" data-brands="Fine Woodworking|Fine Homebuilding|Fine Gardening|Threads|Popular Woodworking|Writers Digest|Woodsmith|Sail|Military Trader|World Coin News">
+      <td><div class="partner-name">PressReader</div><div class="partner-type">Global newsstand · B2C + B2B</div></td>
+      <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-intl">International</span></div></td>
+      <td><div class="brands-cell">
+        <span class="brand-pill home">Fine Woodworking</span>
+        <span class="brand-pill home">Fine Gardening</span>
+        <span class="brand-pill home">Threads</span>
+        <span class="brand-pill home">Popular Woodworking</span>
+        <span class="brand-pill collector">Military Trader</span>
+        <span class="brand-pill collector">World Coin News</span>
+      </div></td>
+      <td><span class="payment-text">Pool-based — AIM's share of platform revenue is calculated by AIM's relative read volume vs. total catalog. Revenue volatile; pays monthly. Low overall yield relative to title count.</span></td>
+    </tr>
+
+    <tr data-model="institutional" data-vertical="home collector" data-brands="Old House Journal SIP|Woodshop News">
+      <td><div class="partner-name">EBSCO</div><div class="partner-type">Library aggregator · Academic</div></td>
+      <td><div class="tags"><span class="tag tag-inst">Institutional</span></div></td>
+      <td><div class="brands-cell">
+        <span class="brand-pill home">Old House Journal SIP</span>
+        <span class="brand-pill home">Woodshop News</span>
+      </div></td>
+      <td><span class="payment-text">Per-issue upload fee to Textalk CDP + revenue share from EBSCO library access. Upload costs ($100/title/mo) often exceed revenue. Quarterly reporting.</span></td>
+    </tr>
+
+    <tr data-model="transactional" data-vertical="home marine" data-brands="Sail|Old Cars Reports Price Guide">
+      <td><div class="partner-name">Zinio</div><div class="partner-type">Digital newsstand + app platform</div></td>
+      <td><div class="tags"><span class="tag tag-trans">Transactional</span><span class="tag tag-consumer">Consumer</span></div></td>
+      <td><div class="brands-cell">
+        <span class="brand-pill marine">Sail (SIP)</span>
+        <span class="brand-pill collector">Old Cars Price Guide</span>
+        <span class="brand-pill home">+ 20 titles via Store/Library</span>
+      </div></td>
+      <td><span class="payment-text">Revenue share on Zinio Store + Library sales (net of conversion, delivery, and credit card fees). Also the distribution platform for Zinio Pro branded apps — monthly license fees apply per-title on Pro. Net remit typically 50–60% of gross.</span></td>
+    </tr>
+
+    <tr data-model="pool" data-vertical="home marine collector" data-brands="Anglers Journal|Coins|Military Vehicles">
+      <td><div class="partner-name">Readly</div><div class="partner-type">Subscription bundle · Consumer</div></td>
+      <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-intl">International</span></div></td>
+      <td><div class="brands-cell">
+        <span class="brand-pill marine">Anglers Journal</span>
+        <span class="brand-pill collector">Coins</span>
+        <span class="brand-pill collector">Military Vehicles</span>
+      </div></td>
+      <td><span class="payment-text">Pool-based — AIM share based on relative read time vs. platform total. European-skewed reader base. Very low yield Jan–Apr 2026 ($9 total). Monthly reporting.</span></td>
+    </tr>
+
+    <tr data-model="pool consumer" data-vertical="home marine" data-brands="Arts & Craft Homes - SIP|Log & Timber Home Living-SIP|Power and Motoryacht">
+      <td><div class="partner-name">Magzter / Magzter Gold</div><div class="partner-type">Global digital newsstand</div></td>
+      <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-trans">Transactional</span></div></td>
+      <td><div class="brands-cell">
+        <span class="brand-pill home">Arts &amp; Craft Homes</span>
+        <span class="brand-pill home">Log &amp; Timber SIP</span>
+        <span class="brand-pill marine">Power &amp; Motoryacht</span>
+      </div></td>
+      <td><span class="payment-text">50% net revenue share (per contract). Direct sales via Magzter store + pool share from Magzter Gold subscription. Combined Jan–Apr revenue: $2.79.</span></td>
+    </tr>
+
+    <tr data-model="consumer transactional" data-vertical="equine" data-brands="Horse & Rider">
+      <td><div class="partner-name">Apple News+</div><div class="partner-type">Apple News bundle · iOS/macOS</div></td>
+      <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-consumer">Consumer</span></div></td>
+      <td><div class="brands-cell">
+        <span class="brand-pill equine">Horse &amp; Rider</span>
+      </div></td>
+      <td><span class="payment-text">Pool-based revenue share from Apple News+ subscription bundle. Billed under separate AIM entity (Active Interest Media, not Cruz Bay). Single title. $29 Jan–Apr 2026.</span></td>
+    </tr>
+
+    <tr data-model="transactional consumer" data-vertical="home" data-brands="Fine Cooking|Yoga Journal">
+      <td><div class="partner-name">Barnes &amp; Noble</div><div class="partner-type">eBook / digital newsstand</div></td>
+      <td><div class="tags"><span class="tag tag-trans">Transactional</span><span class="tag tag-consumer">Consumer</span></div></td>
+      <td><div class="brands-cell">
+        <span class="brand-pill home">Fine Cooking</span>
+        <span class="brand-pill health">Yoga Journal</span>
+      </div></td>
+      <td><span class="payment-text">Per-transaction revenue share on Nook digital purchases. Minimal activity. $21.50 Jan–Apr 2026. Monthly sales reports via portal.</span></td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<div class="notes">
+  <div class="notes-title">Notes</div>
+  <div class="note-item"><span class="note-bullet">—</span><span>Apple revenue is split across two entities and two report types. Cruz Bay Publishing covers most Taunton-branded iOS apps (Fine Woodworking, Fine Homebuilding, etc.); Active Interest Media covers remaining AIM titles. These are tracked separately in reporting.</span></div>
+  <div class="note-item"><span class="note-bullet">—</span><span><strong>Cengage</strong> is a fixed-fee licensing arrangement — revenue is not usage-based. Revenue is licensing, not per-read.</span></div>
+  <div class="note-item"><span class="note-bullet">—</span><span><strong>Readly, PressReader, and Magzter Gold</strong> are pool-based models — AIM's share depends on relative read volume vs. the full catalog, making revenue more volatile and harder to predict.</span></div>
+  <div class="note-item"><span class="note-bullet">—</span><span>Brand color coding reflects vertical: <strong style="color:var(--v-home-c)">Home &amp; Craft</strong> · <strong style="color:var(--v-marine-c)">Marine</strong> · <strong style="color:var(--v-equine-c)">Equine</strong> · <strong style="color:var(--v-health-c)">Health / Outdoor</strong> · <strong style="color:var(--v-collector-c)">Collector</strong></span></div>
+</div>
+
+<div class="footer">
+  <span>Active Interest Media — Digital Revenue Operations</span>
+  <span>Jan – Apr 2026</span>
+</div>
+
+<script>
+const state = { model: 'all', brand: 'all', vertical: 'all' };
+
+function applyFilters() {
+  document.querySelectorAll('#table-body tr').forEach(row => {
+    const models    = (row.dataset.model    || '').split(' ');
+    const brands    = (row.dataset.brands   || '').split('|').map(s => s.trim());
+    const verticals = (row.dataset.vertical || '').split(' ');
+    const ok =
+      (state.model    === 'all' || models.some(m => m === state.model)) &&
+      (state.brand    === 'all' || brands.includes(state.brand)) &&
+      (state.vertical === 'all' || verticals.some(v => v === state.vertical));
+    row.classList.toggle('hidden', !ok);
+  });
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const axis = btn.dataset.axis;
+    const val  = btn.dataset.val;
+    document.querySelectorAll(`.filter-btn[data-axis="${axis}"]`).forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state[axis] = val;
+    applyFilters();
+  });
+});
+</script>
+
+</body>
+</html>
