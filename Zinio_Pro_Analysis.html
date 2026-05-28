@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zinio Pro Platform Analysis Jan–Apr 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #1F3864;
+    --navy-mid:#2F5496;
+    --ink:     #1a1a2e;
+    --slate:   #4a5568;
+    --rule:    #cbd5e0;
+    --bg:      #f7f8fc;
+    --white:   #ffffff;
+    --green:   #276749;
+    --green-bg:#e6f4ee;
+    --red:     #c53030;
+    --red-bg:  #fff0f0;
+    --yellow-bg:#fffbeb;
+    --blue-bg: #edf2fb;
+    --mono:    'DM Mono', monospace;
+    --serif:   'Instrument Serif', serif;
+    --sans:    'DM Sans', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.6; }
+
+  .page-header { background: var(--navy); color: white; padding: 48px 64px 40px; position: relative; overflow: hidden; }
+  .page-header::after { content:''; position:absolute; right:-60px; top:-60px; width:320px; height:320px; border-radius:50%; background:rgba(255,255,255,0.04); }
+  .page-header::before { content:''; position:absolute; right:80px; bottom:-80px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.03); }
+  .header-label { font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:12px; }
+  .header-title { font-family:var(--serif); font-size:36px; font-weight:400; line-height:1.2; margin-bottom:8px; }
+  .header-sub { font-size:13px; color:rgba(255,255,255,0.6); font-weight:300; }
+  .header-meta { margin-top:32px; display:flex; gap:40px; flex-wrap:wrap; }
+  .meta-label { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:4px; }
+  .meta-value { font-family:var(--mono); font-size:22px; font-weight:500; color:white; }
+  .meta-value.positive { color:#68d391; }
+  .meta-value.warning  { color:#fbd38d; }
+
+  .body { max-width:1100px; margin:0 auto; padding:48px 48px 80px; }
+
+  .section { margin-bottom:52px; }
+  .section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid var(--navy); }
+  .section-number { font-family:var(--mono); font-size:11px; color:var(--navy-mid); letter-spacing:0.08em; }
+  .section-title { font-family:var(--serif); font-size:22px; font-weight:400; color:var(--navy); }
+
+  .callout-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px; }
+  .callout { background:white; border:1px solid var(--rule); border-top:3px solid var(--navy); padding:20px 24px; }
+  .callout.green { border-top-color:var(--green); }
+  .callout.red   { border-top-color:var(--red); }
+  .callout-label { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); margin-bottom:8px; }
+  .callout-value { font-family:var(--mono); font-size:28px; font-weight:500; color:var(--navy); }
+  .callout-value.green { color:var(--green); }
+  .callout-value.red   { color:var(--red); }
+  .callout-note { font-size:11px; color:var(--slate); margin-top:6px; }
+
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  thead tr { background:var(--navy); color:white; }
+  thead th { padding:10px 14px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:500; }
+  thead th:first-child { text-align:left; }
+  tbody tr { border-bottom:1px solid #e8ecf2; }
+  tbody tr:nth-child(even) { background:#f9fafc; }
+  tbody tr:hover { background:var(--blue-bg); }
+  tbody td { padding:9px 14px; text-align:right; font-family:var(--mono); font-size:12px; }
+  tbody td:first-child { text-align:left; font-family:var(--sans); font-size:13px; font-weight:500; }
+  tbody td:first-child .sub { font-weight:400; color:var(--slate); font-size:11px; display:block; }
+  tfoot tr { background:var(--navy); }
+  tfoot td { padding:10px 14px; text-align:right; font-family:var(--mono); font-size:12px; font-weight:500; color:white; }
+  tfoot td:first-child { text-align:left; font-family:var(--sans); }
+
+  .positive { color:var(--green); }
+  .negative { color:var(--red); font-weight:600; }
+  .muted    { color:#9aa3b0; }
+
+  /* group separator row */
+  tbody tr.group-head td { background:#edf2fb; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy-mid); font-weight:500; border-top:2px solid var(--navy-mid); padding:6px 14px; }
+
+  .findings-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+  .finding { background:white; border:1px solid var(--rule); padding:20px 24px; display:flex; gap:16px; align-items:flex-start; }
+  .finding-icon { font-family:var(--mono); font-size:18px; color:var(--navy-mid); flex-shrink:0; margin-top:2px; width:28px; }
+  .finding-title { font-weight:600; font-size:13px; margin-bottom:6px; color:var(--navy); }
+  .finding-body  { font-size:12.5px; color:var(--slate); line-height:1.55; }
+  .finding.flag    { border-left:3px solid var(--red); }
+  .finding.good    { border-left:3px solid var(--green); }
+  .finding.neutral { border-left:3px solid var(--navy-mid); }
+
+  .scenario { background:var(--yellow-bg); border:1px solid #f6e05e; border-left:4px solid #d69e2e; padding:24px 28px; margin-top:24px; }
+  .scenario-title { font-weight:600; color:#744210; margin-bottom:12px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; font-size:11px; }
+  .scenario-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:12px; }
+  .scenario-stat .s-label { font-family:var(--mono); font-size:10px; color:#92400e; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
+  .scenario-stat .s-val   { font-family:var(--mono); font-size:20px; font-weight:500; color:#744210; }
+  .scenario-stat .s-delta { font-size:11px; color:#92400e; margin-top:2px; }
+
+  .notes { background:white; border:1px solid var(--rule); padding:20px 24px; margin-top:32px; }
+  .notes-title { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); margin-bottom:12px; }
+  .notes ol { padding-left:18px; }
+  .notes li { font-size:12px; color:var(--slate); margin-bottom:6px; line-height:1.5; }
+
+  .chip { display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:0.06em; padding:2px 8px; border-radius:2px; vertical-align:middle; margin-left:6px; }
+  .chip.red   { background:var(--red-bg);   color:var(--red);      }
+  .chip.green { background:var(--green-bg); color:var(--green);    }
+  .chip.blue  { background:var(--blue-bg);  color:var(--navy-mid); }
+  .chip.gold  { background:#fffbeb; color:#744210; border:1px solid #f6e05e; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="header-label">Active Interest Media — Digital Distribution</div>
+  <div class="header-title">Zinio Pro Platform Analysis</div>
+  <div class="header-sub">January – April 2026 &nbsp;·&nbsp; 22 titles &nbsp;·&nbsp; Original contract (18 titles) + April 2024 amendment (4 Taunton titles)</div>
+  <div class="header-meta">
+    <div class="meta-item">
+      <div class="meta-label">Pro License Cost (4mo)</div>
+      <div class="meta-value">$23,600</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Conv. Cost Est. (4mo)</div>
+      <div class="meta-value">$8,063</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Total Cost (4mo)</div>
+      <div class="meta-value">$31,663</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Apple iTunes Revenue</div>
+      <div class="meta-value">$37,204</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Net (all Pro titles)</div>
+      <div class="meta-value positive">+$5,541</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label">Titles positive</div>
+      <div class="meta-value warning">7 of 22</div>
+    </div>
+  </div>
+</div>
+
+<div class="body">
+
+  <!-- SECTION 1: Cost Structure -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">01</span>
+      <span class="section-title">Cost Structure — Two Billing Layers</span>
+    </div>
+
+    <p style="font-size:12.5px; color:var(--slate); margin-bottom:20px;">Zinio Pro carries two distinct cost components billed separately. The Pro Services fee (Schedule C + April 2024 Amendment) is a fixed monthly charge per title regardless of usage or revenue. Content conversion (Schedule A, Appendix A) is a per-issue fee charged on implementation. The April 2024 amendment added four Taunton titles at the same fee structure.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cost Type</th>
+          <th>Rate</th>
+          <th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th>
+          <th>4-Mo Total</th>
+          <th>% of Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Zinio Pro Services Fee <span class="sub">Fixed monthly license per title — original 18 titles (Sched. C) + 4 Taunton titles (Apr 2024 amendment)</span></td>
+          <td style="text-align:left; font-family:var(--mono); font-size:11px;">$200–$400/title/mo</td>
+          <td>$5,900</td><td>$5,900</td><td>$5,900</td><td>$5,900</td>
+          <td>$23,600</td><td>75%</td>
+        </tr>
+        <tr>
+          <td>Content Conversion Fee <span class="sub">Per-issue charge on implementation — Appendix A; $150/issue for most titles</span></td>
+          <td style="text-align:left; font-family:var(--mono); font-size:11px;">$60–$150/issue</td>
+          <td>~$2,016</td><td>~$2,016</td><td>~$2,016</td><td>~$2,016</td>
+          <td>~$8,063</td><td>25%</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Total Platform Cost</td><td></td>
+          <td>~$7,916</td><td>~$7,916</td><td>~$7,916</td><td>~$7,916</td>
+          <td>~$31,663</td><td>100%</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div style="margin-top:14px; padding:12px 16px; background:var(--blue-bg); border-left:3px solid var(--navy-mid); font-size:12px; color:var(--slate);">
+      <strong style="color:var(--navy);">Revenue note:</strong> Apple iTunes revenue is the primary — and essentially only — revenue stream for Pro titles. AIM retains all app revenue and pays Apple's ~30% platform fee directly; this does not flow through Zinio billing. The four Taunton titles (Fine Woodworking, Fine Homebuilding, Fine Gardening, Threads) are billed under Cruz Bay Publishing in Apple's system but their Pro fees appear on AIM's Zinio invoice. Zinio Store revenue across all 22 Pro titles was $32.48 for the full period.
+    </div>
+  </div>
+
+  <!-- SECTION 2: Title P&L -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <span class="section-title">Title-Level P&amp;L — All 22 Pro Titles</span>
+    </div>
+
+    <p style="font-size:12.5px; color:var(--slate); margin-bottom:16px;">7 of 22 titles are net positive. The four Taunton titles added by the April 2024 amendment generate 87% of total Apple revenue and are the only reason the platform is positive overall. Without them, the remaining 18 titles are net <strong>(–$21,065)</strong>.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Pro Fee/mo</th>
+          <th>Pro Fee (4mo)</th>
+          <th>Conv. (4mo)</th>
+          <th>Total Cost</th>
+          <th>Apple Rev (4mo)</th>
+          <th>Net</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-head"><td colspan="7">Apr 2024 Amendment — Taunton titles</td></tr>
+        <tr>
+          <td>Fine Woodworking <span class="chip gold">amendment</span></td>
+          <td>$300</td><td>$1,200</td><td>$350</td><td>$1,550</td>
+          <td class="positive">$11,956</td><td class="positive">$10,406</td>
+        </tr>
+        <tr>
+          <td>Fine Homebuilding <span class="chip gold">amendment</span></td>
+          <td>$300</td><td>$1,200</td><td>$350</td><td>$1,550</td>
+          <td class="positive">$6,607</td><td class="positive">$5,057</td>
+        </tr>
+        <tr>
+          <td>Fine Gardening <span class="chip gold">amendment</span></td>
+          <td>$300</td><td>$1,200</td><td>$350</td><td>$1,550</td>
+          <td class="positive">$4,851</td><td class="positive">$3,301</td>
+        </tr>
+        <tr>
+          <td>Threads Magazine <span class="chip gold">amendment</span></td>
+          <td>$200</td><td>$800</td><td>$250</td><td>$1,050</td>
+          <td class="positive">$3,748</td><td class="positive">$2,698</td>
+        </tr>
+
+        <tr class="group-head"><td colspan="7">Original contract — profitable</td></tr>
+        <tr>
+          <td>Popular Woodworking</td>
+          <td>$300</td><td>$1,200</td><td>$300</td><td>$1,500</td>
+          <td class="positive">$2,221</td><td class="positive">$721</td>
+        </tr>
+        <tr>
+          <td>Writer's Digest</td>
+          <td>$250</td><td>$1,000</td><td>$350</td><td>$1,350</td>
+          <td class="positive">$1,678</td><td class="positive">$328</td>
+        </tr>
+        <tr>
+          <td>Woodsmith</td>
+          <td>$250</td><td>$1,000</td><td>$300</td><td>$1,300</td>
+          <td class="positive">$1,598</td><td class="positive">$298</td>
+        </tr>
+
+        <tr class="group-head"><td colspan="7">Original contract — net negative</td></tr>
+        <tr>
+          <td>Garden Gate</td>
+          <td>$200</td><td>$800</td><td>$300</td><td>$1,100</td>
+          <td>$765</td><td class="negative">($335)</td>
+        </tr>
+        <tr>
+          <td>Cuisine at Home</td>
+          <td>$200</td><td>$800</td><td>$200</td><td>$1,000</td>
+          <td>$651</td><td class="negative">($349)</td>
+        </tr>
+        <tr>
+          <td>ShopNotes</td>
+          <td>$250</td><td>$1,000</td><td>$200</td><td>$1,200</td>
+          <td>$666</td><td class="negative">($534)</td>
+        </tr>
+        <tr>
+          <td>Old House Journal</td>
+          <td>$200</td><td>$800</td><td>$300</td><td>$1,100</td>
+          <td>$442</td><td class="negative">($658)</td>
+        </tr>
+        <tr>
+          <td>Horticulture</td>
+          <td>$250</td><td>$1,000</td><td>$300</td><td>$1,300</td>
+          <td>$387</td><td class="negative">($913)</td>
+        </tr>
+        <tr>
+          <td>Log &amp; Timber Home Living</td>
+          <td>$250</td><td>$1,000</td><td>$400</td><td>$1,400</td>
+          <td>$382</td><td class="negative">($1,018)</td>
+        </tr>
+        <tr>
+          <td>Sail</td>
+          <td>$400</td><td>$1,600</td><td>$400</td><td>$2,000</td>
+          <td>$851</td><td class="negative">($1,149)</td>
+        </tr>
+        <tr>
+          <td>Numismatic News</td>
+          <td>$200</td><td>$800</td><td>$853</td><td>$1,653</td>
+          <td>$95</td><td class="negative">($1,558)</td>
+        </tr>
+        <tr>
+          <td>Antique Trader</td>
+          <td>$200</td><td>$800</td><td>$480</td><td>$1,280</td>
+          <td>$37</td><td class="negative">($1,243)</td>
+        </tr>
+        <tr>
+          <td>Old Cars Weekly</td>
+          <td>$200</td><td>$800</td><td>$480</td><td>$1,280</td>
+          <td>$25</td><td class="negative">($1,255)</td>
+        </tr>
+        <tr>
+          <td>Yachts International</td>
+          <td>$250</td><td>$1,000</td><td>$200</td><td>$1,200</td>
+          <td>$27</td><td class="negative">($1,173)</td>
+        </tr>
+        <tr>
+          <td>Anglers Journal</td>
+          <td>$300</td><td>$1,200</td><td>$200</td><td>$1,400</td>
+          <td class="muted">—</td><td class="negative">($1,400)</td>
+        </tr>
+        <tr>
+          <td>Power &amp; Motoryacht</td>
+          <td>$300</td><td>$1,200</td><td>$500</td><td>$1,700</td>
+          <td class="muted">—</td><td class="negative">($1,700)</td>
+        </tr>
+        <tr>
+          <td>Soundings</td>
+          <td>$400</td><td>$1,600</td><td>$600</td><td>$2,200</td>
+          <td>$122</td><td class="negative">($2,078)</td>
+        </tr>
+        <tr>
+          <td>PassageMaker</td>
+          <td>$400</td><td>$1,600</td><td>$400</td><td>$2,000</td>
+          <td>$93</td><td class="negative">($1,907)</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Total — 22 Pro titles</td><td></td>
+          <td>$23,600</td><td>$8,063</td><td>$31,663</td>
+          <td>$37,204</td><td>+$5,541</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- SECTION 3: Pro License P&L -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <span class="section-title">Pro License P&amp;L — Titles Where Fee Exceeds Revenue</span>
+    </div>
+
+    <p style="font-size:12.5px; color:var(--slate); margin-bottom:16px;">15 of 22 titles are net negative on the Pro fee alone — before conversion costs. The platform net is positive only because four Taunton titles generate $27,162 in Apple revenue against $5,900 in combined Pro fees. Strip those out and the remaining 18 titles are deep in the red.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Pro Fee (4mo)</th>
+          <th>Apple Rev (4mo)</th>
+          <th>Pro-Only Net</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PassageMaker</td>
+          <td>$1,600</td><td>$93</td>
+          <td class="negative">($1,507)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Soundings</td>
+          <td>$1,600</td><td>$122</td>
+          <td class="negative">($1,478)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Anglers Journal</td>
+          <td>$1,200</td><td class="muted">—</td>
+          <td class="negative">($1,200)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Power &amp; Motoryacht</td>
+          <td>$1,200</td><td class="muted">—</td>
+          <td class="negative">($1,200)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Yachts International</td>
+          <td>$1,000</td><td>$27</td>
+          <td class="negative">($973)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Horticulture</td>
+          <td>$1,000</td><td>$387</td>
+          <td class="negative">($613)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Log &amp; Timber Home Living</td>
+          <td>$1,000</td><td>$382</td>
+          <td class="negative">($618)</td>
+          <td><span class="chip blue">multi-channel</span></td>
+        </tr>
+        <tr>
+          <td>Old Cars Weekly</td>
+          <td>$800</td><td>$25</td>
+          <td class="negative">($775)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Antique Trader</td>
+          <td>$800</td><td>$37</td>
+          <td class="negative">($763)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Numismatic News</td>
+          <td>$800</td><td>$95</td>
+          <td class="negative">($705)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Old House Journal</td>
+          <td>$800</td><td>$442</td>
+          <td class="negative">($358)</td>
+          <td><span class="chip blue">multi-channel</span></td>
+        </tr>
+        <tr>
+          <td>ShopNotes</td>
+          <td>$1,000</td><td>$666</td>
+          <td class="negative">($334)</td>
+          <td><span class="chip red">Pro only</span></td>
+        </tr>
+        <tr>
+          <td>Cuisine at Home</td>
+          <td>$800</td><td>$651</td>
+          <td class="negative">($149)</td>
+          <td><span class="chip blue">multi-channel</span></td>
+        </tr>
+        <tr>
+          <td>Sail</td>
+          <td>$1,600</td><td>$851</td>
+          <td class="negative">($749)</td>
+          <td><span class="chip blue">multi-channel</span></td>
+        </tr>
+        <tr>
+          <td>Garden Gate</td>
+          <td>$800</td><td>$765</td>
+          <td class="negative">($35)</td>
+          <td><span class="chip blue">multi-channel</span></td>
+        </tr>
+        <tr style="border-top:2px solid var(--navy);">
+          <td><strong>Subtotal — 15 loss titles</strong></td>
+          <td><strong>$16,000</strong></td>
+          <td><strong>$4,544</strong></td>
+          <td class="negative"><strong>($11,456)</strong></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="scenario">
+      <div class="scenario-title">Scenario — Exit Pro on 15 loss-making titles</div>
+      <p style="font-size:12.5px; color:#92400e;">Remove Zinio Pro Services for 15 titles where Apple revenue does not cover the Pro license fee. Titles remain on Zinio Store/Library distribution for any residual channel revenue. The 7 positive titles (4 Taunton + Popular Woodworking, Writer's Digest, Woodsmith) are unchanged.</p>
+      <div class="scenario-grid">
+        <div class="scenario-stat">
+          <div class="s-label">Pro Fees Eliminated</div>
+          <div class="s-val">$16,000</div>
+          <div class="s-delta">$4,000/mo going forward</div>
+        </div>
+        <div class="scenario-stat">
+          <div class="s-label">Apple Revenue Foregone</div>
+          <div class="s-val">$4,544</div>
+          <div class="s-delta">From 15 exited Pro app titles</div>
+        </div>
+        <div class="scenario-stat">
+          <div class="s-label">Net P&amp;L Improvement</div>
+          <div class="s-val">+$11,456</div>
+          <div class="s-delta">Portfolio net → +$17,000 (4mo)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: Findings -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <span class="section-title">Key Findings</span>
+    </div>
+
+    <div class="findings-grid">
+      <div class="finding good">
+        <div class="finding-icon">★</div>
+        <div>
+          <div class="finding-title">The Taunton titles carry the platform</div>
+          <div class="finding-body">Fine Woodworking, Fine Homebuilding, Fine Gardening, and Threads — added by the April 2024 amendment — generate $27,162 in Apple revenue over 4 months against $5,900 in combined Pro fees. That's a 4.6× return and accounts for 87% of all Pro platform Apple revenue. Without these four titles the platform nets –$21,065 over the same period.</div>
+        </div>
+      </div>
+      <div class="finding flag">
+        <div class="finding-icon">!</div>
+        <div>
+          <div class="finding-title">15 of 22 titles don't cover their Pro fee</div>
+          <div class="finding-body">The original 18-title contract was built around titles that, with limited exceptions, never generated enough app revenue to justify the fixed monthly license. Of the original 18, only Popular Woodworking, Writer's Digest, and Woodsmith are net positive. The remaining 15 titles collectively spend $16,000 in Pro fees over 4 months to generate $4,544 in Apple revenue.</div>
+        </div>
+      </div>
+      <div class="finding flag">
+        <div class="finding-icon">!</div>
+        <div>
+          <div class="finding-title">Marine titles are the worst performers</div>
+          <div class="finding-body">Soundings ($400/mo fee, $122 rev), PassageMaker ($400/mo, $93 rev), Anglers Journal ($300/mo, $0 rev), Power &amp; Motoryacht ($300/mo, $0 rev), and Yachts International ($250/mo, $27 rev) collectively cost $8,200 in Pro fees over 4 months and return $242. That's a 97% loss rate. All five are candidates for immediate Pro exit.</div>
+        </div>
+      </div>
+      <div class="finding neutral">
+        <div class="finding-icon">→</div>
+        <div>
+          <div class="finding-title">Conversion costs compound losses for high-frequency titles</div>
+          <div class="finding-body">Numismatic News (32 issues/year at $80/issue) averages $213/month in conversion fees on top of a $200 Pro fee — against $24/month in Apple revenue. Old Cars Weekly (24 issues/year at $60/issue) and Antique Trader (18 issues/year at $80/issue) face the same math. For these titles, even eliminating the Pro fee doesn't get to breakeven — conversion costs alone exceed revenue.</div>
+        </div>
+      </div>
+      <div class="finding neutral">
+        <div class="finding-icon">→</div>
+        <div>
+          <div class="finding-title">Zinio Store revenue is effectively zero</div>
+          <div class="finding-body">The revenue report shows $32.48 in Zinio Store channel revenue for all 22 titles over 4 months — two SIP titles only. The platform generates no meaningful Zinio channel revenue beyond Apple. This means cost reduction through Pro exits doesn't sacrifice any material Zinio distribution revenue, only the Apple app subscription income from those specific titles.</div>
+        </div>
+      </div>
+      <div class="finding flag">
+        <div class="finding-icon">!</div>
+        <div>
+          <div class="finding-title">The Pro fee structure is fixed and unrelated to performance</div>
+          <div class="finding-body">Monthly rates range from $200 to $400 per title regardless of subscriber count, revenue, or MAU. The MAU cap (50,000/month) is almost certainly never approached for most titles. There is no contractual mechanism that reduces the fee when a title underperforms. Every month a loss-making title stays on Pro is a sunk cost with no recovery path.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="notes">
+    <div class="notes-title">Methodology Notes</div>
+    <ol>
+      <li>Pro Services Fee = contracted monthly rate per title. Original 18 titles from Schedule C of the Publisher Services Agreement v5.1 (signed March 2023). Four Taunton titles (Fine Woodworking $300, Fine Homebuilding $300, Fine Gardening $300, Threads Magazine $200) added by Contract Amendment Order dated April 25, 2024. Rates are fixed monthly regardless of MAU or revenue. Total monthly Pro fee: $5,900 across all 22 titles.</li>
+      <li>Content Conversion Fee = per-issue rate from Appendix A × contracted issues/year (Schedule A), annualized and divided by 12, then ×4. Taunton titles use 7 issues/yr (FW/FHB/FG, midpoint of contracted 6–8) and 5 issues/yr (Threads, midpoint of 4–6). Actual monthly amounts vary by publication calendar. Numismatic News conversion cost is high due to 32 issues/year at $80/issue.</li>
+      <li>Apple revenue = net receipts from the Jan–Apr 2026 digital subscriptions revenue report. All 22 Pro titles appear under the "Apple" partner in the revenue Excel, including the Taunton titles (billed through Cruz Bay Publishing in Apple's system but on AIM's Zinio contract). Apple's ~30% platform fee has already been deducted — figures are AIM's net.</li>
+      <li>Zinio Store channel revenue ($32.48 total for the period) is excluded from the title P&L as it is governed by the base Distribution Channels agreement (Schedule B), not the Pro Services schedule (Schedule C). It is not affected by Pro exits.</li>
+      <li>Channel delivery fees ($0.10/general delivery, $0.05/library delivery per the base contract) are not modeled — actual delivery volume data is unavailable. These would add incremental cost.</li>
+      <li>Period: January–April 2026 only. Not annualized. Scenario savings of +$4,000/mo represent the ongoing run-rate benefit from exiting Pro on 15 titles.</li>
+    </ol>
+  </div>
+
+</div>
+</body>
+</html>
