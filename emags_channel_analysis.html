@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIM — Channel Revenue &amp; Migration Priority</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f7f4; color: #1a1a1a; font-size: 15px; line-height: 1.6; }
+  .site-header { padding: 14px 40px; border-bottom: 0.5px solid #ddd; background: #fff; }
+  .site-header p { font-size: 12px; color: #888; letter-spacing: 0.04em; text-transform: uppercase; }
+  .hero { padding: 52px 40px 36px; max-width: 860px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888; text-decoration: none; margin-bottom: 8px; }
+  .back-link:hover { color: #333; }
+  .hero h1 { font-size: 30px; font-weight: 500; letter-spacing: -0.02em; color: #111; margin-bottom: 8px; }
+  .hero .sub { font-size: 15px; color: #555; max-width: 580px; line-height: 1.6; }
+  .stat-row { display: flex; gap: 24px; flex-wrap: wrap; padding: 20px 40px; border-top: 0.5px solid #e4e2dc; border-bottom: 0.5px solid #e4e2dc; background: #fff; }
+  .stat { display: flex; flex-direction: column; gap: 3px; }
+  .stat .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat .value { font-size: 20px; font-weight: 500; color: #111; }
+  .section { padding: 36px 40px; max-width: 900px; }
+  .section-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 18px; }
+  .main-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .main-table th { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; text-align: left; padding: 0 16px 10px 0; border-bottom: 1px solid #ddd; white-space: nowrap; }
+  .main-table th:last-child { padding-right: 0; }
+  .main-table td { padding: 13px 16px 13px 0; border-bottom: 0.5px solid #f0ede7; vertical-align: top; }
+  .main-table td:last-child { padding-right: 0; }
+  .main-table tr:last-child td { border-bottom: none; }
+  .main-table .channel { font-weight: 500; color: #111; }
+  .main-table .note { font-size: 12px; color: #777; margin-top: 3px; }
+  .badge { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 5px; font-weight: 500; letter-spacing: 0.02em; white-space: nowrap; }
+  .badge.move { background: #e6f4ee; color: #1a6640; }
+  .badge.confirm { background: #e8edf7; color: #2d4ba0; }
+  .badge.maintain { background: #fff5db; color: #9a6200; }
+  .badge.drop { background: #f3f3f3; color: #888; }
+  .badge.blocked { background: #fdecea; color: #a02020; }
+  .bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .bar { height: 6px; border-radius: 3px; background: #ddd; min-width: 2px; }
+  .bar.apple { background: #2a7c50; }
+  .bar.zinio { background: #4a6fa5; }
+  .bar.ebsco { background: #7a5c9a; }
+  .bar.readly { background: #c06a20; }
+  .bar.bn { background: #888; }
+  .bar.press { background: #888; }
+  .bar.other { background: #ccc; }
+  .num { color: #111; font-weight: 500; min-width: 52px; text-align: right; font-variant-numeric: tabular-nums; }
+  .ann { color: #777; font-size: 12px; }
+  .divider { border: none; border-top: 0.5px solid #e4e2dc; margin: 0 40px; }
+  .key-finding { background: #fff; border: 0.5px solid #ddd; border-left: 3px solid #2a7c50; border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 14px; }
+  .key-finding.amber { border-left-color: #c07a00; }
+  .key-finding.red { border-left-color: #a02020; }
+  .key-finding p { font-size: 14px; color: #333; line-height: 1.55; }
+  .key-finding .kf-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
+  .footnote { padding: 16px 40px 40px; font-size: 12px; color: #aaa; }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <p>Active Interest Media — Digital Distribution</p>
+</div>
+
+<div class="hero">
+  <a class="back-link" href="emags_next_steps.html">← Next steps</a>
+  <h1>Channel revenue &amp; migration priority</h1>
+  <p class="sub">Jan–Apr 2026 revenue by partner — what to migrate to eMags, what to maintain separately, and what isn't worth the effort.</p>
+</div>
+
+<div class="stat-row">
+  <div class="stat">
+    <span class="label">Total digital rev Jan–Apr</span>
+    <span class="value">$81,367</span>
+  </div>
+  <div class="stat">
+    <span class="label">Apple (iTunes) share</span>
+    <span class="value">46%</span>
+  </div>
+  <div class="stat">
+    <span class="label">Channels active</span>
+    <span class="value">10</span>
+  </div>
+  <div class="stat">
+    <span class="label">Channels &lt; $2k/yr (est.)</span>
+    <span class="value" style="color:#9a6200;">3</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">01 · Revenue by channel — Jan–Apr 2026</div>
+  <table class="main-table">
+    <thead>
+      <tr>
+        <th style="width:22%;">Channel</th>
+        <th style="width:28%;">Jan–Apr rev</th>
+        <th style="width:14%;">Ann. est.</th>
+        <th>Migration call</th>
+        <th>Rationale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="channel">Apple (iTunes)</span><div class="note">Direct app store</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar apple" style="width:160px;"></div>
+            <span class="num">$37,368</span>
+          </div>
+        </td>
+        <td><span class="ann">~$112k</span></td>
+        <td><span class="badge move">Move — primary</span></td>
+        <td style="font-size:13px; color:#444;">Core thesis. eMags is Apple News Preferred Provider. Already in motion.</td>
+      </tr>
+      <tr>
+        <td><span class="channel">Zinio</span><div class="note">Newsstand + Pro apps</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar zinio" style="width:78px;"></div>
+            <span class="num">$18,188</span>
+          </div>
+        </td>
+        <td><span class="ann">~$55k</span></td>
+        <td><span class="badge move">Move — replace</span></td>
+        <td style="font-size:13px; color:#444;">This is the platform being replaced. Revenue flows to eMags newsstand + apps.</td>
+      </tr>
+      <tr>
+        <td><span class="channel">EBSCO / Flipster</span><div class="note">Library aggregator</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar ebsco" style="width:21px;"></div>
+            <span class="num">$4,903</span>
+          </div>
+        </td>
+        <td><span class="ann">~$20k</span></td>
+        <td><span class="badge blocked">Confirm first</span></td>
+        <td style="font-size:13px; color:#444;">Not listed in eMags partner deck. Critical to confirm before any transition. ~$20k/yr at risk if uncovered.</td>
+      </tr>
+      <tr>
+        <td><span class="channel">Readly</span><div class="note">Subscription bundle</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar readly" style="width:21px;"></div>
+            <span class="num">$4,883</span>
+          </div>
+        </td>
+        <td><span class="ann">~$15k</span></td>
+        <td><span class="badge confirm">Confirm coverage</span></td>
+        <td style="font-size:13px; color:#444;">Appears in eMags workflow deck. Likely covered — but direct confirmation needed before exiting current agreement.</td>
+      </tr>
+      <tr>
+        <td><span class="channel">Apple News+</span><div class="note">Apple bundle</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar apple" style="width:22px;"></div>
+            <span class="num">$5,195</span>
+          </div>
+        </td>
+        <td><span class="ann">~$16k</span></td>
+        <td><span class="badge move">Move — in scope</span></td>
+        <td style="font-size:13px; color:#444;">eMags coding cost scenario already built. See <a href="emags_cost_scenarios.html" style="color:#2a6ed4;">page 02</a>.</td>
+      </tr>
+      <tr>
+        <td><span class="channel">Barnes &amp; Noble</span><div class="note">Nook / eBook</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar bn" style="width:19px;"></div>
+            <span class="num">$4,479</span>
+          </div>
+        </td>
+        <td><span class="ann">~$13k</span></td>
+        <td><span class="badge confirm">Confirm coverage</span></td>
+        <td style="font-size:13px; color:#444;">Meaningful but secondary. Worth keeping if eMags handles passively. Separate integration effort not justified at this volume.</td>
+      </tr>
+      <tr>
+        <td><span class="channel">Cengage</span><div class="note">Academic licensing</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar other" style="width:10px;"></div>
+            <span class="num">$2,283</span>
+          </div>
+        </td>
+        <td><span class="ann">Unclear</span></td>
+        <td><span class="badge maintain">Maintain separately</span></td>
+        <td style="font-size:13px; color:#444;">Fixed-fee institutional deal — not part of the consumer/app stack. Stays independent regardless of eMags transition.</td>
+      </tr>
+      <tr>
+        <td><span class="channel">PressReader</span><div class="note">Global newsstand</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar press" style="width:8px;"></div>
+            <span class="num">$1,753</span>
+          </div>
+        </td>
+        <td><span class="ann">~$5k</span></td>
+        <td><span class="badge maintain">Maintain or let expire</span></td>
+        <td style="font-size:13px; color:#444;">Direct contract exists. Low revenue. If eMags doesn't cover it, not worth a migration effort — evaluate contract terms at renewal.</td>
+      </tr>
+      <tr>
+        <td><span class="channel">Google Play</span><div class="note">Android store</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar other" style="width:8px;"></div>
+            <span class="num">$1,789</span>
+          </div>
+        </td>
+        <td><span class="ann">~$5k</span></td>
+        <td><span class="badge confirm">Bundled w/ app solution</span></td>
+        <td style="font-size:13px; color:#444;">eMags turn-key app includes Android. Should be covered by native app solution — not a separate migration item.</td>
+      </tr>
+      <tr>
+        <td><span class="channel">Magzter / Gold</span><div class="note">Global newsstand</div></td>
+        <td>
+          <div class="bar-wrap">
+            <div class="bar other" style="width:3px;"></div>
+            <span class="num">$527</span>
+          </div>
+        </td>
+        <td><span class="ann">~$1.6k</span></td>
+        <td><span class="badge drop">Drop</span></td>
+        <td style="font-size:13px; color:#444;">$1,600 annualized. Not worth any migration consideration. Cut when convenient.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="section-label">02 · Key findings</div>
+
+  <div class="key-finding">
+    <div class="kf-label">Concentration risk</div>
+    <p>Apple (iTunes) represents 46% of total digital revenue Jan–Apr 2026. Two channels — Apple + Zinio — account for 68% of total. The eMags transition directly touches both.</p>
+  </div>
+
+  <div class="key-finding amber">
+    <div class="kf-label">EBSCO is the structural gap</div>
+    <p>EBSCO/Flipster generates ~$20k/yr and is not listed in eMags' distribution partner network. This is the one channel that could create a coverage gap in the transition. Needs a direct answer from eMags before any go/no-go decision.</p>
+  </div>
+
+  <div class="key-finding">
+    <div class="kf-label">Three channels aren't worth active migration work</div>
+    <p>PressReader (~$5k), Google Play (~$5k bundled), and Magzter (~$1.6k) collectively represent about 7% of annualized revenue. PressReader and Magzter can be evaluated at contract renewal; Google Play comes along with the eMags app solution.</p>
+  </div>
+
+  <div class="key-finding red">
+    <div class="kf-label">Cengage is independent — not part of this evaluation</div>
+    <p>Fixed-fee academic licensing deal. Unaffected by the eMags transition. Revenue cadence unclear (one payment Jan–Apr; may be annual or semi-annual). Worth clarifying internally.</p>
+  </div>
+</div>
+
+<p class="footnote">Revenue data: Jan–Apr 2026 · Annualized estimates based on 4-month actuals × 3 · EBSCO quarterly so annualized as $4,903 × 4</p>
+
+</body>
+</html>

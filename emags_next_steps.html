@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIM — eMags Transition: Next Steps</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f7f4; color: #1a1a1a; font-size: 15px; line-height: 1.6; }
+  .site-header { padding: 14px 40px; border-bottom: 0.5px solid #ddd; background: #fff; }
+  .site-header p { font-size: 12px; color: #888; letter-spacing: 0.04em; text-transform: uppercase; }
+  .hero { padding: 52px 40px 40px; max-width: 860px; }
+  .hero h1 { font-size: 32px; font-weight: 500; letter-spacing: -0.02em; color: #111; margin-bottom: 10px; }
+  .hero .sub { font-size: 16px; color: #555; max-width: 560px; line-height: 1.6; }
+  .status-bar { display: flex; gap: 28px; padding: 20px 40px; border-top: 0.5px solid #e4e2dc; border-bottom: 0.5px solid #e4e2dc; background: #fff; }
+  .stat { display: flex; flex-direction: column; gap: 3px; }
+  .stat .label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat .value { font-size: 20px; font-weight: 500; color: #111; }
+  .stat .value.green { color: #2a7c50; }
+  .stat .value.amber { color: #9a6200; }
+  .stat .value.muted { color: #888; }
+  .section { padding: 40px 40px; max-width: 860px; }
+  .section-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card { background: #fff; border: 0.5px solid #ddd; border-radius: 10px; padding: 22px 24px; text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.15s, box-shadow 0.15s; }
+  .card:hover { border-color: #bbb; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+  .card .card-number { font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: 0.07em; }
+  .card .card-title { font-size: 16px; font-weight: 500; color: #111; line-height: 1.35; }
+  .card .card-desc { font-size: 13px; color: #666; line-height: 1.55; }
+  .card .card-status { margin-top: auto; padding-top: 10px; border-top: 0.5px solid #eee; }
+  .badge { display: inline-block; font-size: 11px; padding: 3px 9px; border-radius: 5px; font-weight: 500; letter-spacing: 0.03em; }
+  .badge.pending { background: #fff5db; color: #9a6200; }
+  .badge.ready { background: #e6f4ee; color: #1a6640; }
+  .badge.blocked { background: #fdecea; color: #a02020; }
+  .badge.inprog { background: #e8edf7; color: #2d4ba0; }
+  .divider { border: none; border-top: 0.5px solid #e4e2dc; margin: 0 40px; }
+  .ask-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .ask-table th { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.06em; text-align: left; padding: 0 12px 10px 0; border-bottom: 0.5px solid #ddd; }
+  .ask-table td { padding: 12px 12px 12px 0; border-bottom: 0.5px solid #f0ede7; vertical-align: top; color: #333; }
+  .ask-table tr:last-child td { border-bottom: none; }
+  .ask-table td.priority { font-weight: 500; color: #111; }
+  .footnote { padding: 16px 40px 40px; font-size: 12px; color: #aaa; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888; text-decoration: none; margin-bottom: 8px; }
+  .back-link:hover { color: #333; }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <p>Active Interest Media — Digital Distribution</p>
+</div>
+
+<div class="hero">
+  <a class="back-link" href="index.html">← Index</a>
+  <h1>eMags transition: next steps</h1>
+  <p class="sub">Evaluation framework for replacing Zinio with eMagazines as AIM's primary digital edition platform — pending cost data and channel coverage confirmation.</p>
+</div>
+
+<div class="status-bar">
+  <div class="stat">
+    <span class="label">Current Zinio spend</span>
+    <span class="value">$91,500<span style="font-size:13px; font-weight:400; color:#888;">/yr</span></span>
+  </div>
+  <div class="stat">
+    <span class="label">eMags AN+ coding (est.)</span>
+    <span class="value green">$29–39k<span style="font-size:13px; font-weight:400; color:#888;">/yr</span></span>
+  </div>
+  <div class="stat">
+    <span class="label">Native app pricing</span>
+    <span class="value amber">Pending</span>
+  </div>
+  <div class="stat">
+    <span class="label">EBSCO coverage</span>
+    <span class="value muted">Unconfirmed</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Detail pages</div>
+  <div class="card-grid">
+
+    <a class="card" href="emags_channel_analysis.html">
+      <span class="card-number">01</span>
+      <span class="card-title">Channel revenue &amp; migration priority</span>
+      <span class="card-desc">Revenue by distribution channel Jan–Apr 2026. Which channels are worth moving, which to maintain separately, and which to drop.</span>
+      <div class="card-status"><span class="badge ready">Analysis complete</span></div>
+    </a>
+
+    <a class="card" href="emags_cost_scenarios.html">
+      <span class="card-number">02</span>
+      <span class="card-title">eMags coding cost scenarios</span>
+      <span class="card-desc">Per-title Apple News+ coding cost at $350/issue vs. current Zinio spend. Full 14-title rollout 58–69% below current annual cost.</span>
+      <div class="card-status"><span class="badge ready">Analysis complete</span></div>
+    </a>
+
+    <a class="card" href="#">
+      <span class="card-number">03</span>
+      <span class="card-title">Native app cost &amp; P&L</span>
+      <span class="card-desc">iOS/Android app pricing from eMags — per-title fee structure, revenue share model, and net impact vs. Zinio Pro app fees.</span>
+      <div class="card-status"><span class="badge pending">Waiting on eMags</span></div>
+    </a>
+
+    <a class="card" href="#">
+      <span class="card-number">04</span>
+      <span class="card-title">Platform SaaS &amp; fulfillment fees</span>
+      <span class="card-desc">eMags base platform fee, conversion/fulfillment costs, and equivalent comparison to Zinio Schedule A charges.</span>
+      <div class="card-status"><span class="badge pending">Waiting on eMags</span></div>
+    </a>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="section-label">Outstanding asks — eMags conversation</div>
+  <table class="ask-table">
+    <thead>
+      <tr>
+        <th style="width:28%;">Item</th>
+        <th style="width:44%;">What's needed</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="priority">Native app pricing</td>
+        <td>Per-title fee structure or flat rate; revenue share terms; any setup/migration fee for existing Zinio Pro apps</td>
+        <td><span class="badge pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td class="priority">EBSCO/Flipster coverage</td>
+        <td>Does eMags route to EBSCO directly, or does AIM maintain that separately? ~$19.6k/yr in library revenue at stake</td>
+        <td><span class="badge blocked">Unconfirmed</span></td>
+      </tr>
+      <tr>
+        <td class="priority">Platform / SaaS fee</td>
+        <td>Base conversion + fulfillment cost equivalent to Zinio Schedule A — needed to model full replacement cost</td>
+        <td><span class="badge pending">Pending</span></td>
+      </tr>
+      <tr>
+        <td class="priority">Readly pipeline</td>
+        <td>Confirm eMags has a direct Readly feed; ~$14.6k/yr annualized</td>
+        <td><span class="badge inprog">Likely — to confirm</span></td>
+      </tr>
+      <tr>
+        <td>B&N / PressReader / Google Play</td>
+        <td>Coverage confirmation; collectively ~$24k/yr annualized but secondary to core channels</td>
+        <td><span class="badge inprog">Secondary</span></td>
+      </tr>
+      <tr>
+        <td>Partial transition feasibility</td>
+        <td>Can eMags handle Apple News+ + app only while Zinio maintains library/other channels during transition?</td>
+        <td><span class="badge pending">To ask</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p class="footnote">eMags cost scenarios based on $350/issue coding rate · Revenue data Jan–Apr 2026</p>
+
+</body>
+</html>
