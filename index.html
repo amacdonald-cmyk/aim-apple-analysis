@@ -104,50 +104,45 @@
   .chip.blue  { background:var(--blue-bg);  color:var(--navy-mid); }
   .chip.gold  { background:#fffbeb; color:#744210; border:1px solid #f6e05e; }
 
-  /* Index page */
-  .problem-strip { display:grid; grid-template-columns:repeat(3,1fr); border-bottom:1px solid var(--rule); margin-bottom:0; }
-  .problem-cell { padding:24px; border-right:1px solid var(--rule); position:relative; }
-  .problem-cell:last-child { border-right:none; }
-  .problem-cell::before { content:''; position:absolute; left:0; top:12px; bottom:12px; width:3px; }
-  .problem-cell.cost::before    { background:#c0392b; }
-  .problem-cell.revenue::before { background:#d69e2e; }
-  .problem-cell.structure::before { background:var(--navy-mid); }
-  .problem-tag { font-family:var(--mono); font-size:9px; letter-spacing:0.14em; text-transform:uppercase; color:var(--slate); margin-bottom:6px; }
-  .problem-cell.cost .problem-tag    { color:#c0392b; }
-  .problem-cell.revenue .problem-tag { color:#d69e2e; }
-  .problem-cell.structure .problem-tag { color:var(--navy-mid); }
-  .problem-head { font-size:14px; font-weight:600; margin-bottom:6px; color:var(--ink); }
-  .problem-body { font-size:12.5px; color:var(--slate); line-height:1.6; }
-
-  .section-label { font-family:var(--mono); font-size:9px; letter-spacing:0.18em; text-transform:uppercase; color:var(--slate); padding:24px 0 12px; border-bottom:1px solid var(--rule); margin-bottom:0; }
-
-  .cards { display:grid; grid-template-columns:repeat(3,1fr); }
-  .card { padding:28px 24px 40px; border-right:1px solid var(--rule); border-bottom:1px solid var(--rule); text-decoration:none; color:inherit; display:block; transition:background 0.12s; position:relative; }
-  .card:last-child { border-right:none; }
-  .card:hover { background:white; }
-  .card-num { font-family:var(--serif); font-size:40px; color:var(--rule); line-height:1; margin-bottom:14px; letter-spacing:-0.04em; transition:color 0.12s; }
-  .card:hover .card-num { color:var(--slate); }
-  .card-title { font-size:15px; font-weight:600; margin-bottom:6px; color:var(--ink); }
-  .card-subtitle { font-family:var(--mono); font-size:10px; letter-spacing:0.05em; color:var(--slate); margin-bottom:14px; }
-  .card-desc { font-size:12.5px; color:var(--slate); line-height:1.6; margin-bottom:18px; }
-  .card-bullets { list-style:none; font-size:12px; color:var(--slate); line-height:1.7; }
-  .card-bullets li::before { content:'— '; color:var(--rule); }
-  .card-cta { position:absolute; bottom:24px; right:24px; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); border-bottom:1px solid var(--rule); padding-bottom:2px; transition:color 0.12s, border-color 0.12s; }
-  .card:hover .card-cta { color:var(--navy); border-color:var(--navy); }
-  .card-bar { position:absolute; top:0; left:0; right:0; height:3px; }
-  .card-bar.blue  { background:var(--navy-mid); }
-  .card-bar.warn  { background:#c0392b; }
-  .card-bar.gold  { background:#d69e2e; }
-
-  .callout-row { display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--rule); }
-  .callout { padding:24px; display:flex; gap:16px; align-items:flex-start; border-right:1px solid var(--rule); }
-  .callout:last-child { border-right:none; }
-  .callout-icon { width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; flex-shrink:0; }
-  .callout-icon.warn { background:var(--red-bg);   color:var(--red); }
-  .callout-icon.info { background:var(--blue-bg);  color:var(--navy-mid); }
-  .callout-icon.ok   { background:var(--green-bg); color:var(--green); }
-  .callout-body-head { font-size:13px; font-weight:600; margin-bottom:4px; color:var(--ink); }
-  .callout-body-text { font-size:12px; color:var(--slate); line-height:1.6; }
+  .problem-strip{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--rule);}
+  .problem-cell{padding:28px 24px;border-right:1px solid var(--rule);position:relative;}
+  .problem-cell:last-child{border-right:none;}
+  .problem-cell::before{content:'';position:absolute;left:0;top:16px;bottom:16px;width:3px;}
+  .problem-cell.cost::before{background:#c0392b;}
+  .problem-cell.revenue::before{background:#d69e2e;}
+  .problem-cell.structure::before{background:var(--navy-mid);}
+  .problem-tag{font-family:var(--mono);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;}
+  .problem-cell.cost .problem-tag{color:#c0392b;}
+  .problem-cell.revenue .problem-tag{color:#d69e2e;}
+  .problem-cell.structure .problem-tag{color:var(--navy-mid);}
+  .problem-head{font-size:14px;font-weight:600;margin-bottom:6px;color:var(--ink);}
+  .problem-body{font-size:12.5px;color:var(--slate);line-height:1.6;}
+  .section-label{font-family:var(--mono);font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--slate);padding:28px 0 12px;border-bottom:1px solid var(--rule);margin-bottom:0;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);}
+  .card{padding:28px 24px 44px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);text-decoration:none;color:inherit;display:block;transition:background .12s;position:relative;}
+  .card:last-child{border-right:none;}
+  .card:hover{background:white;}
+  .card-num{font-family:var(--serif);font-size:40px;color:var(--rule);line-height:1;margin-bottom:14px;letter-spacing:-0.04em;transition:color .12s;}
+  .card:hover .card-num{color:var(--slate);}
+  .card-title{font-size:15px;font-weight:600;margin-bottom:6px;color:var(--ink);}
+  .card-subtitle{font-family:var(--mono);font-size:10px;letter-spacing:0.05em;color:var(--slate);margin-bottom:14px;}
+  .card-desc{font-size:12.5px;color:var(--slate);line-height:1.6;margin-bottom:18px;}
+  .card-bullets{list-style:none;font-size:12px;color:var(--slate);line-height:1.7;}
+  .card-bullets li::before{content:'— ';color:var(--rule);}
+  .card-cta{position:absolute;bottom:24px;right:24px;font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);border-bottom:1px solid var(--rule);padding-bottom:2px;transition:color .12s,border-color .12s;}
+  .card:hover .card-cta{color:var(--navy);border-color:var(--navy);}
+  .card-bar{position:absolute;top:0;left:0;right:0;height:3px;}
+  .card-bar.blue{background:var(--navy-mid);}
+  .card-bar.warn{background:#c0392b;}
+  .card-bar.gold{background:#d69e2e;}
+  .callout-row{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--rule);}
+  .callout{padding:24px;display:flex;gap:16px;align-items:flex-start;border-right:1px solid var(--rule);}
+  .callout:last-child{border-right:none;}
+  .callout-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;}
+  .callout-icon.warn{background:var(--red-bg);color:var(--red);}
+  .callout-icon.info{background:var(--blue-bg);color:var(--navy-mid);}
+  .callout-body-head{font-size:13px;font-weight:600;margin-bottom:4px;color:var(--ink);}
+  .callout-body-text{font-size:12px;color:var(--slate);line-height:1.6;}
 
 </style>
 </head>
@@ -156,15 +151,10 @@
 <div class="page-header">
   <div class="header-label">Active Interest Media — Digital Distribution</div>
   <div class="header-title">Digital Distribution: <em style="opacity:0.65;font-style:italic;">Current State</em></div>
-  <div class="header-sub">An operational review of AIM&rsquo;s digital subscription distribution — costs, platform economics, and the fragmentation problems that make this hard to manage.</div>
+  <div class="header-sub">An operational review of AIM’s digital subscription distribution — costs, platform economics, and the fragmentation problems that make this hard to manage.</div>
 </div>
-<div class="body">
 
-<div class="header-title">Digital Distribution: <em style="font-style:italic;opacity:0.7;">Current State</em></div>
-  <div class="header-sub">An operational review of AIM&rsquo;s digital subscription distribution — costs, platform economics, and the fragmentation problems that make this business hard to manage.</div>
-</div>
 <div class="body">
-</div>
 
 <div class="problem-strip">
   <div class="problem-cell cost">
@@ -193,7 +183,7 @@
     <div class="card-num">01</div>
     <div class="card-title">Digital Distribution Partners</div>
     <div class="card-subtitle">Platform overview · All channels</div>
-    <div class="card-desc">A structured map of all 11+ active distribution partners — how each is structured, how AIM gets paid, and which titles are carried on each platform.</div>
+    <div class="card-desc">A structured map of all active distribution partners — how each is structured, how AIM gets paid, and which titles are on each platform.</div>
     <ul class="card-bullets">
       <li>Revenue model per partner</li>
       <li>Consumer / institutional / pool-based breakdown</li>
@@ -201,17 +191,17 @@
     </ul>
     <span class="card-cta">Open →</span>
   </a>
+
   <a class="card" href="Textalk_CDP_Analysis.html">
     <div class="card-bar gold"></div>
     <div class="card-num">02</div>
     <div class="card-title">Textalk CDP Analysis</div>
     <div class="card-subtitle">CDP cost vs. revenue · Jan–Apr 2026</div>
-    <div class="card-desc">Invoice-level cost analysis for the Textalk content delivery platform — mapped against revenue from each channel it services (Readly, PressReader, Magzter, EBSCO).</div>
+    <div class="card-desc">Invoice-level cost analysis for the Textalk content delivery platform — mapped against revenue from each channel it services.</div>
     <ul class="card-bullets">
       <li>Cost by channel, prorated per issue</li>
       <li>EBSCO upload cost vs. EBSCO revenue</li>
       <li>Net-negative titles and cut scenarios</li>
-      <li>Jan–Apr 2026 actuals</li>
     </ul>
     <span class="card-cta">Open →</span>
   </a>
@@ -221,11 +211,10 @@
     <div class="card-num">03</div>
     <div class="card-title">Zinio Pro Analysis</div>
     <div class="card-subtitle">16 titles · Pro license + conversion costs</div>
-    <div class="card-desc">Full invoice-level P&L for the Zinio Pro platform — all 22 contracted titles including the April 2024 Taunton amendment, mapped against Apple iTunes revenue.</div>
+    <div class="card-desc">Full invoice-level P&L for the Zinio Pro platform — all 16 titles mapped against Apple iTunes revenue.</div>
     <ul class="card-bullets">
       <li>Pro license + conversion cost by title</li>
       <li>8 of 16 titles underwater on Pro fee alone</li>
-      <li>Four titles generate 86% of Apple revenue</li>
       <li>Pro exit scenario: +$1,206/mo improvement</li>
     </ul>
     <span class="card-cta">Open →</span>
@@ -238,17 +227,16 @@
     <div class="callout-icon warn">!</div>
     <div>
       <div class="callout-body-head">Key finding: Zinio Pro fees are the primary drag</div>
-      <div class="callout-body-text">15 of 22 Pro titles don't cover their monthly license fee. The platform nets +$5,541 only because four Taunton titles (Fine Woodworking, Fine Homebuilding, Fine Gardening, Threads) generate 87% of all Apple revenue. Without them, the original 18-title contract is –$21,065 over the period.</div>
+      <div class="callout-body-text">15 of 22 Pro titles don't cover their monthly license fee. The platform nets +$16,317 over 4 months only because Fine Woodworking, Fine Homebuilding, Fine Gardening, and Threads generate 86% of all Apple revenue.</div>
     </div>
   </div>
   <div class="callout">
     <div class="callout-icon warn">!</div>
     <div>
-      <div class="callout-body-head">Key finding: EBSCO cost exceeds EBSCO revenue for 10 titles</div>
-      <div class="callout-body-text">Upload costs to EBSCO run $100/title/month. 10 titles return less than that in EBSCO revenue. Cutting those titles from EBSCO saves ~$1,000/month and gives up $68 in revenue. Net positive, but requires coordination with Textalk.</div>
+      <div class="callout-body-head">Key finding: EBSCO cost exceeds revenue for most titles</div>
+      <div class="callout-body-text">Upload costs to EBSCO run ~$100/title/month. Most titles return less than that in EBSCO revenue. Cutting loss-making titles from EBSCO saves ~$1,000/month and gives up $68 in revenue.</div>
     </div>
   </div>
-</div>
 </div>
 
 </div>
