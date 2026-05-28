@@ -104,129 +104,91 @@
   .chip.blue  { background:var(--blue-bg);  color:var(--navy-mid); }
   .chip.gold  { background:#fffbeb; color:#744210; border:1px solid #f6e05e; }
 
-  /* Partners-specific */
-  .partner-name { font-weight: 600; font-size: 13px; }
-  .partner-type { font-size: 11px; color: var(--text-3); margin-top: 2px; }
-  .tag-consumer  { background: var(--tag-consumer);  color: var(--tag-consumer-c); }
-  .tag-inst      { background: var(--tag-inst);      color: var(--tag-inst-c); }
-  .tag-pool      { background: var(--tag-pool);      color: var(--tag-pool-c); }
-  .tag-trans     { background: var(--tag-trans);     color: var(--tag-trans-c); }
-  .tag-intl      { background: var(--tag-intl);      color: var(--tag-intl-c); }
-  .brand-pill { display: inline-block; padding: 2px 7px; border-radius: 3px; font-size: 10px; }
-  .brand-pill.home      { background: var(--v-home-bg);      color: var(--v-home-c); }
-  .brand-pill.equine    { background: var(--v-equine-bg);    color: var(--v-equine-c); }
-  .brand-pill.health    { background: var(--v-health-bg);    color: var(--v-health-c); }
-  .brand-pill.collector { background: var(--v-collector-bg); color: var(--v-collector-c); }
-  .payment-text { font-size: 12px; color: var(--text-2); line-height: 1.55; max-width: 320px; }
+  .partner-name{font-weight:600;font-size:13px;}
+  .partner-type{font-size:11px;color:var(--slate);margin-top:2px;}
+  .tags{display:flex;flex-wrap:wrap;gap:4px;}
+  .tag{display:inline-block;padding:2px 8px;border-radius:2px;font-family:var(--mono);font-size:10px;font-weight:500;}
+  .tag-consumer{background:#e6f4ee;color:#276749;}
+  .tag-inst{background:var(--blue-bg);color:var(--navy-mid);}
+  .tag-pool{background:#fff3e0;color:#7a4500;}
+  .tag-trans{background:var(--red-bg);color:var(--red);}
+  .tag-intl{background:#f3eafd;color:#5a1a8a;}
+  .brands-cell{display:flex;flex-wrap:wrap;gap:4px;max-width:360px;}
+  .brand-pill{display:inline-block;padding:2px 8px;border-radius:2px;font-family:var(--mono);font-size:10px;}
+  .brand-pill.home{background:#fff8e6;color:#7a5200;}
+  .brand-pill.equine{background:#f0ffe8;color:#2d6e1a;}
+  .brand-pill.health{background:#f5e8ff;color:#6b1a8a;}
+  .brand-pill.collector{background:#ffe8e8;color:#8a1a1a;}
+  .payment-text{font-size:12px;color:var(--slate);line-height:1.55;max-width:340px;}
+
 </style>
 </head>
 <body>
 
 <div class="page-header">
-  <a href="index.html" style="float:right;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:rgba(255,255,255,0.45);text-decoration:none;text-transform:uppercase;">← Index</a>
+  <a href="index.html" style="float:right;font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:rgba(255,255,255,0.45);text-decoration:none;text-transform:uppercase;margin-top:4px;">← Index</a>
   <div class="header-label">Active Interest Media — Digital Distribution</div>
   <div class="header-title">Digital Distribution Partners</div>
   <div class="header-sub">Platform overview &nbsp;·&nbsp; Jan–Apr 2026 &nbsp;·&nbsp; All active digital channels</div>
   <div class="header-meta">
-    <div class="meta-item">
-      <div class="meta-label">Active Partners</div>
-      <div class="meta-value">9</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Pool-Based Models</div>
-      <div class="meta-value">3</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Institutional / B2B</div>
-      <div class="meta-value">2</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Total Net Revenue Jan–Apr</div>
-      <div class="meta-value positive">$39.2K</div>
-    </div>
+    <div class="meta-item"><div class="meta-label">Active Partners</div><div class="meta-value">9</div></div>
+    <div class="meta-item"><div class="meta-label">Pool-Based Models</div><div class="meta-value">3</div></div>
+    <div class="meta-item"><div class="meta-label">Institutional / B2B</div><div class="meta-value">2</div></div>
+    <div class="meta-item"><div class="meta-label">Total Net Revenue Jan–Apr</div><div class="meta-value positive">$39.2K</div></div>
   </div>
 </div>
 
 <div class="body">
 
-</div>
-
-<div class="stat-lbl">Active partners</div></div>
-  <div class="stat-cell"><div class="stat-num">3</div><div class="stat-lbl">Pool-based models</div></div>
-  <div class="stat-cell"><div class="stat-num">2</div><div class="stat-lbl">Institutional / B2B</div></div>
-  <div class="stat-cell"><div class="stat-num">$39.2K</div><div class="stat-lbl">Total net revenue Jan–Apr</div></div>
-</div>
-
-<div class="table-wrap">
 <table>
   <thead>
     <tr>
-      <th style="width:200px">Partner</th>
-      <th style="width:160px">Model</th>
-      <th style="width:360px">Brands on platform</th>
-      <th>How AIM gets paid</th>
+      <th style="width:200px;text-align:left;">Partner</th>
+      <th style="width:160px;text-align:left;">Model</th>
+      <th style="width:360px;text-align:left;">Brands on platform</th>
+      <th style="text-align:left;">How AIM gets paid</th>
     </tr>
   </thead>
   <tbody>
-
     <tr>
       <td><div class="partner-name">Apple (App Store)</div><div class="partner-type">Direct newsstand · iOS</div></td>
       <td><div class="tags"><span class="tag tag-consumer">Consumer</span><span class="tag tag-trans">Transactional</span></div></td>
       <td><div class="brands-cell">
-        <span class="brand-pill home">Fine Woodworking</span>
-        <span class="brand-pill home">Fine Homebuilding</span>
-        <span class="brand-pill home">Fine Gardening</span>
-        <span class="brand-pill home">Threads</span>
-        <span class="brand-pill home">Popular Woodworking</span>
-        <span class="brand-pill home">Writers Digest</span>
-        <span class="brand-pill home">Woodsmith</span>
-        <span class="brand-pill home">Garden Gate</span>
-        <span class="brand-pill home">ShopNotes</span>
-        <span class="brand-pill home">Cuisine at Home</span>
-        <span class="brand-pill home">Old House Journal</span>
-        <span class="brand-pill home">Horticulture</span>
+        <span class="brand-pill home">Fine Woodworking</span><span class="brand-pill home">Fine Homebuilding</span>
+        <span class="brand-pill home">Fine Gardening</span><span class="brand-pill home">Threads</span>
+        <span class="brand-pill home">Popular Woodworking</span><span class="brand-pill home">Writer's Digest</span>
+        <span class="brand-pill home">Woodsmith</span><span class="brand-pill home">Garden Gate</span>
+        <span class="brand-pill home">ShopNotes</span><span class="brand-pill home">Cuisine at Home</span>
+        <span class="brand-pill home">Old House Journal</span><span class="brand-pill home">Horticulture</span>
         <span class="brand-pill home">Log &amp; Timber</span>
-        <span class="brand-pill collector">Numismatic News</span>
-        <span class="brand-pill collector">Antique Trader</span>
-        <span class="brand-pill collector">Sports Collectors Digest</span>
-        <span class="brand-pill collector">Old Cars Weekly</span>
+        <span class="brand-pill collector">Numismatic News</span><span class="brand-pill collector">Antique Trader</span>
+        <span class="brand-pill collector">Sports Collectors Digest</span><span class="brand-pill collector">Old Cars Weekly</span>
         <span class="brand-pill collector">Bank Note Reporter</span>
       </div></td>
-      <td><span class="payment-text">Per-transaction — net proceeds after ~30% platform fee (15% after year one of a subscription). Revenue split via Zinio Pro for branded apps; direct for Taunton titles. Paid monthly with ~60-day lag.</span></td>
+      <td><span class="payment-text">Per-transaction — net proceeds after ~30% platform fee (15% after year one of a subscription). Revenue retained by AIM; Apple's cut paid directly. Paid monthly with ~60-day lag.</span></td>
     </tr>
-
     <tr>
       <td><div class="partner-name">Cengage</div><div class="partner-type">Academic / library · B2B</div></td>
       <td><div class="tags"><span class="tag tag-inst">Institutional</span></div></td>
       <td><div class="brands-cell">
-        <span class="brand-pill health">Backpacker</span>
-        <span class="brand-pill health">Better Nutrition</span>
-        <span class="brand-pill health">Black Belt</span>
-        <span class="brand-pill health">Vegetarian Times</span>
-        <span class="brand-pill equine">American Cowboy</span>
-        <span class="brand-pill equine">Discover Horses</span>
-        <span class="brand-pill equine">Dressage Today</span>
-        <span class="brand-pill equine">Horse Journal</span>
-        <span class="brand-pill equine">Spin To Win Rodeo</span>
-        <span class="brand-pill equine">The Trail Rider</span>
+        <span class="brand-pill health">Backpacker</span><span class="brand-pill health">Better Nutrition</span>
+        <span class="brand-pill health">Black Belt</span><span class="brand-pill health">Vegetarian Times</span>
+        <span class="brand-pill equine">American Cowboy</span><span class="brand-pill equine">Discover Horses</span>
+        <span class="brand-pill equine">Dressage Today</span><span class="brand-pill equine">Horse Journal</span>
+        <span class="brand-pill equine">Spin To Win Rodeo</span><span class="brand-pill equine">The Trail Rider</span>
       </div></td>
-      <td><span class="payment-text">Fixed licensing fee — AIM receives a set annual/quarterly fee regardless of access volume. Revenue is predictable but not tied to usage. Quarterly payments.</span></td>
+      <td><span class="payment-text">Fixed licensing fee — revenue is not usage-based. Predictable quarterly payments regardless of access volume.</span></td>
     </tr>
-
     <tr>
       <td><div class="partner-name">PressReader</div><div class="partner-type">Global newsstand · B2C + B2B</div></td>
       <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-intl">International</span></div></td>
       <td><div class="brands-cell">
-        <span class="brand-pill home">Fine Woodworking</span>
-        <span class="brand-pill home">Fine Gardening</span>
-        <span class="brand-pill home">Threads</span>
-        <span class="brand-pill home">Popular Woodworking</span>
-        <span class="brand-pill collector">Military Trader</span>
-        <span class="brand-pill collector">World Coin News</span>
+        <span class="brand-pill home">Fine Woodworking</span><span class="brand-pill home">Fine Gardening</span>
+        <span class="brand-pill home">Threads</span><span class="brand-pill home">Popular Woodworking</span>
+        <span class="brand-pill collector">Military Trader</span><span class="brand-pill collector">World Coin News</span>
       </div></td>
-      <td><span class="payment-text">Pool-based — AIM's share of platform revenue is calculated by AIM's relative read volume vs. total catalog. Revenue volatile; pays monthly. Low overall yield relative to title count.</span></td>
+      <td><span class="payment-text">Pool-based — AIM share calculated by relative read volume vs. total catalog. Revenue volatile; pays monthly. Low overall yield relative to title count.</span></td>
     </tr>
-
     <tr>
       <td><div class="partner-name">EBSCO</div><div class="partner-type">Library aggregator · Academic</div></td>
       <td><div class="tags"><span class="tag tag-inst">Institutional</span></div></td>
@@ -234,19 +196,17 @@
         <span class="brand-pill home">Old House Journal SIP</span>
         <span class="brand-pill home">Woodshop News</span>
       </div></td>
-      <td><span class="payment-text">Per-issue upload fee to Textalk CDP + revenue share from EBSCO library access. Upload costs ($100/title/mo) often exceed revenue. Quarterly reporting.</span></td>
+      <td><span class="payment-text">Per-issue upload fee via Textalk CDP + revenue share from library access. Upload costs (~$100/title/mo) frequently exceed revenue. Quarterly reporting.</span></td>
     </tr>
-
     <tr>
       <td><div class="partner-name">Zinio</div><div class="partner-type">Digital newsstand + app platform</div></td>
       <td><div class="tags"><span class="tag tag-trans">Transactional</span><span class="tag tag-consumer">Consumer</span></div></td>
       <td><div class="brands-cell">
         <span class="brand-pill collector">Old Cars Price Guide</span>
-        <span class="brand-pill home">+ 20 titles via Store/Library</span>
+        <span class="brand-pill home">+ 16 titles via Store/Library</span>
       </div></td>
-      <td><span class="payment-text">Revenue share on Zinio Store + Library sales (net of conversion, delivery, and credit card fees). Also the distribution platform for Zinio Pro branded apps — monthly license fees apply per-title on Pro. Net remit typically 50–60% of gross.</span></td>
+      <td><span class="payment-text">Revenue share on Zinio Store + Library sales net of conversion, delivery, and CC fees. Pro platform hosts branded apps — monthly license fee per title. Net remit typically 50–60% of gross.</span></td>
     </tr>
-
     <tr>
       <td><div class="partner-name">Readly</div><div class="partner-type">Subscription bundle · Consumer</div></td>
       <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-intl">International</span></div></td>
@@ -254,9 +214,8 @@
         <span class="brand-pill collector">Coins</span>
         <span class="brand-pill collector">Military Vehicles</span>
       </div></td>
-      <td><span class="payment-text">Pool-based — AIM share based on relative read time vs. platform total. European-skewed reader base. Very low yield Jan–Apr 2026 ($9 total). Monthly reporting.</span></td>
+      <td><span class="payment-text">Pool-based — AIM share based on relative read time vs. platform total. European-skewed readership. $5 Jan–Apr 2026. Monthly reporting.</span></td>
     </tr>
-
     <tr>
       <td><div class="partner-name">Magzter / Magzter Gold</div><div class="partner-type">Global digital newsstand</div></td>
       <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-trans">Transactional</span></div></td>
@@ -264,9 +223,8 @@
         <span class="brand-pill home">Arts &amp; Craft Homes</span>
         <span class="brand-pill home">Log &amp; Timber SIP</span>
       </div></td>
-      <td><span class="payment-text">50% net revenue share (per contract). Direct sales via Magzter store + pool share from Magzter Gold subscription. Combined Jan–Apr revenue: $2.79.</span></td>
+      <td><span class="payment-text">50% net revenue share per contract. Direct sales via Magzter store + pool share from Magzter Gold subscription. Combined Jan–Apr revenue: $2.79.</span></td>
     </tr>
-
     <tr>
       <td><div class="partner-name">Apple News+</div><div class="partner-type">Apple News bundle · iOS/macOS</div></td>
       <td><div class="tags"><span class="tag tag-pool">Pool-based</span><span class="tag tag-consumer">Consumer</span></div></td>
@@ -275,7 +233,6 @@
       </div></td>
       <td><span class="payment-text">Pool-based revenue share from Apple News+ subscription bundle. Single title. $29 Jan–Apr 2026.</span></td>
     </tr>
-
     <tr>
       <td><div class="partner-name">Barnes &amp; Noble</div><div class="partner-type">eBook / digital newsstand</div></td>
       <td><div class="tags"><span class="tag tag-trans">Transactional</span><span class="tag tag-consumer">Consumer</span></div></td>
@@ -283,18 +240,18 @@
         <span class="brand-pill home">Fine Cooking</span>
         <span class="brand-pill health">Yoga Journal</span>
       </div></td>
-      <td><span class="payment-text">Per-transaction revenue share on Nook digital purchases. Minimal activity. $21.50 Jan–Apr 2026. Monthly sales reports via portal.</span></td>
+      <td><span class="payment-text">Per-transaction revenue share on Nook digital purchases. $21.50 Jan–Apr 2026. Monthly sales reports via portal.</span></td>
     </tr>
-
   </tbody>
 </table>
-</div>
 
 <div class="notes">
   <div class="notes-title">Notes</div>
-  <div class="note-item"><span class="note-bullet">—</span><span><strong>Cengage</strong> is a fixed-fee licensing arrangement — revenue is not usage-based. Revenue is licensing, not per-read.</span></div>
-  <div class="note-item"><span class="note-bullet">—</span><span><strong>Readly, PressReader, and Magzter Gold</strong> are pool-based models — AIM's share depends on relative read volume vs. the full catalog, making revenue more volatile and harder to predict.</span></div>
-  <div class="note-item"><span class="note-bullet">—</span><span>Brand color coding reflects vertical: <strong style="color:var(--v-home-c)">Home &amp; Craft</strong> · <strong style="color:var(--v-equine-c)">Equine</strong> · <strong style="color:var(--v-health-c)">Health / Outdoor</strong> · <strong style="color:var(--v-collector-c)">Collector</strong></span></div>
+  <ol>
+    <li>Apple revenue split across two report types in App Store Connect. Most AIM titles report under Cruz Bay Publishing in Apple's system — all appear in AIM's revenue reporting.</li>
+    <li>Cengage is a fixed-fee licensing arrangement — revenue is not usage-based.</li>
+    <li>Readly, PressReader, and Magzter Gold are pool-based — AIM's share depends on relative read volume vs. the full catalog, making revenue volatile and harder to predict.</li>
+  </ol>
 </div>
 
 </div>
