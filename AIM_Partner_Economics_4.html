@@ -56,14 +56,14 @@ th:first-child { padding-left: 48px; text-align: left; width: 230px; }
 th.left { text-align: left; }
 tbody tr { border-bottom: 1px solid var(--border); transition: background 0.08s; }
 tbody tr:hover { background: var(--bg-subtle); }
-tbody tr.taunton { border-left: 3px solid var(--purple); }
+tbody tr.highlight { border-left: 3px solid var(--green); }
 tbody tr.group-keep { border-left: 3px solid var(--green); }
 tbody tr.group-exit { border-left: 3px solid var(--amber); }
 tbody tr.subtotal-row { border-top: 1px solid var(--border); background: var(--bg-subtle); font-style: italic; }
 tbody tr.totals-row { border-top: 2px solid var(--text); background: var(--bg-subtle); font-weight: 600; }
 td { padding: 11px 16px; text-align: right; font-size: 12px; }
 td:first-child { padding-left: 48px; text-align: left; font-weight: 500; }
-td .amendment-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; background: var(--purple-bg); color: var(--purple); padding: 1px 5px; border-radius: 2px; margin-left: 5px; vertical-align: middle; }
+
 
 .num-pos  { color: var(--green); }
 .num-neg  { color: var(--red); }
@@ -99,7 +99,7 @@ td .amendment-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; te
 
 <div class="hero">
   <h1>Partner Economics: Zinio Pro</h1>
-  <div class="hero-sub">All 16 Pro titles · Original contract (12) + April 2024 amendment (4 Taunton) · Monthly avg Jan–Apr 2026 · Confirmed Pro fee schedule</div>
+  <div class="hero-sub">All 16 Pro titles · Monthly avg Jan–Apr 2026 · Confirmed Pro fee schedule</div>
 </div>
 
 <div class="stats-strip">
@@ -114,15 +114,15 @@ td .amendment-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; te
   <div class="insight">
     <div class="insight-icon good">★</div>
     <div>
-      <div class="insight-head">Taunton titles carry the portfolio</div>
-      <div class="insight-body">Fine Woodworking, Fine Homebuilding, Fine Gardening, and Threads net <strong>+$6,530/mo</strong> combined — $1,100/mo in Pro fees against $6,791/mo in Apple revenue. Remove them and the original 12-title contract is <strong>–$880/mo</strong>.</div>
+      <div class="insight-head">Fine Woodworking, Fine Homebuilding, Fine Gardening &amp; Threads carry the portfolio</div>
+      <div class="insight-body">Fine Woodworking, Fine Homebuilding, Fine Gardening, and Threads net <strong>+$6,530/mo</strong> combined — $1,100/mo in Pro fees against $6,791/mo in Apple revenue. The remaining 12 titles net <strong>–$880/mo</strong> on their own.</div>
     </div>
   </div>
   <div class="insight">
     <div class="insight-icon warn">!</div>
     <div>
-      <div class="insight-head">Original contract is underwater without Taunton</div>
-      <div class="insight-body">The 12 original Pro titles collectively pay <strong>$2,700/mo</strong> in Pro fees and return <strong>$2,059/mo</strong> in Apple revenue. Net –$880/mo before Zinio Store/Library costs. Exiting Pro on 9 loss-making titles recovers +$1,950/mo.</div>
+      <div class="insight-head">The remaining 12 titles are underwater on their own</div>
+      <div class="insight-body">The other 12 Pro titles collectively pay <strong>$2,700/mo</strong> in Pro fees and return <strong>$2,059/mo</strong> in Apple revenue — net –$880/mo before Zinio Store/Library costs. Exiting Pro on 9 of those titles recovers +$1,950/mo.</div>
     </div>
   </div>
 </div>
@@ -133,7 +133,7 @@ td .amendment-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; te
   <div class="scenario-callout-icon">→</div>
   <div>
     <div class="scenario-callout-title">Scenario: Exit Pro on 8 net-negative titles</div>
-    <div class="scenario-callout-body">Keep all 4 Taunton titles and 4 original-contract titles where combined net is positive (Popular Woodworking, Writer's Digest, Woodsmith, Garden Gate). Exit Pro on the remaining 8 loss-making titles — all retain Zinio Store + Library distribution. Pro fees eliminated: <strong>$1,950/mo</strong>. 5 of 8 exited titles flip positive post-exit. Portfolio net improves from +$5,650 to <strong>+$7,600/mo</strong>.</div>
+    <div class="scenario-callout-body">Keep 8 titles where combined net is positive (Popular Woodworking, Writer's Digest, Woodsmith, Garden Gate). Exit Pro on the remaining 8 loss-making titles — all retain Zinio Store + Library distribution. Pro fees eliminated: <strong>$1,950/mo</strong>. 5 of 8 exited titles flip positive post-exit. Portfolio net improves from +$5,650 to <strong>+$7,600/mo</strong>.</div>
   </div>
 </div>
 
@@ -141,7 +141,7 @@ td .amendment-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; te
 
 <div class="section-head">
   All 16 Pro Titles — Current P&L
-  <span class="section-head-note">Purple border = Apr 2024 amendment · Green = positive · Amber = exit candidate</span>
+  <span class="section-head-note">Green = positive · Amber = exit candidate</span>
 </div>
 
 <div class="table-wrap">
@@ -157,32 +157,32 @@ td .amendment-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; te
     </tr>
   </thead>
   <tbody>
-    <tr class="taunton">
-      <td>Fine Woodworking <span class="amendment-tag">amendment</span></td>
+    <tr class="highlight">
+      <td>Fine Woodworking</td>
       <td>$300</td>
       <td class="num-pos">+$2,989</td>
       <td class="num-pos">+$257</td>
       <td class="num-pos">+$2,946</td>
       <td><span class="badge badge-keep">Keep</span></td>
     </tr>
-    <tr class="taunton">
-      <td>Fine Homebuilding <span class="amendment-tag">amendment</span></td>
+    <tr class="highlight">
+      <td>Fine Homebuilding</td>
       <td>$300</td>
       <td class="num-pos">+$1,652</td>
       <td class="num-pos">+$51</td>
       <td class="num-pos">+$1,403</td>
       <td><span class="badge badge-keep">Keep</span></td>
     </tr>
-    <tr class="taunton">
-      <td>Fine Gardening <span class="amendment-tag">amendment</span></td>
+    <tr class="highlight">
+      <td>Fine Gardening</td>
       <td>$300</td>
       <td class="num-pos">+$1,213</td>
       <td class="num-pos">+$273</td>
       <td class="num-pos">+$1,186</td>
       <td><span class="badge badge-keep">Keep</span></td>
     </tr>
-    <tr class="taunton">
-      <td>Threads Magazine <span class="amendment-tag">amendment</span></td>
+    <tr class="highlight">
+      <td>Threads Magazine</td>
       <td>$200</td>
       <td class="num-pos">+$937</td>
       <td class="num-pos">+$258</td>
@@ -190,7 +190,7 @@ td .amendment-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; te
       <td><span class="badge badge-keep">Keep</span></td>
     </tr>
     <tr class="subtotal-row">
-      <td>Taunton subtotal (4 titles)</td>
+      <td>FW / FHB / FG / Threads subtotal</td>
       <td>$1,100</td>
       <td class="num-pos">+$6,791</td>
       <td class="num-pos">+$839</td>
@@ -433,8 +433,8 @@ td .amendment-tag { font-size: 9px; font-weight: 500; letter-spacing: 0.06em; te
 
 <div class="notes">
   <div class="notes-title">Methodology Notes</div>
-  <div class="note-item"><span class="note-bullet">1.</span><span>Pro fee schedule: 12 original titles per the Publisher Services Agreement v5.1 (March 2023) with confirmed billing rates. 4 Taunton titles (Fine Woodworking $300, Fine Homebuilding $300, Fine Gardening $300, Threads Magazine $200) added by Contract Amendment Order dated April 25, 2024. Total monthly Pro fees: $3,800 across all 16 titles.</span></div>
-  <div class="note-item"><span class="note-bullet">2.</span><span>Apple revenue = net receipts from the Jan–Apr 2026 digital revenue report, divided by 4 for monthly average. Taunton titles are billed through Cruz Bay Publishing in Apple's system but appear in AIM's revenue reporting and are on AIM's Zinio Pro invoice. Apple's ~30% platform fee has already been deducted.</span></div>
+  <div class="note-item"><span class="note-bullet">1.</span><span>Pro fee schedule confirmed from billing data. 16 titles total: Fine Woodworking $300, Fine Homebuilding $300, Fine Gardening $300, Threads Magazine $200, Popular Woodworking $300, Writer's Digest $250, Garden Gate $200, Woodsmith $250, Cuisine at Home $200, Old House Journal $200, Log &amp; Timber $250, Horticulture $250, Kovels Antique Trader $200, Numismatic News $200, World Coin News $200, Banknote Reporter $200. Total: $3,800/mo.</span></div>
+  <div class="note-item"><span class="note-bullet">2.</span><span>Apple revenue = net receipts from the Jan–Apr 2026 digital revenue report, divided by 4 for monthly average. Apple's ~30% platform fee has already been deducted — figures are AIM's net.</span></div>
   <div class="note-item"><span class="note-bullet">3.</span><span>Zinio Store + Library net/mo = estimated monthly net from Zinio distribution channels after conversion fees, delivery fees, and credit card fees, excluding the Pro license fee. The Pro fee is shown separately and removed in the scenario column.</span></div>
   <div class="note-item"><span class="note-bullet">4.</span><span>4 titles with residual losses post-exit (Kovels, Numismatic News, World Coin News, Banknote Reporter) are driven by content conversion fees against thin revenue — not the Pro fee. These require a separate decision on whether Zinio distribution is viable for them at all.</span></div>
   <div class="note-item"><span class="note-bullet">5.</span><span>eMags migration scenario not modeled — pricing proposal pending. Would affect Store + Library cost structure for all titles.</span></div>
