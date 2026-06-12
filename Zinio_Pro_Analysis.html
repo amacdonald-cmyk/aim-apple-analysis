@@ -3,26 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zinio Pro Platform Analysis Jan–Apr 2026</title>
+<title>Zinio Pro Platform Analysis — 12-Month Review</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
   :root {
-    --navy:    #1F3864;
-    --navy-mid:#2F5496;
-    --ink:     #1a1a2e;
-    --slate:   #4a5568;
-    --rule:    #cbd5e0;
-    --bg:      #f7f8fc;
-    --white:   #ffffff;
-    --green:   #276749;
-    --green-bg:#e6f4ee;
-    --red:     #c53030;
-    --red-bg:  #fff0f0;
-    --yellow-bg:#fffbeb;
-    --blue-bg: #edf2fb;
-    --mono:    'DM Mono', monospace;
-    --serif:   'Instrument Serif', serif;
-    --sans:    'DM Sans', sans-serif;
+    --navy: #1F3864; --navy-mid: #2F5496; --ink: #1a1a2e; --slate: #4a5568;
+    --rule: #cbd5e0; --rule-lt: #e8ecf2; --bg: #f7f8fc; --white: #ffffff;
+    --green: #276749; --green-bg: #e6f4ee; --red: #c53030; --red-bg: #fff0f0;
+    --amber: #7a4500; --amber-bg: #fff3e0; --yellow-bg: #fffbeb; --blue-bg: #edf2fb;
+    --mono: 'DM Mono', monospace; --serif: 'Instrument Serif', serif; --sans: 'DM Sans', sans-serif;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: var(--sans); background: var(--bg); color: var(--ink); font-size: 14px; line-height: 1.6; }
@@ -31,36 +21,27 @@
   .page-header::after { content:''; position:absolute; right:-60px; top:-60px; width:320px; height:320px; border-radius:50%; background:rgba(255,255,255,0.04); }
   .page-header::before { content:''; position:absolute; right:80px; bottom:-80px; width:200px; height:200px; border-radius:50%; background:rgba(255,255,255,0.03); }
   .header-label { font-family:var(--mono); font-size:11px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:12px; }
+  .header-back { float:right; font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.45); text-decoration:none; margin-top:4px; }
+  .header-back:hover { color:rgba(255,255,255,0.8); }
   .header-title { font-family:var(--serif); font-size:36px; font-weight:400; line-height:1.2; margin-bottom:8px; }
   .header-sub { font-size:13px; color:rgba(255,255,255,0.6); font-weight:300; }
   .header-meta { margin-top:32px; display:flex; gap:40px; flex-wrap:wrap; }
   .meta-label { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:4px; }
   .meta-value { font-family:var(--mono); font-size:22px; font-weight:500; color:white; }
-  .meta-value.positive { color:#68d391; }
-  .meta-value.warning  { color:#fbd38d; }
+  .meta-value.positive { color:#68d391; } .meta-value.negative { color:#fc8181; } .meta-value.warning { color:#fbd38d; }
 
   .body { max-width:1100px; margin:0 auto; padding:48px 48px 80px; }
-
   .section { margin-bottom:52px; }
-  .section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid var(--navy); }
+  .section-header { display:flex; align-items:baseline; gap:16px; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid var(--navy); }
   .section-number { font-family:var(--mono); font-size:11px; color:var(--navy-mid); letter-spacing:0.08em; }
   .section-title { font-family:var(--serif); font-size:22px; font-weight:400; color:var(--navy); }
+  .section-intro { font-size:12.5px; color:var(--slate); margin-bottom:16px; line-height:1.6; }
 
-  .callout-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:32px; }
-  .callout { background:white; border:1px solid var(--rule); border-top:3px solid var(--navy); padding:20px 24px; }
-  .callout.green { border-top-color:var(--green); }
-  .callout.red   { border-top-color:var(--red); }
-  .callout-label { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); margin-bottom:8px; }
-  .callout-value { font-family:var(--mono); font-size:28px; font-weight:500; color:var(--navy); }
-  .callout-value.green { color:var(--green); }
-  .callout-value.red   { color:var(--red); }
-  .callout-note { font-size:11px; color:var(--slate); margin-top:6px; }
-
-  table { width:100%; border-collapse:collapse; font-size:13px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:0; }
   thead tr { background:var(--navy); color:white; }
   thead th { padding:10px 14px; text-align:right; font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; font-weight:500; }
   thead th:first-child { text-align:left; }
-  tbody tr { border-bottom:1px solid #e8ecf2; }
+  tbody tr { border-bottom:1px solid var(--rule-lt); }
   tbody tr:nth-child(even) { background:#f9fafc; }
   tbody tr:hover { background:var(--blue-bg); }
   tbody td { padding:9px 14px; text-align:right; font-family:var(--mono); font-size:12px; }
@@ -69,13 +50,33 @@
   tfoot tr { background:var(--navy); }
   tfoot td { padding:10px 14px; text-align:right; font-family:var(--mono); font-size:12px; font-weight:500; color:white; }
   tfoot td:first-child { text-align:left; font-family:var(--sans); }
+  tbody tr.group-head td { background:var(--blue-bg); font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy-mid); font-weight:500; border-top:2px solid var(--navy-mid); padding:6px 14px; }
+  tbody tr.group-keep { border-left:3px solid var(--green); }
+  tbody tr.group-exit { border-left:3px solid var(--amber); }
 
-  .positive { color:var(--green); }
-  .negative { color:var(--red); font-weight:600; }
-  .muted    { color:#9aa3b0; }
+  .positive { color:var(--green); } .negative { color:var(--red); font-weight:600; } .muted { color:#9aa3b0; }
+  .chip { display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:0.06em; padding:2px 8px; border-radius:2px; vertical-align:middle; margin-left:4px; }
+  .chip.red   { background:var(--red-bg); color:var(--red); }
+  .chip.green { background:var(--green-bg); color:var(--green); }
+  .chip.blue  { background:var(--blue-bg); color:var(--navy-mid); }
 
-  /* group separator row */
-  tbody tr.group-head td { background:#edf2fb; font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy-mid); font-weight:500; border-top:2px solid var(--navy-mid); padding:6px 14px; }
+  .kpi-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--rule); margin-bottom:24px; }
+  .kpi { padding:18px 20px; border-right:1px solid var(--rule); }
+  .kpi:last-child { border-right:none; }
+  .kpi-label { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); margin-bottom:6px; }
+  .kpi-value { font-family:var(--mono); font-size:24px; font-weight:500; color:var(--ink); }
+  .kpi-value.red   { color:var(--red); }
+  .kpi-value.green { color:var(--green); }
+  .kpi-note  { font-size:11px; color:var(--slate); margin-top:4px; }
+  .kpi-note.bad { color:var(--red); }
+
+  .scenario { background:var(--yellow-bg); border:1px solid #f6e05e; border-left:4px solid #d69e2e; padding:24px 28px; margin-top:24px; }
+  .scenario-title { font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase; font-weight:600; color:#744210; margin-bottom:10px; }
+  .scenario-body { font-size:12.5px; color:#92400e; line-height:1.6; }
+  .scenario-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:16px; }
+  .s-label { font-family:var(--mono); font-size:10px; color:#92400e; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
+  .s-val   { font-family:var(--mono); font-size:20px; font-weight:500; color:#744210; }
+  .s-delta { font-size:11px; color:#92400e; margin-top:2px; }
 
   .findings-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
   .finding { background:white; border:1px solid var(--rule); padding:20px 24px; display:flex; gap:16px; align-items:flex-start; }
@@ -86,434 +87,74 @@
   .finding.good    { border-left:3px solid var(--green); }
   .finding.neutral { border-left:3px solid var(--navy-mid); }
 
-  .scenario { background:var(--yellow-bg); border:1px solid #f6e05e; border-left:4px solid #d69e2e; padding:24px 28px; margin-top:24px; }
-  .scenario-title { font-weight:600; color:#744210; margin-bottom:12px; font-family:var(--mono); letter-spacing:0.06em; text-transform:uppercase; font-size:11px; }
-  .scenario-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:12px; }
-  .scenario-stat .s-label { font-family:var(--mono); font-size:10px; color:#92400e; letter-spacing:0.08em; text-transform:uppercase; margin-bottom:4px; }
-  .scenario-stat .s-val   { font-family:var(--mono); font-size:20px; font-weight:500; color:#744210; }
-  .scenario-stat .s-delta { font-size:11px; color:#92400e; margin-top:2px; }
+  .info-box { padding:12px 16px; border-left:3px solid var(--navy-mid); background:var(--blue-bg); font-size:12px; color:var(--slate); margin-top:14px; }
+  .info-box.red { border-left-color:var(--red); background:var(--red-bg); color:var(--red); }
+  .info-box strong { color:var(--ink); }
+  .info-box.red strong { color:var(--red); }
 
   .notes { background:white; border:1px solid var(--rule); padding:20px 24px; margin-top:32px; }
   .notes-title { font-family:var(--mono); font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--slate); margin-bottom:12px; }
   .notes ol { padding-left:18px; }
   .notes li { font-size:12px; color:var(--slate); margin-bottom:6px; line-height:1.5; }
 
-  .chip { display:inline-block; font-family:var(--mono); font-size:10px; letter-spacing:0.06em; padding:2px 8px; border-radius:2px; vertical-align:middle; margin-left:6px; }
-  .chip.red   { background:var(--red-bg);   color:var(--red);      }
-  .chip.green { background:var(--green-bg); color:var(--green);    }
-  .chip.blue  { background:var(--blue-bg);  color:var(--navy-mid); }
-  .chip.gold  { background:#fffbeb; color:#744210; border:1px solid #f6e05e; }
+  .chart-wrap { position:relative; margin-bottom:8px; }
+  .chart-legend { display:flex; flex-wrap:wrap; gap:10px; margin-top:12px; margin-bottom:24px; }
+  .legend-item { display:flex; align-items:center; gap:5px; font-size:11px; color:var(--slate); font-family:var(--mono); }
+  .legend-dot { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+  .spacer { height:24px; }
 </style>
 </head>
 <body>
 
 <div class="page-header">
+  <a href="index.html" class="header-back">← Index</a>
   <div class="header-label">Active Interest Media — Digital Distribution</div>
   <div class="header-title">Zinio Pro Platform Analysis</div>
-  <div class="header-sub">January – April 2026 &nbsp;·&nbsp; 16 titles &nbsp;·&nbsp; Pro license + content conversion costs</div>
+  <div class="header-sub">12-month review &nbsp;·&nbsp; May 2025 – Apr 2026 &nbsp;·&nbsp; Actual invoice billing vs. actual revenue &nbsp;·&nbsp; 16 Pro titles</div>
   <div class="header-meta">
-    <div class="meta-item">
-      <div class="meta-label">Pro License Cost (4mo)</div>
-      <div class="meta-value">$15,200</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Conv. Cost Est. (4mo)</div>
-      <div class="meta-value">$6,283</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Total Cost (4mo)</div>
-      <div class="meta-value">$21,483</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Apple iTunes Revenue</div>
-      <div class="meta-value">$35,400</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Net (all Pro titles)</div>
-      <div class="meta-value positive">+$16,317</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label">Titles positive</div>
-      <div class="meta-value warning">8 of 16</div>
-    </div>
+    <div class="meta-item"><div class="meta-label">12-mo Invoice Total</div><div class="meta-value negative">$90,403</div></div>
+    <div class="meta-item"><div class="meta-label">Zinio Net Revenue</div><div class="meta-value">$49,953</div></div>
+    <div class="meta-item"><div class="meta-label">Apple Pro Apps</div><div class="meta-value">$102,312</div></div>
+    <div class="meta-item"><div class="meta-label">Net After Invoice</div><div class="meta-value positive">+$61,863</div></div>
+    <div class="meta-item"><div class="meta-label">Months invoice covered</div><div class="meta-value positive">12 / 12</div></div>
   </div>
 </div>
 
 <div class="body">
 
-  <!-- SECTION 1: Cost Structure -->
+  <!-- SECTION 1: Revenue vs Invoice — Monthly -->
   <div class="section">
     <div class="section-header">
       <span class="section-number">01</span>
-      <span class="section-title">Cost Structure — Two Billing Layers</span>
+      <span class="section-title">Revenue vs. Invoice — Monthly Detail</span>
+    </div>
+    <p class="section-intro">Actual Zinio invoice amounts matched against Zinio publisher net remittance and Apple Pro app revenue for each month. <strong>Zinio channel revenue alone has never covered the invoice.</strong> Apple app revenue covers the gap in all 12 months.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi"><div class="kpi-label">Avg Monthly Invoice</div><div class="kpi-value red">$7,534</div></div>
+      <div class="kpi"><div class="kpi-label">Avg Zinio Net/mo</div><div class="kpi-value">$4,163</div><div class="kpi-note bad">55¢ per invoice dollar</div></div>
+      <div class="kpi"><div class="kpi-label">Avg Apple/mo</div><div class="kpi-value">$8,526</div><div class="kpi-note">Covers invoice every month</div></div>
+      <div class="kpi"><div class="kpi-label">Avg Net/mo</div><div class="kpi-value green">+$5,155</div></div>
     </div>
 
-    <p style="font-size:12.5px; color:var(--slate); margin-bottom:20px;">Zinio Pro carries two distinct cost components billed separately. The Pro Services fee is a fixed monthly charge per title regardless of usage or revenue. Content conversion (Schedule A, Appendix A) is a per-issue fee charged on implementation.</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Cost Type</th>
-          <th>Rate</th>
-          <th>Jan</th><th>Feb</th><th>Mar</th><th>Apr</th>
-          <th>4-Mo Total</th>
-          <th>% of Cost</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Zinio Pro Services Fee <span class="sub">Fixed monthly license per title — 16 titles</span></td>
-          <td style="text-align:left; font-family:var(--mono); font-size:11px;">$200–$400/title/mo</td>
-          <td>$3,800</td><td>$3,800</td><td>$3,800</td><td>$3,800</td>
-          <td>$15,200</td><td>71%</td>
-        </tr>
-        <tr>
-          <td>Content Conversion Fee <span class="sub">Per-issue charge on implementation — Appendix A; $150/issue for most titles</span></td>
-          <td style="text-align:left; font-family:var(--mono); font-size:11px;">$60–$150/issue</td>
-          <td>~$1,571</td><td>~$1,571</td><td>~$1,571</td><td>~$1,571</td>
-          <td>~$6,283</td><td>29%</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>Total Platform Cost</td><td></td>
-          <td>~$5,371</td><td>~$5,371</td><td>~$5,371</td><td>~$5,371</td>
-          <td>~$21,483</td><td>100%</td>
-        </tr>
-      </tfoot>
-    </table>
-
-    <div style="margin-top:14px; padding:12px 16px; background:var(--blue-bg); border-left:3px solid var(--navy-mid); font-size:12px; color:var(--slate);">
-      <strong style="color:var(--navy);">Revenue note:</strong> Apple iTunes revenue is the primary — and essentially only — revenue stream for Pro titles. AIM retains all app revenue and pays Apple's ~30% platform fee directly; this does not flow through Zinio billing. Zinio Store revenue across all 16 Pro titles was $32.48 for the full period.
-    </div>
-  </div>
-
-  <!-- SECTION 2: Title P&L -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-number">02</span>
-      <span class="section-title">Title-Level P&amp;L — All 22 Pro Titles</span>
-    </div>
-
-    <p style="font-size:12.5px; color:var(--slate); margin-bottom:16px;">8 of 16 titles are net positive. Fine Woodworking, Fine Homebuilding, Fine Gardening, and Threads generate 86% of total Apple revenue. Without them, the remaining 12 titles net <strong>(–$11,083)</strong>.</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Pro Fee/mo</th>
-          <th>Pro Fee (4mo)</th>
-          <th>Conv. (4mo)</th>
-          <th>Total Cost</th>
-          <th>Apple Rev (4mo)</th>
-          <th>Net</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="group-head"><td colspan="7">Fine Woodworking · Fine Homebuilding · Fine Gardening · Threads</td></tr>
-        <tr>
-          <td>Fine Woodworking</td>
-          <td>$300</td><td>$1,200</td><td>$350</td><td>$1,550</td>
-          <td class="positive">$11,956</td><td class="positive">$10,406</td>
-        </tr>
-        <tr>
-          <td>Fine Homebuilding</td>
-          <td>$300</td><td>$1,200</td><td>$350</td><td>$1,550</td>
-          <td class="positive">$6,607</td><td class="positive">$5,057</td>
-        </tr>
-        <tr>
-          <td>Fine Gardening</td>
-          <td>$300</td><td>$1,200</td><td>$350</td><td>$1,550</td>
-          <td class="positive">$4,851</td><td class="positive">$3,301</td>
-        </tr>
-        <tr>
-          <td>Threads Magazine</td>
-          <td>$200</td><td>$800</td><td>$250</td><td>$1,050</td>
-          <td class="positive">$3,748</td><td class="positive">$2,698</td>
-        </tr>
-
-        <tr class="group-head"><td colspan="7">AIM titles — profitable</td></tr>
-        <tr>
-          <td>Popular Woodworking</td>
-          <td>$300</td><td>$1,200</td><td>$300</td><td>$1,500</td>
-          <td class="positive">$2,221</td><td class="positive">$721</td>
-        </tr>
-        <tr>
-          <td>Writer's Digest</td>
-          <td>$250</td><td>$1,000</td><td>$350</td><td>$1,350</td>
-          <td class="positive">$1,678</td><td class="positive">$328</td>
-        </tr>
-        <tr>
-          <td>Woodsmith</td>
-          <td>$250</td><td>$1,000</td><td>$300</td><td>$1,300</td>
-          <td class="positive">$1,598</td><td class="positive">$298</td>
-        </tr>
-
-        <tr class="group-head"><td colspan="7">AIM titles — net negative</td></tr>
-        <tr>
-          <td>Garden Gate</td>
-          <td>$200</td><td>$800</td><td>$300</td><td>$1,100</td>
-          <td>$765</td><td class="negative">($335)</td>
-        </tr>
-        <tr>
-          <td>Cuisine at Home</td>
-          <td>$200</td><td>$800</td><td>$200</td><td>$1,000</td>
-          <td>$651</td><td class="negative">($349)</td>
-        </tr>
-        <tr>
-          <td>ShopNotes</td>
-          <td>$250</td><td>$1,000</td><td>$200</td><td>$1,200</td>
-          <td>$666</td><td class="negative">($534)</td>
-        </tr>
-        <tr>
-          <td>Old House Journal</td>
-          <td>$200</td><td>$800</td><td>$300</td><td>$1,100</td>
-          <td>$442</td><td class="negative">($658)</td>
-        </tr>
-        <tr>
-          <td>Horticulture</td>
-          <td>$250</td><td>$1,000</td><td>$300</td><td>$1,300</td>
-          <td>$387</td><td class="negative">($913)</td>
-        </tr>
-        <tr>
-          <td>Log &amp; Timber Home Living</td>
-          <td>$250</td><td>$1,000</td><td>$400</td><td>$1,400</td>
-          <td>$382</td><td class="negative">($1,018)</td>
-        </tr>
-
-        <tr>
-          <td>Numismatic News</td>
-          <td>$200</td><td>$800</td><td>$853</td><td>$1,653</td>
-          <td>$95</td><td class="negative">($1,558)</td>
-        </tr>
-        <tr>
-          <td>Antique Trader</td>
-          <td>$200</td><td>$800</td><td>$480</td><td>$1,280</td>
-          <td>$37</td><td class="negative">($1,243)</td>
-        </tr>
-        <tr>
-          <td>Old Cars Weekly</td>
-          <td>$200</td><td>$800</td><td>$480</td><td>$1,280</td>
-          <td>$25</td><td class="negative">($1,255)</td>
-        </tr>
-        
-        
-        
-        
-        
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>Total — 16 Pro titles</td><td></td>
-          <td>$15,200</td><td>$6,283</td><td>$21,483</td>
-          <td>$35,400</td><td>+$16,317</td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
-
-  <!-- SECTION 3: Pro License P&L -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-number">03</span>
-      <span class="section-title">Pro License P&amp;L — Titles Where Fee Exceeds Revenue</span>
-    </div>
-
-    <p style="font-size:12.5px; color:var(--slate); margin-bottom:16px;">8 of 16 titles are net negative on the Pro fee alone — before conversion costs. Fine Woodworking, Fine Homebuilding, Fine Gardening, and Threads generate $27,162 in Apple revenue against $4,400 in combined Pro fees. The remaining 12 titles sit at –$11,083 net.</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Pro Fee (4mo)</th>
-          <th>Apple Rev (4mo)</th>
-          <th>Pro-Only Net</th>
-          <th>Type</th>
-        </tr>
-      </thead>
-      <tbody>
-        
-        
-        
-        
-        
-        <tr>
-          <td>Horticulture</td>
-          <td>$1,000</td><td>$387</td>
-          <td class="negative">($613)</td>
-          <td><span class="chip red">Pro only</span></td>
-        </tr>
-        <tr>
-          <td>Log &amp; Timber Home Living</td>
-          <td>$1,000</td><td>$382</td>
-          <td class="negative">($618)</td>
-          <td><span class="chip blue">multi-channel</span></td>
-        </tr>
-        <tr>
-          <td>Old Cars Weekly</td>
-          <td>$800</td><td>$25</td>
-          <td class="negative">($775)</td>
-          <td><span class="chip red">Pro only</span></td>
-        </tr>
-        <tr>
-          <td>Antique Trader</td>
-          <td>$800</td><td>$37</td>
-          <td class="negative">($763)</td>
-          <td><span class="chip red">Pro only</span></td>
-        </tr>
-        <tr>
-          <td>Numismatic News</td>
-          <td>$800</td><td>$95</td>
-          <td class="negative">($705)</td>
-          <td><span class="chip red">Pro only</span></td>
-        </tr>
-        <tr>
-          <td>Old House Journal</td>
-          <td>$800</td><td>$442</td>
-          <td class="negative">($358)</td>
-          <td><span class="chip blue">multi-channel</span></td>
-        </tr>
-        <tr>
-          <td>ShopNotes</td>
-          <td>$1,000</td><td>$666</td>
-          <td class="negative">($334)</td>
-          <td><span class="chip red">Pro only</span></td>
-        </tr>
-        <tr>
-          <td>Cuisine at Home</td>
-          <td>$800</td><td>$651</td>
-          <td class="negative">($149)</td>
-          <td><span class="chip blue">multi-channel</span></td>
-        </tr>
-        
-        <tr>
-          <td>Garden Gate</td>
-          <td>$800</td><td>$765</td>
-          <td class="negative">($35)</td>
-          <td><span class="chip blue">multi-channel</span></td>
-        </tr>
-        <tr style="border-top:2px solid var(--navy);">
-          <td><strong>Subtotal — 15 loss titles</strong></td>
-          <td><strong>$16,000</strong></td>
-          <td><strong>$4,544</strong></td>
-          <td class="negative"><strong>($11,456)</strong></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="scenario">
-      <div class="scenario-title">Scenario — Exit Pro on 15 loss-making titles</div>
-      <p style="font-size:12.5px; color:#92400e;">Remove Zinio Pro Services for 15 titles where Apple revenue does not cover the Pro license fee. Titles remain on Zinio Store/Library distribution for any residual channel revenue. The 7 positive titles (Fine Woodworking, Fine Homebuilding, Fine Gardening, Threads, Popular Woodworking, Writer's Digest, Woodsmith) are unchanged.</p>
-      <div class="scenario-grid">
-        <div class="scenario-stat">
-          <div class="s-label">Pro Fees Eliminated</div>
-          <div class="s-val">$6,800</div>
-          <div class="s-delta">$1,700/mo going forward</div>
-        </div>
-        <div class="scenario-stat">
-          <div class="s-label">Apple Revenue Foregone</div>
-          <div class="s-val">$1,977</div>
-          <div class="s-delta">From 8 exited Pro app titles</div>
-        </div>
-        <div class="scenario-stat">
-          <div class="s-label">Net P&amp;L Improvement</div>
-          <div class="s-val">+$11,456</div>
-          <div class="s-delta">Portfolio net → +$17,000 (4mo)</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 4: Findings -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-number">04</span>
-      <span class="section-title">Key Findings</span>
-    </div>
-
-    <div class="findings-grid">
-      <div class="finding good">
-        <div class="finding-icon">★</div>
-        <div>
-          <div class="finding-title">Four titles carry the platform</div>
-          <div class="finding-body">Fine Woodworking, Fine Homebuilding, Fine Gardening, and Threads generate $27,162 in Apple revenue over 4 months against $5,900 in combined Pro fees — a 4.6× return, accounting for 87% of all Pro platform Apple revenue. Without these four titles the platform nets –$21,065 over the same period.</div>
-        </div>
-      </div>
-      <div class="finding flag">
-        <div class="finding-icon">!</div>
-        <div>
-          <div class="finding-title">15 of 22 titles don't cover their Pro fee</div>
-          <div class="finding-body">The original 18-title contract was built around titles that, with limited exceptions, never generated enough app revenue to justify the fixed monthly license. Of the original 18, only Popular Woodworking, Writer's Digest, and Woodsmith are net positive. The remaining 15 titles collectively spend $16,000 in Pro fees over 4 months to generate $4,544 in Apple revenue.</div>
-        </div>
-      </div>
-      
-      <div class="finding neutral">
-        <div class="finding-icon">→</div>
-        <div>
-          <div class="finding-title">Conversion costs compound losses for high-frequency titles</div>
-          <div class="finding-body">Numismatic News (32 issues/year at $80/issue) averages $213/month in conversion fees on top of a $200 Pro fee — against $24/month in Apple revenue. Old Cars Weekly (24 issues/year at $60/issue) and Antique Trader (18 issues/year at $80/issue) face the same math. For these titles, even eliminating the Pro fee doesn't get to breakeven — conversion costs alone exceed revenue.</div>
-        </div>
-      </div>
-      <div class="finding neutral">
-        <div class="finding-icon">→</div>
-        <div>
-          <div class="finding-title">Zinio Store revenue is effectively zero</div>
-          <div class="finding-body">The revenue report shows $32.48 in Zinio Store channel revenue for all 22 titles over 4 months — two SIP titles only. The platform generates no meaningful Zinio channel revenue beyond Apple. This means cost reduction through Pro exits doesn't sacrifice any material Zinio distribution revenue, only the Apple app subscription income from those specific titles.</div>
-        </div>
-      </div>
-      <div class="finding flag">
-        <div class="finding-icon">!</div>
-        <div>
-          <div class="finding-title">The Pro fee structure is fixed and unrelated to performance</div>
-          <div class="finding-body">Monthly rates range from $200 to $400 per title regardless of subscriber count, revenue, or MAU. The MAU cap (50,000/month) is almost certainly never approached for most titles. There is no contractual mechanism that reduces the fee when a title underperforms. Every month a loss-making title stays on Pro is a sunk cost with no recovery path.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 5: 12-Month Revenue vs Invoice -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-number">05</span>
-      <span class="section-title">12-Month Revenue vs. Invoice — May 2025 to Apr 2026</span>
-    </div>
-
-    <p class="section-intro">Actual Zinio invoice amounts from billing records matched against Zinio publisher net remittance and Apple Pro app revenue. <strong>Zinio's own channel revenue has never covered the invoice in any single month.</strong> Apple Pro app revenue covers the gap every month — without it, the Zinio relationship is net-negative across the full year.</p>
-
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);margin-bottom:24px;">
-      <div style="padding:18px 20px;border-right:1px solid var(--rule);">
-        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">12-mo Invoice Total</div>
-        <div style="font-family:var(--mono);font-size:24px;font-weight:500;color:var(--red);">$90,403</div>
-        <div style="font-size:11px;color:var(--slate);margin-top:4px;">Avg $7,534/mo</div>
-      </div>
-      <div style="padding:18px 20px;border-right:1px solid var(--rule);">
-        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Zinio Net Revenue (12mo)</div>
-        <div style="font-family:var(--mono);font-size:24px;font-weight:500;color:var(--ink);">$49,953</div>
-        <div style="font-size:11px;color:var(--red);margin-top:4px;">55¢ per invoice dollar — 0/12 months covered</div>
-      </div>
-      <div style="padding:18px 20px;border-right:1px solid var(--rule);">
-        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Apple Pro Apps (12mo)</div>
-        <div style="font-family:var(--mono);font-size:24px;font-weight:500;color:var(--ink);">$102,312</div>
-        <div style="font-size:11px;color:var(--green);margin-top:4px;">Covers invoice every month</div>
-      </div>
-      <div style="padding:18px 20px;">
-        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Net After Invoice</div>
-        <div style="font-family:var(--mono);font-size:24px;font-weight:500;color:var(--green);">+$61,863</div>
-        <div style="font-size:11px;color:var(--slate);margin-top:4px;">12 of 12 months positive</div>
-      </div>
+    <div class="chart-wrap"><canvas id="revenueChart" height="90"></canvas></div>
+    <div class="chart-legend">
+      <span class="legend-item"><span class="legend-dot" style="background:#2563a8;"></span>Apple (Pro apps)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#6c63d4;"></span>Zinio net</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#dc3545;"></span>Invoice (cost)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:#1a1a1a;border-radius:0;height:2px;width:16px;"></span>Net</span>
     </div>
 
     <table>
       <thead>
         <tr>
-          <th style="text-align:left;">Month</th>
-          <th>Zinio Invoice</th>
+          <th>Month</th>
+          <th>Invoice (cost)</th>
           <th>Zinio Net</th>
           <th>Apple (Pro apps)</th>
           <th>Combined Revenue</th>
           <th>Net</th>
-          <th>Invoice covered?</th>
+          <th>Covered?</th>
         </tr>
       </thead>
       <tbody>
@@ -521,7 +162,7 @@
         <tr><td>Jun 2025</td><td class="negative">$7,573</td><td>$3,946</td><td>$7,057</td><td>$11,002</td><td class="positive">+$3,429</td><td class="positive">✓</td></tr>
         <tr><td>Jul 2025</td><td class="negative">$7,246</td><td>$1,575</td><td>$8,949</td><td>$10,524</td><td class="positive">+$3,278</td><td class="positive">✓</td></tr>
         <tr><td>Aug 2025</td><td class="negative">$7,681</td><td>$4,586</td><td>$8,093</td><td>$12,680</td><td class="positive">+$4,999</td><td class="positive">✓</td></tr>
-        <tr><td>Sep 2025</td><td class="negative">$7,971</td><td>$4,362</td><td>$8,650</td><td>$13,012</td><td class="positive">+$5,040</td><td class="positive">✓</td></tr>
+        <tr><td>Sep 2025</td><td class="negative">$7,971</td><td>$4,362</td><td>$8,650</td><td>$13,011</td><td class="positive">+$5,040</td><td class="positive">✓</td></tr>
         <tr><td>Oct 2025</td><td class="negative">$7,422</td><td>$4,279</td><td>$10,429</td><td>$14,708</td><td class="positive">+$7,287</td><td class="positive">✓</td></tr>
         <tr><td>Nov 2025</td><td class="negative">$7,644</td><td>$4,080</td><td>$6,926</td><td>$11,006</td><td class="positive">+$3,361</td><td class="positive">✓</td></tr>
         <tr><td>Dec 2025</td><td class="negative">$7,873</td><td>$5,017</td><td>$7,445</td><td>$12,463</td><td class="positive">+$4,590</td><td class="positive">✓</td></tr>
@@ -531,20 +172,182 @@
         <tr><td>Apr 2026</td><td class="negative">$7,781</td><td>$4,441</td><td>$8,825</td><td>$13,266</td><td class="positive">+$5,485</td><td class="positive">✓</td></tr>
       </tbody>
       <tfoot>
-        <tr>
-          <td>12-Month Total</td>
-          <td>$90,403</td>
-          <td>$49,953</td>
-          <td>$102,312</td>
-          <td>$152,266</td>
-          <td>+$61,863</td>
-          <td>12 / 12</td>
-        </tr>
+        <tr><td>12-Month Total</td><td>$90,403</td><td>$49,953</td><td>$102,312</td><td>$152,266</td><td>+$61,863</td><td>12 / 12</td></tr>
       </tfoot>
     </table>
 
-    <div style="margin-top:14px;padding:12px 16px;background:var(--red-bg);border-left:3px solid var(--red);font-size:12px;color:var(--red);">
-      <strong>Critical dependency:</strong> Zinio channel revenue covers 55¢ of every dollar invoiced across 12 months — never enough on its own. Apple Pro app revenue bridges the gap every single month. Without Apple app revenue, Zinio would run at a –$40,450 loss over the same period.
+    <div class="info-box red" style="margin-top:14px;">
+      <strong>Critical dependency:</strong> Remove Apple Pro app revenue and Zinio runs at –$40,450 over 12 months. The invoice is never covered by Zinio channel revenue alone — not once in 12 months.
+    </div>
+  </div>
+
+  <!-- SECTION 2: Cost Structure -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">02</span>
+      <span class="section-title">Cost Structure — Two Billing Layers</span>
+    </div>
+    <p class="section-intro">Zinio Pro invoices cover two distinct cost components. The Pro Services license fee is fixed monthly per title regardless of usage. Content conversion is charged per issue on implementation. Combined they represent the full invoice amount.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Cost Type</th>
+          <th>Rate</th>
+          <th>12-mo Total</th>
+          <th>% of Invoice</th>
+          <th>Avg / Month</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pro Services License Fee <span class="sub">Fixed monthly per title — 16 titles · $3,800/mo</span></td>
+          <td style="text-align:left;font-family:var(--mono);font-size:11px;">$200–$400/title/mo</td>
+          <td>$45,600</td>
+          <td>50%</td>
+          <td>$3,800</td>
+        </tr>
+        <tr>
+          <td>Content Conversion Fee <span class="sub">Per-issue charge on implementation — Appendix A</span></td>
+          <td style="text-align:left;font-family:var(--mono);font-size:11px;">$60–$150/issue</td>
+          <td>~$44,803</td>
+          <td>~50%</td>
+          <td>~$3,734</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr><td>Total Invoice (12mo)</td><td></td><td>$90,403</td><td>100%</td><td>$7,534</td></tr>
+      </tfoot>
+    </table>
+
+    <div class="info-box" style="margin-top:14px;">
+      Apple Pro app revenue flows to AIM directly — Apple's ~30% platform fee is deducted before remittance. This revenue does not appear on the Zinio invoice. AIM retains all app revenue and manages the Apple relationship independently.
+    </div>
+  </div>
+
+  <!-- SECTION 3: Title P&L -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">03</span>
+      <span class="section-title">Title-Level P&L — Pro Fee vs. Apple Revenue (12-Month)</span>
+    </div>
+    <p class="section-intro">Pro license fees annualized (×12) against Apple app revenue for the same 12-month period. 8 of 16 titles don't generate enough Apple revenue to cover their annual Pro fee. Fine Woodworking, Fine Homebuilding, Fine Gardening, and Threads generate 86% of all Apple revenue.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Pro Fee/mo</th>
+          <th>Pro Fee (12mo)</th>
+          <th>Apple Rev (12mo)</th>
+          <th>Net vs. Pro Fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-head"><td colspan="5">Strong performers — Apple revenue exceeds Pro fee</td></tr>
+        <tr class="group-keep"><td>Fine Woodworking</td><td>$300</td><td>$3,600</td><td class="positive">$35,867</td><td class="positive">+$32,267</td></tr>
+        <tr class="group-keep"><td>Fine Homebuilding</td><td>$300</td><td>$3,600</td><td class="positive">$19,822</td><td class="positive">+$16,222</td></tr>
+        <tr class="group-keep"><td>Fine Gardening</td><td>$300</td><td>$3,600</td><td class="positive">$14,554</td><td class="positive">+$10,954</td></tr>
+        <tr class="group-keep"><td>Threads Magazine</td><td>$200</td><td>$2,400</td><td class="positive">$11,245</td><td class="positive">+$8,845</td></tr>
+        <tr class="group-keep"><td>Popular Woodworking</td><td>$300</td><td>$3,600</td><td class="positive">$6,663</td><td class="positive">+$3,063</td></tr>
+        <tr class="group-keep"><td>Writer's Digest</td><td>$250</td><td>$3,000</td><td class="positive">$5,033</td><td class="positive">+$2,033</td></tr>
+        <tr class="group-keep"><td>Woodsmith</td><td>$250</td><td>$3,000</td><td class="positive">$4,795</td><td class="positive">+$1,795</td></tr>
+        <tr class="group-keep"><td>Garden Gate</td><td>$200</td><td>$2,400</td><td class="positive">$2,294</td><td class="positive">+$106</td></tr>
+        <tr class="group-head"><td colspan="5">Underperforming — Pro fee exceeds Apple revenue</td></tr>
+        <tr class="group-exit"><td>Old House Journal</td><td>$200</td><td>$2,400</td><td>$1,325</td><td class="negative">–$1,075</td></tr>
+        <tr class="group-exit"><td>Cuisine at Home</td><td>$200</td><td>$2,400</td><td>$1,954</td><td class="negative">–$446</td></tr>
+        <tr class="group-exit"><td>ShopNotes</td><td>$250</td><td>$3,000</td><td>$1,999</td><td class="negative">–$1,001</td></tr>
+        <tr class="group-exit"><td>Horticulture</td><td>$250</td><td>$3,000</td><td>$1,162</td><td class="negative">–$1,838</td></tr>
+        <tr class="group-exit"><td>Log &amp; Timber Home Living</td><td>$250</td><td>$3,000</td><td>$1,145</td><td class="negative">–$1,855</td></tr>
+        <tr class="group-exit"><td>Numismatic News</td><td>$200</td><td>$2,400</td><td>$285</td><td class="negative">–$2,115</td></tr>
+        <tr class="group-exit"><td>Kovels Antique Trader</td><td>$200</td><td>$2,400</td><td class="muted">—</td><td class="negative">–$2,400</td></tr>
+        <tr class="group-exit"><td>Banknote Reporter</td><td>$200</td><td>$2,400</td><td>$57</td><td class="negative">–$2,343</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td>Total — 16 Pro titles</td><td></td><td>$45,600</td><td>$88,203</td><td class="positive">+$42,603</td></tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- SECTION 4: Exit Scenario -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">04</span>
+      <span class="section-title">Scenario — Exit Pro on 8 Underperforming Titles</span>
+    </div>
+    <p class="section-intro">Remove Zinio Pro for the 8 titles where Apple revenue does not cover the Pro license fee. All titles retain Zinio Store + Library distribution. The 8 strong performers are unchanged.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Pro Fee (12mo)</th>
+          <th>Apple Rev (12mo)</th>
+          <th>Pro Fee Saved</th>
+          <th>After Exit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group-exit"><td>Old House Journal</td><td class="negative">$2,400</td><td>$1,325</td><td class="positive">+$2,400</td><td class="positive">Flips positive</td></tr>
+        <tr class="group-exit"><td>Cuisine at Home</td><td class="negative">$2,400</td><td>$1,954</td><td class="positive">+$2,400</td><td class="positive">Flips positive</td></tr>
+        <tr class="group-exit"><td>ShopNotes</td><td class="negative">$3,000</td><td>$1,999</td><td class="positive">+$3,000</td><td class="positive">Flips positive</td></tr>
+        <tr class="group-exit"><td>Horticulture</td><td class="negative">$3,000</td><td>$1,162</td><td class="positive">+$3,000</td><td class="positive">Flips positive</td></tr>
+        <tr class="group-exit"><td>Log &amp; Timber Home Living</td><td class="negative">$3,000</td><td>$1,145</td><td class="positive">+$3,000</td><td class="positive">Flips positive</td></tr>
+        <tr class="group-exit"><td>Numismatic News</td><td class="negative">$2,400</td><td>$285</td><td class="positive">+$2,400</td><td class="negative">Still negative (conv. fees)</td></tr>
+        <tr class="group-exit"><td>Kovels Antique Trader</td><td class="negative">$2,400</td><td class="muted">—</td><td class="positive">+$2,400</td><td class="negative">Still negative (conv. fees)</td></tr>
+        <tr class="group-exit"><td>Banknote Reporter</td><td class="negative">$2,400</td><td>$57</td><td class="positive">+$2,400</td><td class="negative">Still negative (conv. fees)</td></tr>
+      </tbody>
+      <tfoot>
+        <tr><td>Exit subtotal (8 titles)</td><td>$21,000</td><td>$5,927</td><td>$21,000/yr saved</td><td>$1,750/mo improvement</td></tr>
+      </tfoot>
+    </table>
+
+    <div class="scenario">
+      <div class="scenario-title">Net Impact — Pro Exit on 8 Titles</div>
+      <div class="scenario-body">Pro license fees eliminated on 8 titles. All retain Store + Library distribution. 5 titles flip profitable; 3 still carry conversion-fee losses that require a separate decision on Zinio viability.</div>
+      <div class="scenario-grid">
+        <div><div class="s-label">Pro Fees Eliminated</div><div class="s-val">$21,000/yr</div><div class="s-delta">$1,750/mo going forward</div></div>
+        <div><div class="s-label">Apple Revenue Retained</div><div class="s-val">$96,385/yr</div><div class="s-delta">Strong titles unchanged</div></div>
+        <div><div class="s-label">Annual Net Improvement</div><div class="s-val">+$21,000</div><div class="s-delta">On Pro fees alone</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: Findings -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">05</span>
+      <span class="section-title">Key Findings</span>
+    </div>
+    <div class="findings-grid">
+      <div class="finding flag">
+        <div class="finding-icon">!</div>
+        <div>
+          <div class="finding-title">Zinio net never covers its own invoice</div>
+          <div class="finding-body">Across all 12 months, Zinio publisher net remittance averaged $4,163/month against an average invoice of $7,534/month. That's 55¢ recovered per dollar spent — a structural shortfall, not a cyclical one. July 2025 was the worst: $1,575 net against a $7,246 invoice.</div>
+        </div>
+      </div>
+      <div class="finding good">
+        <div class="finding-icon">★</div>
+        <div>
+          <div class="finding-title">Four titles generate 86% of Apple revenue</div>
+          <div class="finding-body">Fine Woodworking, Fine Homebuilding, Fine Gardening, and Threads combined generated $71,488 in Apple app revenue over 12 months — 86% of the total $83,488 from the top 8 titles. These four are why the platform is net-positive. Their Pro fees total $45,600/yr against $71,488 in Apple revenue — a 1.6× return.</div>
+        </div>
+      </div>
+      <div class="finding flag">
+        <div class="finding-icon">!</div>
+        <div>
+          <div class="finding-title">Remove Apple and Zinio is –$40,450 over 12 months</div>
+          <div class="finding-body">The platform is entirely dependent on Apple Pro app subscriptions to make the economics work. The Zinio channel itself — Store, Library, and distribution — generates $49,953 against $90,403 in invoiced costs. That's a –$40,450 loss before Apple is factored in.</div>
+        </div>
+      </div>
+      <div class="finding neutral">
+        <div class="finding-icon">→</div>
+        <div>
+          <div class="finding-title">Fixed fee structure disconnected from performance</div>
+          <div class="finding-body">Pro license rates are fixed at $200–$400/title/month regardless of subscriber count, revenue, or usage. Kovels Antique Trader paid $2,400 in Pro fees over 12 months and generated zero Apple revenue. There is no contractual mechanism to reduce fees when titles underperform.</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -552,15 +355,70 @@
   <div class="notes">
     <div class="notes-title">Methodology Notes</div>
     <ol>
-      <li>Pro Services Fee = contracted monthly rate per title, fixed regardless of MAU or revenue. 16 titles (marine titles excluded following divestiture). Total monthly Pro fee: $3,800.</li>
-      <li>Content Conversion Fee = per-issue rate from Appendix A × contracted issues/year, annualized and divided by 12, then ×4. Fine Woodworking, Fine Homebuilding, Fine Gardening use 7 issues/yr; Threads uses 5 issues/yr. Divested marine titles excluded. Actual monthly amounts vary by publication calendar. Numismatic News conversion cost is high due to 32 issues/year at $80/issue.</li>
-      <li>Apple revenue = net receipts from the Jan–Apr 2026 digital subscriptions revenue report, excluding divested marine titles. Apple's ~30% platform fee has already been deducted — figures are AIM's net.</li>
-      <li>Zinio Store channel revenue ($32.48 total for the period) is excluded from the title P&L as it is governed by the base Distribution Channels agreement (Schedule B), not the Pro Services schedule (Schedule C). It is not affected by Pro exits.</li>
-      <li>Channel delivery fees ($0.10/general delivery, $0.05/library delivery per the base contract) are not modeled — actual delivery volume data is unavailable. These would add incremental cost.</li>
-      <li>Period: January–April 2026 only. Not annualized. Scenario savings of +$4,000/mo represent the ongoing run-rate benefit from exiting Pro on 15 titles.</li>
+      <li>Invoice data: actual Zinio billing records (SI-46245 through SI-58577), May 2025–Apr 2026. April 2026 invoice ($7,780.84) is unpaid as of reporting date.</li>
+      <li>Zinio net revenue: monthly publisher remittance from the Dig Subs Rev by Partner sheet across all uploaded revenue files. 2025 months sourced from the December 2025 cumulative file; 2026 months from the May 2026 cumulative file.</li>
+      <li>Apple revenue: net receipts after Apple's ~30% platform fee, from the same revenue files. Includes all AIM Pro app titles. Marine titles (Sail, PassageMaker, Soundings, Anglers Journal, Power &amp; Motoryacht, Yachts International) excluded — divested.</li>
+      <li>Pro Services Fee: confirmed billing schedule — 16 titles at $200–$400/month = $3,800/month total. Title-level Apple revenue in Section 03 is estimated from Jan–Apr 2026 actuals annualized; actual 12-month by-title breakdown not available.</li>
+      <li>Content conversion cost (Section 02): derived as invoice total minus Pro fee total ($90,403 – $45,600 = $44,803). Actual per-invoice breakdown not available.</li>
+      <li>Zinio Store channel revenue ($32.48 for Jan–Apr 2026) is de minimis and not modeled separately in the 12-month view.</li>
     </ol>
   </div>
 
 </div>
+
+<script>
+const labels = ['May 25','Jun 25','Jul 25','Aug 25','Sep 25','Oct 25','Nov 25','Dec 25','Jan 26','Feb 26','Mar 26','Apr 26'];
+const apple   = [7397, 7057, 8949, 8093, 8650, 10429, 6926, 7445, 11028, 9647, 7867, 8825];
+const zinio   = [3920, 3946, 1575, 4586, 4362, 4279,  4080, 5017, 4649,  4099, 4998, 4441];
+const invoice = [8229, 7573, 7246, 7681, 7971, 7422,  7644, 7873, 6516,  7546, 6922, 7781];
+const net     = apple.map((a,i) => a + zinio[i] - invoice[i]);
+
+new Chart(document.getElementById('revenueChart'), {
+  type: 'bar',
+  data: {
+    labels,
+    datasets: [
+      { label: 'Apple (Pro apps)', data: apple,            backgroundColor: 'rgba(37,99,168,0.80)',  borderRadius: 2 },
+      { label: 'Zinio net',        data: zinio,            backgroundColor: 'rgba(108,99,212,0.75)', borderRadius: 2 },
+      { label: 'Invoice (cost)',   data: invoice.map(v=>-v),backgroundColor: 'rgba(220,53,69,0.75)',  borderRadius: 2 },
+    ]
+  },
+  options: {
+    responsive: true,
+    interaction: { mode: 'index' },
+    scales: {
+      x: { stacked: true, grid: { display: false }, ticks: { font: { size: 11 } } },
+      y: { stacked: true, ticks: { callback: v => (v<0?'-$':'$') + Math.abs(v).toLocaleString(), font: { size: 11 } }, grid: { color: 'rgba(0,0,0,0.05)' } }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: c => c.dataset.label + ': $' + Math.abs(c.parsed.y).toLocaleString(),
+          footer: items => {
+            const i = items[0].dataIndex;
+            return ['Net: ' + (net[i]>=0?'+':'-') + '$' + Math.abs(net[i]).toLocaleString()];
+          }
+        }
+      }
+    }
+  },
+  plugins: [{
+    id: 'netLine',
+    afterDatasetsDraw(chart) {
+      const {ctx, scales:{x,y}} = chart;
+      ctx.save();
+      ctx.beginPath(); ctx.strokeStyle='#1a1a2e'; ctx.lineWidth=2; ctx.setLineDash([5,3]);
+      net.forEach((v,i) => { const px=x.getPixelForValue(i), py=y.getPixelForValue(v); i===0?ctx.moveTo(px,py):ctx.lineTo(px,py); });
+      ctx.stroke(); ctx.setLineDash([]);
+      net.forEach((v,i) => {
+        const px=x.getPixelForValue(i), py=y.getPixelForValue(v);
+        ctx.beginPath(); ctx.arc(px,py,3,0,Math.PI*2); ctx.fillStyle='#1a1a2e'; ctx.fill();
+      });
+      ctx.restore();
+    }
+  }]
+});
+</script>
 </body>
 </html>
